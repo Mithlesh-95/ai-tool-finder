@@ -1,67 +1,77 @@
+// Firebase imports and config
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// Category filtering functionality
+const firebaseConfig = {
+    apiKey: "AIzaSyCY2x1-lLF2DOeeoWSBQpK1QO3CXaaGENo",
+    authDomain: "ai-tool-finder-990c5.firebaseapp.com",
+    projectId: "ai-tool-finder-990c5",
+    storageBucket: "ai-tool-finder-990c5.appspot.com",
+    messagingSenderId: "908525506856",
+    appId: "1:908525506856:web:93e6e3172f4df51d63401d",
+    measurementId: "G-7GS3B1Q357"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Category filter and search setup
+let toolsData = [];
 const categoryButtons = document.querySelectorAll('.category-btn');
-const toolCards = document.querySelectorAll('.tool-card');
+const searchInput = document.getElementById('searchInput');
 
 categoryButtons.forEach(button => {
     button.addEventListener('click', () => {
-        // Remove active class from all buttons
         categoryButtons.forEach(btn => btn.classList.remove('active'));
-        // Add active class to clicked button
         button.classList.add('active');
-
         const selectedCategory = button.getAttribute('data-category');
-
-        // Filter tool cards
-        toolCards.forEach(card => {
-            if (selectedCategory === 'all' || card.getAttribute('data-category') === selectedCategory) {
-                card.style.display = 'block';
-                card.style.animation = 'fadeIn 0.5s ease-in';
-            } else {
-                card.style.display = 'none';
-            }
-        });
+        renderTools(selectedCategory, searchInput.value.toLowerCase());
     });
 });
 
-// Search functionality
-const searchInput = document.getElementById('searchInput');
 searchInput.addEventListener('input', (e) => {
-    const searchTerm = e.target.value.toLowerCase();
-
-    toolCards.forEach(card => {
-        const toolName = card.querySelector('h3').textContent.toLowerCase();
-        const toolDescription = card.querySelector('p').textContent.toLowerCase();
-
-        if (toolName.includes(searchTerm) || toolDescription.includes(searchTerm)) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
-    });
-
-    // Reset category filter when searching
-    if (searchTerm) {
-        categoryButtons.forEach(btn => btn.classList.remove('active'));
-    }
+    const activeBtn = document.querySelector('.category-btn.active');
+    const category = activeBtn ? activeBtn.getAttribute('data-category') : 'all';
+    renderTools(category, e.target.value.toLowerCase());
 });
 
-// Add fade-in animation
-const style = document.createElement('style');
-style.textContent = `
-            @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(20px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-        `;
-document.head.appendChild(style);
+// Fetch data from Firebase and initialize rendering
+async function fetchTools() {
+    const querySnapshot = await getDocs(collection(db, "tools"));
+    toolsData = querySnapshot.docs.map(doc => doc.data());
+    renderTools('all', '');
+}
 
-// Smooth scrolling for better UX
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+function renderTools(category, searchTerm) {
+    const toolsGrid = document.getElementById("toolsGrid");
+    toolsGrid.innerHTML = '';
+
+    const filtered = toolsData.filter(tool => {
+        const matchesCategory = category === 'all' || tool.category === category;
+        const matchesSearch = tool.name.toLowerCase().includes(searchTerm) || tool.desc.toLowerCase().includes(searchTerm);
+        return matchesCategory && matchesSearch;
     });
-});
+
+    filtered.forEach(tool => toolsGrid.innerHTML += renderToolCard(tool));
+}
+
+function renderToolCard(tool) {
+    return `
+    <div class="tool-card bg-white rounded-xl shadow-lg p-6 border border-gray-100" data-category="${tool.category}">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-xl font-bold text-gray-800">${tool.name}</h3>
+            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">${tool.price}</span>
+        </div>
+        <p class="text-gray-600 mb-4">${tool.desc}</p>
+        <div class="flex flex-wrap gap-2 mb-6">
+            ${tool.tags.map(tag => `<span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">${tag}</span>`).join("")}
+        </div>
+        <a href="${tool.link}" target="_blank">
+            <button class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all">
+                Try Now
+            </button>
+        </a>
+    </div>`;
+}
+
+fetchTools();

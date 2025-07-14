@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel - Add Tool</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="module" src="admin.js"></script>
+</head>
+<body class="bg-gray-100 p-10 font-sans">
+  <div class="max-w-xl mx-auto bg-white p-8 rounded-xl shadow-md">
+    <h1 class="text-2xl font-bold mb-6 text-center text-gray-800">Add AI Tool</h1>
+    <form id="toolForm" class="space-y-4">
+      <input type="text" id="name" placeholder="Tool Name" class="input" required />
+      <input type="text" id="category" placeholder="Category (e.g., coding)" class="input" required />
+      <textarea id="desc" placeholder="Description" class="input" rows="3" required></textarea>
+      <input type="text" id="tags" placeholder="Tags (comma-separated)" class="input" />
+      <input type="text" id="price" placeholder="Price (Free, Paid, etc.)" class="input" />
+      <input type="url" id="link" placeholder="Tool Link (URL)" class="input" required />
+      <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold">
+        Add Tool
+      </button>
+      <p id="msg" class="text-center mt-4 text-sm font-medium text-green-600 hidden">Tool added successfully!</p>
+    </form>
+  </div>
+
+  <style>
+    .input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+    }
+  </style>
+</body>
+</html>

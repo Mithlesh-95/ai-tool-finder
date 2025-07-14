@@ -1,36 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Panel - Add Tool</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script type="module" src="admin.js"></script>
-</head>
-<body class="bg-gray-100 p-10 font-sans">
-  <div class="max-w-xl mx-auto bg-white p-8 rounded-xl shadow-md">
-    <h1 class="text-2xl font-bold mb-6 text-center text-gray-800">Add AI Tool</h1>
-    <form id="toolForm" class="space-y-4">
-      <input type="text" id="name" placeholder="Tool Name" class="input" required />
-      <input type="text" id="category" placeholder="Category (e.g., coding)" class="input" required />
-      <textarea id="desc" placeholder="Description" class="input" rows="3" required></textarea>
-      <input type="text" id="tags" placeholder="Tags (comma-separated)" class="input" />
-      <input type="text" id="price" placeholder="Price (Free, Paid, etc.)" class="input" />
-      <input type="url" id="link" placeholder="Tool Link (URL)" class="input" required />
-      <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold">
-        Add Tool
-      </button>
-      <p id="msg" class="text-center mt-4 text-sm font-medium text-green-600 hidden">Tool added successfully!</p>
-    </form>
-  </div>
 
-  <style>
-    .input {
-      width: 100%;
-      padding: 0.75rem;
-      border: 1px solid #ccc;
-      border-radius: 0.5rem;
-    }
-  </style>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel - Add Tool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="admin.js"></script>
+</head>
+
+<body class="bg-gray-100 p-10 font-sans">
+
+    <!-- Login Form -->
+    <div id="loginPanel" class="max-w-sm mx-auto bg-white p-6 rounded-xl shadow-md">
+        <h2 class="text-xl font-bold mb-4 text-center">Admin Login</h2>
+        <form id="loginForm" class="space-y-4">
+            <input type="email" id="email" placeholder="Email" required class="input">
+            <input type="password" id="password" placeholder="Password" required class="input">
+            <button type="submit"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold">Login</button>
+            <p id="loginError" class="text-red-600 text-sm hidden text-center">Invalid login or unauthorized</p>
+        </form>
+    </div>
+
+    <!-- Uploader Panel -->
+    <div id="uploaderPanel" class="max-w-xl mx-auto bg-white p-8 rounded-xl shadow-md hidden mt-10">
+        <h1 class="text-2xl font-bold mb-6 text-center text-gray-800">Add AI Tool</h1>
+        <form id="toolForm" class="space-y-4">
+            <input type="text" id="name" placeholder="Tool Name" class="input" required />
+            <input type="text" id="category" placeholder="Category (e.g., coding)" class="input" required />
+            <textarea id="desc" placeholder="Description" class="input" rows="3" required></textarea>
+            <input type="text" id="tags" placeholder="Tags (comma-separated)" class="input" />
+            <input type="text" id="price" placeholder="Price (Free, Paid, etc.)" class="input" />
+            <input type="url" id="link" placeholder="Tool Link (URL)" class="input" required />
+            <button type="submit"
+                class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-semibold">
+                Add Tool
+            </button>
+            <p id="msg" class="text-center mt-4 text-sm font-medium text-green-600 hidden">Tool added successfully!</p>
+        </form>
+
+        <!-- Bulk Upload Section -->
+        <div class="max-w-xl mx-auto bg-white p-6 rounded-xl shadow-md mt-10">
+            <h2 class="text-xl font-bold mb-4 text-center text-gray-800">Bulk Upload Tools (JSON Format)</h2>
+            <textarea id="bulkJson" rows="10" placeholder='Paste JSON array here' class="input font-mono text-sm"
+                style="height: 200px;"></textarea>
+            <button id="bulkUploadBtn"
+                class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-semibold mt-4">
+                Bulk Upload
+            </button>
+            <p id="bulkMsg" class="text-center mt-3 text-sm font-medium text-green-600 hidden">Bulk upload complete!</p>
+        </div>
+    </div>
+
+
+    <style>
+        .input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
+        }
+    </style>
 </body>
+
 </html>

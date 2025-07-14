@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDoc, doc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
 // Firebase config
 const firebaseConfig = {
@@ -14,8 +15,33 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 
-// Add tool on submit
+// Handle Login
+document.getElementById("loginForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  try {
+    const userCred = await signInWithEmailAndPassword(auth, email, password);
+    const uid = userCred.user.uid;
+    const adminRef = doc(db, "admins", uid);
+    const snap = await getDoc(adminRef);
+
+    if (snap.exists() && snap.data().role === "admin") {
+      document.getElementById("loginPanel").style.display = "none";
+      document.getElementById("uploaderPanel").classList.remove("hidden");
+    } else {
+      document.getElementById("loginError").classList.remove("hidden");
+    }
+  } catch (error) {
+    console.error(error.message);
+    document.getElementById("loginError").classList.remove("hidden");
+  }
+});
+
+// Add tool
 document.getElementById("toolForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -34,5 +60,34 @@ document.getElementById("toolForm").addEventListener("submit", async (e) => {
     e.target.reset();
   } catch (error) {
     alert("Error adding tool: " + error.message);
+  }
+});
+
+// adding bulk tools using json upload
+document.getElementById("bulkUploadBtn").addEventListener("click", async () => {
+  const bulkText = document.getElementById("bulkJson").value;
+  let tools = [];
+
+  try {
+    tools = JSON.parse(bulkText);
+
+    if (!Array.isArray(tools)) {
+      alert("JSON must be an array of tool objects.");
+      return;
+    }
+
+    for (const tool of tools) {
+      // Sanitize tags
+      if (typeof tool.tags === "string") {
+        tool.tags = tool.tags.split(',').map(t => t.trim());
+      }
+
+      await addDoc(collection(db, "tools"), tool);
+    }
+
+    document.getElementById("bulkMsg").classList.remove("hidden");
+    document.getElementById("bulkJson").value = "";
+  } catch (err) {
+    alert("Invalid JSON or error adding tools: " + err.message);
   }
 });

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tool Finder - Find the Best AI Tools for Your Needs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                Find the Best AI Tools for Your Needs
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 opacity-90 max-w-2xl mx-auto">
+                From creators to coders, discover the best AI tools in seconds.
+            </p>
+            <div class="max-w-2xl mx-auto">
+                <div class="relative">
+                    <input 
+                        type="text" 
+                        placeholder="Search for AI tools..." 
+                        class="w-full px-6 py-4 text-lg text-gray-800 rounded-full border-0 shadow-lg focus:outline-none focus:ring-4 focus:ring-white/30"
+                        id="searchInput"
+                    >
+                    <button class="absolute right-2 top-2 bg-gray-800 text-white px-6 py-2 rounded-full hover:bg-gray-700 transition-colors">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Filter Buttons -->
+    <section class="py-12 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Browse by Category</h2>
+            <div class="flex flex-wrap justify-center gap-4 md:gap-6" id="categoryButtons">
+                <button class="category-btn active px-6 py-3 rounded-full font-semibold shadow-md bg-white text-gray-700 border-2 border-gray-200" data-category="all">
+                    All Tools
+                </button>
+                <button class="category-btn px-6 py-3 rounded-full font-semibold shadow-md bg-white text-gray-700 border-2 border-gray-200" data-category="content-writing">
+                    Content Writing
+                </button>
+                <button class="category-btn px-6 py-3 rounded-full font-semibold shadow-md bg-white text-gray-700 border-2 border-gray-200" data-category="coding">
+                    Coding
+                </button>
+                <button class="category-btn px-6 py-3 rounded-full font-semibold shadow-md bg-white text-gray-700 border-2 border-gray-200" data-category="video-editing">
+                    Video Editing
+                </button>
+                <button class="category-btn px-6 py-3 rounded-full font-semibold shadow-md bg-white text-gray-700 border-2 border-gray-200" data-category="resume">
+                    Resume
+                </button>
+                <button class="category-btn px-6 py-3 rounded-full font-semibold shadow-md bg-white text-gray-700 border-2 border-gray-200" data-category="youtube">
+                    YouTube
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Tool Cards Grid -->
+    <section class="py-16 px-4 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="toolsGrid">
+                <!-- Content Writing Tools -->
+                <div class="tool-card card-hover bg-white rounded-xl shadow-lg p-6 border border-gray-100" data-category="content-writing">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">Jasper AI</h3>
+                        <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Paid</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">AI writer for blogs and emails with advanced content generation capabilities.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">AI</span>
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-medium">Popular</span>
+                    </div>
+                    <button class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all">
+                        Try Now
+                    </button>
+                </div>
+
+                <div class="tool-card card-hover bg-white rounded-xl shadow-lg p-6 border border-gray-100" data-category="content-writing">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">Writesonic</h3>
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Freemium</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">SEO-friendly AI content generation for blogs, ads, and marketing copy.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">AI</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-medium">Free</span>
+                    </div>
+                    <button class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all">
+                        Try Now
+                    </button>
+                </div>
+
+                <!-- Coding Tools -->
+                <div class="tool-card card-hover bg-white rounded-xl shadow-lg p-6 border border-gray-100" data-category="coding">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">GitHub Copilot</h3>
+                        <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Paid</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Code suggestions inside VSCode with AI-powered autocompletion.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">AI</span>
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-medium">Popular</span>
+                    </div>
+                    <button class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all">
+                        Try Now
+                    </button>
+                </div>
+
+                <div class="tool-card card-hover bg-white rounded-xl shadow-lg p-6 border border-gray-100" data-category="coding">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">Codeium</h3>
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Free</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Free AI coding assistant for multiple languages with intelligent suggestions.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">AI</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-medium">Free</span>
+                    </div>
+                    <button class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all">
+                        Try Now
+                    </button>
+                </div>
+
+                <!-- Video Editing Tools -->
+                <div class="tool-card card-hover bg-white rounded-xl shadow-lg p-6 border border-gray-100" data-category="video-editing">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">Runway ML</h3>
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Freemium</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">AI video editing with effects and tools for creative professionals.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">AI</span>
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-medium">Popular</span>
+                    </div>
+                    <button class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all">
+                        Try Now
+                    </button>
+                </div>
+
+                <div class="tool-card card-hover bg-white rounded-xl shadow-lg p-6 border border-gray-100" data-category="video-editing">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">Pictory</h3>
+                        <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Paid</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Turn blog text into videos with AI-powered video creation tools.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">AI</span>
+                        <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-medium">Trending</span>
+                    </div>
+                    <button class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all">
+                        Try Now
+                    </button>
+                </div>
+
+                <!-- Resume Tools -->
+                <div class="tool-card card-hover bg-white rounded-xl shadow-lg p-6 border border-gray-100" data-category="resume">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">Kickresume</h3>
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Freemium</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Resume and cover letter builder with professional templates.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">AI</span>
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-medium">Popular</span>
+                    </div>
+                    <button class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all">
+                        Try Now
+                    </button>
+                </div>
+
+                <div class="tool-card card-hover bg-white rounded-xl shadow-lg p-6 border border-gray-100" data-category="resume">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">ResumAI</h3>
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Free</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Generate job-ready resumes with AI-powered content suggestions.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">AI</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-medium">Free</span>
+                    </div>
+                    <button class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all">
+                        Try Now
+                    </button>
+                </div>
+
+                <!-- YouTube Tools -->
+                <div class="tool-card card-hover bg-white rounded-xl shadow-lg p-6 border border-gray-100" data-category="youtube">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">Vidyo.ai</h3>
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Free</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Auto-generate YouTube Shorts from long videos with AI editing.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">AI</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-medium">Free</span>
+                    </div>
+                    <button class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all">
+                        Try Now
+                    </button>
+                </div>
+
+                <div class="tool-card card-hover bg-white rounded-xl shadow-lg p-6 border border-gray-100" data-category="youtube">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">TubeBuddy</h3>
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Free</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">YouTube SEO assistant and analytics booster for content creators.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">AI</span>
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-medium">Popular</span>
+                    </div>
+                    <button class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all">
+                        Try Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-2">AI Tool Finder</h3>
+                    <p class="text-gray-400">Discover the best AI tools for your needs</p>
+                </div>
+                <div class="flex space-x-8">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Home</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">About</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 AI Tool Finder. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script type="module" src="app.js"></script>
+</body>
+</html>

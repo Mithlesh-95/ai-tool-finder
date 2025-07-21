@@ -25,6 +25,7 @@ categoryButtons.forEach(button => {
         categoryButtons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
         const selectedCategory = button.getAttribute('data-category');
+        console.log("Category button clicked:", selectedCategory);
         renderTools(selectedCategory, searchInput.value.toLowerCase());
     });
 });
@@ -39,6 +40,20 @@ searchInput.addEventListener('input', (e) => {
 async function fetchTools() {
     const querySnapshot = await getDocs(collection(db, "tools"));
     toolsData = querySnapshot.docs.map(doc => doc.data());
+    console.log("Fetched tools data:", toolsData);
+    console.log("Available categories:", [...new Set(toolsData.map(tool => tool.category))]);
+
+    // Show a summary of tools per category
+    const categoryCounts = {};
+    toolsData.forEach(tool => {
+        if (categoryCounts[tool.category]) {
+            categoryCounts[tool.category]++;
+        } else {
+            categoryCounts[tool.category] = 1;
+        }
+    });
+    console.log("Tools per category:", categoryCounts);
+
     renderTools('all', '');
 }
 
@@ -46,12 +61,41 @@ function renderTools(category, searchTerm) {
     const toolsGrid = document.getElementById("toolsGrid");
     toolsGrid.innerHTML = '';
 
+    console.log("Filtering by category:", category);
+    console.log("Search term:", searchTerm);
+
     const filtered = toolsData.filter(tool => {
-        const matchesCategory = category === 'all' || tool.category === category;
+        // Make category comparison more flexible
+        let matchesCategory = category === 'all';
+        if (!matchesCategory && tool.category) {
+            // Try exact match first
+            matchesCategory = tool.category === category;
+
+            // If no exact match, try case-insensitive comparison
+            if (!matchesCategory) {
+                matchesCategory = tool.category.toLowerCase() === category.toLowerCase();
+            }
+
+            // Try with spaces converted to dashes and vice versa
+            if (!matchesCategory) {
+                const categoryWithDashes = tool.category.toLowerCase().replace(/\s+/g, '-');
+                const categoryWithSpaces = tool.category.toLowerCase().replace(/-/g, ' ');
+                const filterWithDashes = category.toLowerCase().replace(/\s+/g, '-');
+                const filterWithSpaces = category.toLowerCase().replace(/-/g, ' ');
+
+                matchesCategory = categoryWithDashes === filterWithDashes ||
+                    categoryWithSpaces === filterWithSpaces ||
+                    categoryWithDashes === category.toLowerCase() ||
+                    categoryWithSpaces === category.toLowerCase();
+            }
+        }
+
         const matchesSearch = tool.name.toLowerCase().includes(searchTerm) || tool.desc.toLowerCase().includes(searchTerm);
+        console.log(`Tool: ${tool.name}, Category: ${tool.category}, Matches category: ${matchesCategory}, Matches search: ${matchesSearch}`);
         return matchesCategory && matchesSearch;
     });
 
+    console.log("Filtered tools:", filtered);
     filtered.forEach(tool => toolsGrid.innerHTML += renderToolCard(tool));
 }
 

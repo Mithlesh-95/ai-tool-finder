@@ -20,54 +20,78 @@ let toolsData = [];
 let currentPage = 1;
 const TOOLS_PER_PAGE_MOBILE = 5;
 const TOOLS_PER_PAGE_DESKTOP = 9;
-const categoryButtons = document.querySelectorAll('.category-btn');
-const searchInput = document.getElementById('searchInput');
 
-categoryButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        categoryButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-        const selectedCategory = button.getAttribute('data-category');
-        console.log("Category button clicked:", selectedCategory);
-        currentPage = 1; // Reset pagination when category changes
-        renderTools(selectedCategory, searchInput.value.toLowerCase());
+// Wait for DOM to be fully loaded
+function initializeAppComponents() {
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const searchInput = document.getElementById('searchInput');
+
+    if (!categoryButtons.length || !searchInput) {
+        // Retry if elements not found
+        setTimeout(initializeAppComponents, 100);
+        return;
+    }
+
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            const selectedCategory = button.getAttribute('data-category');
+            currentPage = 1; // Reset pagination when category changes
+            renderTools(selectedCategory, searchInput.value.toLowerCase());
+        });
     });
-});
 
-searchInput.addEventListener('input', (e) => {
-    const activeBtn = document.querySelector('.category-btn.active');
-    const category = activeBtn ? activeBtn.getAttribute('data-category') : 'all';
-    currentPage = 1; // Reset pagination when search changes
-    renderTools(category, e.target.value.toLowerCase());
-});
+    searchInput.addEventListener('input', (e) => {
+        const activeBtn = document.querySelector('.category-btn.active');
+        const category = activeBtn ? activeBtn.getAttribute('data-category') : 'all';
+        currentPage = 1; // Reset pagination when search changes
+        renderTools(category, e.target.value.toLowerCase());
+    });
+
+    // Initialize data fetching
+    fetchTools();
+}
 
 // Fetch data from Firebase and initialize rendering
 async function fetchTools() {
-    const querySnapshot = await getDocs(collection(db, "tools"));
-    toolsData = querySnapshot.docs.map(doc => doc.data());
-    console.log("Fetched tools data:", toolsData);
-    console.log("Available categories:", [...new Set(toolsData.map(tool => tool.category))]);
+    try {
+        const querySnapshot = await getDocs(collection(db, "tools"));
+        toolsData = querySnapshot.docs.map(doc => doc.data());
 
-    // Show a summary of tools per category
-    const categoryCounts = {};
-    toolsData.forEach(tool => {
-        if (categoryCounts[tool.category]) {
-            categoryCounts[tool.category]++;
-        } else {
-            categoryCounts[tool.category] = 1;
+        // Show a summary of tools per category
+        const categoryCounts = {};
+        toolsData.forEach(tool => {
+            if (categoryCounts[tool.category]) {
+                categoryCounts[tool.category]++;
+            } else {
+                categoryCounts[tool.category] = 1;
+            }
+        });
+
+        // Initial render
+        renderTools('all', '');
+    } catch (error) {
+        // Show error message to user
+        const toolsGrid = document.getElementById("toolsGrid");
+        if (toolsGrid) {
+            toolsGrid.innerHTML = `
+                <div class="col-span-full text-center py-12">
+                    <div class="text-gray-500 text-lg mb-4">⚠️ Unable to load AI tools</div>
+                    <div class="text-gray-400">Please refresh the page or try again later.</div>
+                </div>
+            `;
         }
-    });
-    console.log("Tools per category:", categoryCounts);
-
-    renderTools('all', '');
+    }
 }
 
 function renderTools(category, searchTerm) {
     const toolsGrid = document.getElementById("toolsGrid");
     const showMoreContainer = document.getElementById("showMoreContainer");
 
-    console.log("Filtering by category:", category);
-    console.log("Search term:", searchTerm);
+    if (!toolsGrid) {
+        return;
+    }
 
     const filtered = toolsData.filter(tool => {
         // Make category comparison more flexible
@@ -96,13 +120,8 @@ function renderTools(category, searchTerm) {
         }
 
         const matchesSearch = tool.name.toLowerCase().includes(searchTerm) || tool.desc.toLowerCase().includes(searchTerm);
-        console.log(`Tool: ${tool.name}, Category: ${tool.category}, Matches category: ${matchesCategory}, Matches search: ${matchesSearch}`);
         return matchesCategory && matchesSearch;
-    });
-
-    console.log("Filtered tools:", filtered);
-
-    // Check if we're on mobile or desktop
+    });    // Check if we're on mobile or desktop
     const isMobile = window.innerWidth < 768;
     const toolsPerPage = isMobile ? TOOLS_PER_PAGE_MOBILE : TOOLS_PER_PAGE_DESKTOP;
 
@@ -120,14 +139,20 @@ function renderTools(category, searchTerm) {
         // Show the "Show More" button
         if (showMoreContainer) {
             showMoreContainer.style.display = 'block';
-            const showMoreBtn = document.getElementById('showMoreBtn');
+            let showMoreBtn = document.getElementById('showMoreBtn');
             if (showMoreBtn) {
                 // Update button text based on device type
                 showMoreBtn.innerHTML = isMobile ? '📱 Show More Tools' : '💻 Load More Tools';
-                showMoreBtn.onclick = () => {
+
+                // Remove existing event listeners and add new one
+                const newBtn = showMoreBtn.cloneNode(true);
+                showMoreBtn.parentNode.replaceChild(newBtn, showMoreBtn);
+                showMoreBtn = newBtn;
+
+                showMoreBtn.addEventListener('click', () => {
                     currentPage++;
                     renderTools(category, searchTerm);
-                };
+                });
             }
         }
     } else {
@@ -136,9 +161,7 @@ function renderTools(category, searchTerm) {
             showMoreContainer.style.display = 'none';
         }
     }
-}
-
-function renderToolCard(tool) {
+} function renderToolCard(tool) {
     return `
     <div class="tool-card bg-white rounded-xl shadow-lg p-6 border border-gray-100" data-category="${tool.category}">
         <div class="flex items-center justify-between mb-4">
@@ -157,12 +180,21 @@ function renderToolCard(tool) {
     </div>`;
 }
 
-fetchTools();
-
 // Handle window resize to switch between mobile and desktop views
 window.addEventListener('resize', () => {
-    const activeBtn = document.querySelector('.category-btn.active');
-    const category = activeBtn ? activeBtn.getAttribute('data-category') : 'all';
-    currentPage = 1; // Reset pagination on resize
-    renderTools(category, searchInput.value.toLowerCase());
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        const activeBtn = document.querySelector('.category-btn.active');
+        const category = activeBtn ? activeBtn.getAttribute('data-category') : 'all';
+        currentPage = 1; // Reset pagination on resize
+        renderTools(category, searchInput.value.toLowerCase());
+    }
 });
+
+// Initialize the app when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeAppComponents);
+} else {
+    // DOM is already loaded
+    initializeAppComponents();
+}

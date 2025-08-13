@@ -17,6 +17,9 @@ const db = getFirestore(app);
 
 // Category filter and search setup
 let toolsData = [];
+let currentPage = 1;
+const TOOLS_PER_PAGE_MOBILE = 5;
+const TOOLS_PER_PAGE_DESKTOP = 9;
 const categoryButtons = document.querySelectorAll('.category-btn');
 const searchInput = document.getElementById('searchInput');
 
@@ -26,6 +29,7 @@ categoryButtons.forEach(button => {
         button.classList.add('active');
         const selectedCategory = button.getAttribute('data-category');
         console.log("Category button clicked:", selectedCategory);
+        currentPage = 1; // Reset pagination when category changes
         renderTools(selectedCategory, searchInput.value.toLowerCase());
     });
 });
@@ -33,6 +37,7 @@ categoryButtons.forEach(button => {
 searchInput.addEventListener('input', (e) => {
     const activeBtn = document.querySelector('.category-btn.active');
     const category = activeBtn ? activeBtn.getAttribute('data-category') : 'all';
+    currentPage = 1; // Reset pagination when search changes
     renderTools(category, e.target.value.toLowerCase());
 });
 
@@ -59,7 +64,7 @@ async function fetchTools() {
 
 function renderTools(category, searchTerm) {
     const toolsGrid = document.getElementById("toolsGrid");
-    toolsGrid.innerHTML = '';
+    const showMoreContainer = document.getElementById("showMoreContainer");
 
     console.log("Filtering by category:", category);
     console.log("Search term:", searchTerm);
@@ -96,7 +101,41 @@ function renderTools(category, searchTerm) {
     });
 
     console.log("Filtered tools:", filtered);
-    filtered.forEach(tool => toolsGrid.innerHTML += renderToolCard(tool));
+
+    // Check if we're on mobile or desktop
+    const isMobile = window.innerWidth < 768;
+    const toolsPerPage = isMobile ? TOOLS_PER_PAGE_MOBILE : TOOLS_PER_PAGE_DESKTOP;
+
+    // Calculate tools to show based on current page
+    const startIndex = 0;
+    const endIndex = currentPage * toolsPerPage;
+    const toolsToShow = filtered.slice(startIndex, endIndex);
+
+    // Clear and render tools
+    toolsGrid.innerHTML = '';
+    toolsToShow.forEach(tool => toolsGrid.innerHTML += renderToolCard(tool));
+
+    // Handle show more button
+    if (filtered.length > endIndex) {
+        // Show the "Show More" button
+        if (showMoreContainer) {
+            showMoreContainer.style.display = 'block';
+            const showMoreBtn = document.getElementById('showMoreBtn');
+            if (showMoreBtn) {
+                // Update button text based on device type
+                showMoreBtn.innerHTML = isMobile ? '📱 Show More Tools' : '💻 Load More Tools';
+                showMoreBtn.onclick = () => {
+                    currentPage++;
+                    renderTools(category, searchTerm);
+                };
+            }
+        }
+    } else {
+        // Hide the "Show More" button
+        if (showMoreContainer) {
+            showMoreContainer.style.display = 'none';
+        }
+    }
 }
 
 function renderToolCard(tool) {
@@ -119,3 +158,11 @@ function renderToolCard(tool) {
 }
 
 fetchTools();
+
+// Handle window resize to switch between mobile and desktop views
+window.addEventListener('resize', () => {
+    const activeBtn = document.querySelector('.category-btn.active');
+    const category = activeBtn ? activeBtn.getAttribute('data-category') : 'all';
+    currentPage = 1; // Reset pagination on resize
+    renderTools(category, searchInput.value.toLowerCase());
+});

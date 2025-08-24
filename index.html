@@ -5,22 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 🏷️ Title -->
-    <title>All AI Tool - Discover the Best AI Tools Online</title>
+    <title>AllAITool.tech - Best AI Tools Directory | Free AI Tools, Reviews & Guides</title>
 
     <!-- 🔍 SEO Meta -->
     <meta name="description"
-        content="AllAITool.tech is your ultimate hub to explore the best AI tools in one place. Find tools for content creation, coding, SEO, video editing, and more." />
+        content="Discover the best AI tools directory with 500+ curated AI tools, expert reviews, and comprehensive guides. Find free AI tools for students, resume building, content creation, coding, and more." />
     <meta name="keywords"
-        content="AI tools, best AI apps, free AI tools, AI for students, ChatGPT, Midjourney, AI directory" />
+        content="AI tools directory, best AI tools, free AI tools, AI for students, AI image generators, resume AI tools, ChatGPT alternatives, AI tools review" />
     <meta name="author" content="Mithlesh" />
 
     <!-- 📱 Social Meta -->
-    <meta property="og:title" content="AllAITool.tech - All the Best AI Tools in One Place" />
+    <meta property="og:title" content="AllAITool.tech - Best AI Tools Directory | Free AI Tools, Reviews & Guides" />
     <meta property="og:description"
-        content="Explore trending and powerful AI tools for free. One place. Infinite possibilities." />
+        content="Discover 500+ curated AI tools with expert reviews and comprehensive guides. Find free AI tools for students, resume building, content creation, coding, and more." />
     <meta property="og:image" content="logo.png" />
     <meta property="og:url" content="https://allaitool.tech" />
+    <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AllAITool.tech - Best AI Tools Directory | Free AI Tools & Expert Reviews" />
+    <meta name="twitter:description"
+        content="Your ultimate AI tools directory with 500+ curated tools, expert reviews, and step-by-step guides for students and professionals." />
 
     <!-- 🌐 Favicon (shows on browser tab) -->
     <!-- <link rel="icon" href="favicon.ico" type="image/x-icon" /> -->
@@ -1200,20 +1204,20 @@
             box-shadow: 0 8px 30px -6px rgba(102, 126, 234, 0.25);
         }
 
-        /* Enhanced Mobile Menu */
+        /* Enhanced Mobile Menu - Optimized for Performance */
         .mobile-menu {
             display: none;
             background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(102, 126, 234, 0.12);
             box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.15);
             opacity: 0;
             max-height: 0;
             overflow: hidden;
-            transform: translateY(-20px);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translate3d(0, -10px, 0);
+            transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             border-radius: 0 0 20px 20px;
             position: relative;
+            will-change: transform, opacity, max-height;
         }
 
         .mobile-menu::before {
@@ -1242,10 +1246,19 @@
             display: block;
             opacity: 1;
             max-height: 400px;
-            transform: translateY(0);
+            transform: translate3d(0, 0, 0);
         }
 
-        /* Enhanced Hamburger */
+        /* Remove backdrop-filter on mobile for performance */
+        @media (max-width: 768px) {
+            .mobile-menu {
+                backdrop-filter: none;
+                background: rgba(255, 255, 255, 0.95);
+                transition: all 0.2s ease-out;
+            }
+        }
+
+        /* Enhanced Hamburger - Optimized for Performance */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -1254,9 +1267,10 @@
             background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
             border: 2px solid rgba(102, 126, 234, 0.2);
             border-radius: 12px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
             overflow: hidden;
+            will-change: transform;
         }
 
         .hamburger::before {
@@ -1267,11 +1281,11 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.2), transparent);
-            transition: left 0.3s ease;
+            transition: left 0.2s ease;
         }
 
         .hamburger:hover {
-            transform: translateY(-2px) scale(1.05);
+            transform: translate3d(0, -2px, 0) scale(1.05);
             background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
             border-color: rgba(102, 126, 234, 0.3);
             box-shadow: 0 8px 25px -8px rgba(102, 126, 234, 0.4);
@@ -1282,7 +1296,7 @@
         }
 
         .hamburger:active {
-            transform: scale(0.95);
+            transform: translate3d(0, 0, 0) scale(0.95);
         }
 
         .hamburger span {
@@ -1290,23 +1304,24 @@
             height: 3px;
             background: linear-gradient(90deg, #667eea, #764ba2);
             margin: 3px 0;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             border-radius: 4px;
             box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+            will-change: transform, opacity;
         }
 
         .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
+            transform: translate3d(6px, 6px, 0) rotate(45deg);
             background: linear-gradient(90deg, #f56565, #ed64a6);
         }
 
         .hamburger.active span:nth-child(2) {
             opacity: 0;
-            transform: scale(0);
+            transform: translate3d(0, 0, 0) scale(0);
         }
 
         .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(8px, -7px);
+            transform: translate3d(8px, -7px, 0) rotate(-45deg);
             background: linear-gradient(90deg, #f56565, #ed64a6);
         }
 
@@ -2028,15 +2043,259 @@
             }
         }
 
-        /* Badge Container Mobile Responsiveness */
-        @media (max-width: 640px) {
-            .ph-badge-section .flex {
-                gap: 1rem;
+        /* Mobile-First Clean Layout Improvements */
+        @media (max-width: 768px) {
+
+            /* Fix navbar overlap with hero section - increase padding significantly */
+            .gradient-bg {
+                padding-top: 7rem !important;
+                /* Increased from 5rem to ensure full visibility */
+                padding-bottom: 2rem !important;
+                /* Reduce bottom padding for mobile */
+                min-height: 100vh !important;
+                /* Ensure hero fills viewport */
+                display: flex !important;
+                align-items: center !important;
             }
 
-            .ph-badge-section img {
-                max-width: 200px;
-                height: auto;
+            .gradient-bg>div {
+                width: 100% !important;
+            }
+
+            /* Reduce hero section content density */
+            .hero-content h1,
+            .hero-title {
+                font-size: 1.875rem !important;
+                /* Even smaller for better mobile fit */
+                line-height: 1.1 !important;
+                margin-bottom: 0.75rem !important;
+            }
+
+            .hero-content p,
+            .hero-subtitle {
+                font-size: 0.9rem !important;
+                /* Smaller subtitle */
+                margin-bottom: 1.5rem !important;
+                line-height: 1.3 !important;
+            }
+
+            /* Make search bar more compact on mobile */
+            .hero-content input,
+            #searchInput {
+                padding: 0.75rem 1rem !important;
+                font-size: 0.875rem !important;
+            }
+
+            /* Ensure badges are visible in initial viewport */
+            .hero-content .mt-6 {
+                margin-top: 1rem !important;
+            }
+
+            /* Make badge text smaller on mobile */
+            .hero-content .text-white\/80 {
+                font-size: 0.75rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+
+            .hero-content p {
+                font-size: 1rem !important;
+                /* Smaller subtitle */
+                margin-bottom: 2rem !important;
+                line-height: 1.4 !important;
+            }
+
+            /* Cleaner badge presentation on mobile */
+            .mobile-badges-container {
+                margin-top: 2rem !important;
+                margin-bottom: 1rem !important;
+            }
+
+            .mobile-badges-container p {
+                font-size: 0.75rem !important;
+                margin-bottom: 0.75rem !important;
+            }
+
+            /* Reduce section spacing on mobile */
+            section.py-12 {
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+
+            section.py-16 {
+                padding-top: 2.5rem !important;
+                padding-bottom: 2.5rem !important;
+            }
+
+            section.py-20 {
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
+            }
+
+            /* Cleaner intro text */
+            .mobile-intro-text {
+                font-size: 0.9rem !important;
+                line-height: 1.5 !important;
+                padding: 0 1rem !important;
+            }
+
+            /* Better mobile carousel spacing */
+            .carousel-section {
+                padding-top: 1.5rem !important;
+                padding-bottom: 1.5rem !important;
+            }
+
+            .carousel-section h2 {
+                font-size: 1.5rem !important;
+                margin-bottom: 1rem !important;
+            }
+
+            .carousel-section p {
+                font-size: 0.8rem !important;
+                margin-bottom: 1rem !important;
+            }
+
+            /* Cleaner mobile categories */
+            .mobile-categories-header {
+                font-size: 1.375rem !important;
+                margin-bottom: 1rem !important;
+            }
+
+            /* Better blog section mobile layout */
+            .mobile-blog-section {
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+
+            .mobile-blog-section h2 {
+                font-size: 1.5rem !important;
+                margin-bottom: 1rem !important;
+            }
+
+            .mobile-blog-section .section-card {
+                padding: 1rem !important;
+                margin-bottom: 1rem !important;
+            }
+
+            .mobile-blog-section .section-card h3 {
+                font-size: 1.125rem !important;
+                margin-bottom: 0.75rem !important;
+            }
+
+            .mobile-blog-section .section-card p {
+                font-size: 0.875rem !important;
+                margin-bottom: 1rem !important;
+                line-height: 1.4 !important;
+            }
+        }
+
+        /* Desktop navbar spacing */
+        @media (min-width: 769px) {
+            .gradient-bg {
+                padding-top: 7rem !important;
+                /* Ensure desktop hero section has enough top spacing */
+            }
+        }
+
+        /* Scroll Down Arrow Animation - Mobile Only */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 0;
+            right: 0;
+            display: none;
+            /* Hidden by default on desktop */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .scroll-arrow {
+            width: 50px;
+            height: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: bounceArrow 2s infinite;
+        }
+
+        .scroll-arrow:hover {
+            border-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: scale(1.1);
+        }
+
+        .scroll-arrow span {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            animation: arrowPulse 2s infinite;
+        }
+
+        .scroll-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes bounceArrow {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-8px);
+            }
+
+            60% {
+                transform: translateY(-4px);
+            }
+        }
+
+        @keyframes arrowPulse {
+
+            0%,
+            100% {
+                opacity: 0.6;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Mobile scroll indicator adjustments */
+        @media (max-width: 768px) {
+            .scroll-indicator {
+                display: flex;
+                /* Show only on mobile */
+                bottom: 1rem;
+            }
+
+            .scroll-arrow {
+                width: 40px;
+                height: 40px;
+            }
+
+            .scroll-arrow span {
+                font-size: 16px;
+            }
+
+            .scroll-text {
+                font-size: 0.625rem;
             }
         }
     </style>
@@ -2091,122 +2350,143 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="gradient-bg text-white py-20 px-4 pt-28">
+    <section class="gradient-bg text-white py-8 md:py-16 px-4 pt-24 md:pt-36 relative">
         <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight animate-fadeInUp">
+            <h1 class="hero-title text-4xl md:text-6xl font-bold mb-4 md:mb-6 leading-tight animate-fadeInUp">
                 Find the Best AI Tools for Your Needs
             </h1>
-            <p class="text-xl md:text-2xl mb-10 opacity-90 max-w-2xl mx-auto animate-fadeInUp"
+            <p class="hero-subtitle text-lg md:text-2xl mb-6 md:mb-10 opacity-90 max-w-2xl mx-auto animate-fadeInUp"
                 style="animation-delay: 0.2s;">
-                From creators to coders, discover the best AI tools in seconds.
+                From creators to coders, discover the perfect AI tools in seconds. Your complete AI tools directory with
+                expert reviews and guides.
             </p>
-            <div class="max-w-2xl mx-auto animate-fadeInUp" style="animation-delay: 0.4s;">
+            <div class="max-w-2xl mx-auto mb-6 md:mb-0 animate-fadeInUp" style="animation-delay: 0.4s;">
                 <div class="relative">
                     <input type="text" placeholder="Search for AI tools..."
-                        class="w-full px-6 py-4 text-lg text-gray-800 rounded-full border-0 shadow-lg focus:outline-none focus:ring-4 focus:ring-white/30 transition-all duration-300 hover:shadow-2xl"
+                        class="w-full px-4 md:px-6 py-3 md:py-4 text-base md:text-lg text-gray-800 rounded-full border-0 shadow-lg focus:outline-none focus:ring-4 focus:ring-white/30 transition-all duration-300 hover:shadow-2xl"
                         id="searchInput">
                     <button
-                        class="absolute right-2 top-2 bg-gray-800 text-white px-6 py-2 rounded-full hover:bg-gray-700 transition-all duration-300 hover:scale-105">
+                        class="absolute right-2 top-2 bg-gray-800 text-white px-4 md:px-6 py-1 md:py-2 rounded-full hover:bg-gray-700 transition-all duration-300 hover:scale-105">
                         Search
                     </button>
                 </div>
             </div>
+
+            <!-- Badges in Hero Section - Immediately Visible -->
+            <div class="mt-6 md:mt-12 animate-fadeInUp" style="animation-delay: 0.6s;">
+                <p class="text-white/80 text-xs md:text-sm mb-3 md:mb-4">⭐ Verified on Leading Platforms</p>
+
+                <!-- Desktop: Flex row, Mobile: Horizontal scroll -->
+                <div class="hidden sm:flex flex-row items-center justify-center gap-6">
+                    <!-- Product Hunt Badge -->
+                    <div class="inline-block">
+                        <a href="https://www.producthunt.com/products/ai-tool-finder/reviews?utm_source=badge-product_review&utm_medium=badge&utm_source=badge-ai&#0045;tool&#0045;finder"
+                            target="_blank"
+                            class="inline-block hover:scale-105 transition-transform duration-300 hover:opacity-80">
+                            <img src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1087668&theme=light"
+                                alt="AI&#0032;Tool&#0032;Finder - The&#0032;fastest&#0032;way&#0032;to&#0032;find&#0032;useful&#0032;AI&#0032;tools&#0044;&#0032;all&#0032;in&#0032;one&#0032;place&#0046; | Product Hunt"
+                                style="width: 220px; height: 48px;" width="220" height="48" />
+                        </a>
+                    </div>
+
+                    <!-- SaasHub Badge -->
+                    <div class="inline-block">
+                        <a href='https://www.saashub.com/ai-tool-finder?utm_source=badge&utm_campaign=badge&utm_content=ai-tool-finder&badge_variant=color&badge_kind=approved'
+                            target='_blank'
+                            class="inline-block hover:scale-105 transition-transform duration-300 hover:opacity-80">
+                            <img src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1"
+                                alt="AllAITool.tech badge" style="max-width: 130px; height: auto;" />
+                        </a>
+                    </div>
+
+                    <!-- LaunchIgniter Badge -->
+                    <div class="inline-block">
+                        <a href="https://launchigniter.com/product/al-tool-finder?ref=badge-al-tool-finder"
+                            target="_blank"
+                            class="inline-block hover:scale-105 transition-transform duration-300 hover:opacity-80">
+                            <img src="https://launchigniter.com/api/badge/al-tool-finder?theme=light"
+                                alt="Featured on LaunchIgniter" width="185" height="48" />
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile: Horizontal scrollable badges -->
+                <div class="sm:hidden">
+                    <div class="overflow-x-auto pb-4">
+                        <div class="flex items-center gap-4 px-4" style="width: max-content;">
+                            <!-- LaunchIgniter Badge -->
+                            <div class="flex-shrink-0">
+                                <a href="https://launchigniter.com/product/al-tool-finder?ref=badge-al-tool-finder"
+                                    target="_blank"
+                                    class="inline-block active:scale-95 transition-transform duration-200">
+                                    <img src="https://launchigniter.com/api/badge/al-tool-finder?theme=light"
+                                        alt="Featured on LaunchIgniter" width="165" height="42" />
+                                </a>
+                            </div>
+
+                            <!-- SaasHub Badge -->
+                            <div class="flex-shrink-0">
+                                <a href='https://www.saashub.com/ai-tool-finder?utm_source=badge&utm_campaign=badge&utm_content=ai-tool-finder&badge_variant=color&badge_kind=approved'
+                                    target='_blank'
+                                    class="inline-block active:scale-95 transition-transform duration-200">
+                                    <img src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1"
+                                        alt="AllAITool.tech badge" style="width: 115px; height: auto;" />
+                                </a>
+                            </div>
+
+                            <!-- Product Hunt Badge -->
+                            <div class="flex-shrink-0">
+                                <a href="https://www.producthunt.com/products/ai-tool-finder/reviews?utm_source=badge-product_review&utm_medium=badge&utm_source=badge-ai&#0045;tool&#0045;finder"
+                                    target="_blank"
+                                    class="inline-block active:scale-95 transition-transform duration-200">
+                                    <img src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1087668&theme=light"
+                                        alt="AI&#0032;Tool&#0032;Finder - Product Hunt"
+                                        style="width: 200px; height: 42px;" width="200" height="42" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mobile scroll indicator -->
+                    <div class="flex justify-center mt-2">
+                        <p class="text-xs text-white/60">← Swipe to see all badges →</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Down Arrow Animation -->
+        <div class="scroll-indicator animate-fadeInUp" style="animation-delay: 1s;">
+            <div class="scroll-arrow">
+                <span>↓</span>
+            </div>
+            <p class="scroll-text">Scroll to explore</p>
         </div>
     </section>
 
-    <!-- Verification Badges -->
-    <section class="ph-badge-section py-8 px-4 bg-white border-b border-gray-100">
-        <div class="max-w-6xl mx-auto text-center animate-fadeInUp" style="animation-delay: 0.5s;">
-            <!-- Desktop: Flex row, Mobile: Horizontal scroll -->
-            <div class="hidden sm:flex flex-row items-center justify-center gap-6">
-                <!-- Product Hunt Badge -->
-                <div class="inline-block">
-                    <a href="https://www.producthunt.com/products/ai-tool-finder/reviews?utm_source=badge-product_review&utm_medium=badge&utm_source=badge-ai&#0045;tool&#0045;finder"
-                        target="_blank"
-                        class="inline-block hover:scale-105 transition-transform duration-300 hover:opacity-80">
-                        <img src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1087668&theme=light"
-                            alt="AI&#0032;Tool&#0032;Finder - The&#0032;fastest&#0032;way&#0032;to&#0032;find&#0032;useful&#0032;AI&#0032;tools&#0044;&#0032;all&#0032;in&#0032;one&#0032;place&#0046; | Product Hunt"
-                            style="width: 250px; height: 54px;" width="250" height="54" />
-                    </a>
-                </div>
-
-                <!-- SaasHub Badge -->
-                <div class="inline-block">
-                    <a href='https://www.saashub.com/ai-tool-finder?utm_source=badge&utm_campaign=badge&utm_content=ai-tool-finder&badge_variant=color&badge_kind=approved'
-                        target='_blank'
-                        class="inline-block hover:scale-105 transition-transform duration-300 hover:opacity-80">
-                        <img src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1"
-                            alt="AllAITool.tech badge" style="max-width: 150px; height: auto;" />
-                    </a>
-                </div>
-
-                <!-- LaunchIgniter Badge -->
-                <div class="inline-block">
-                    <a href="https://launchigniter.com/product/al-tool-finder?ref=badge-al-tool-finder" target="_blank"
-                        class="inline-block hover:scale-105 transition-transform duration-300 hover:opacity-80">
-                        <img src="https://launchigniter.com/api/badge/al-tool-finder?theme=light"
-                            alt="Featured on LaunchIgniter" width="212" height="55" />
-                    </a>
-                </div>
-            </div>
-
-            <!-- Mobile: Horizontal scrollable badges -->
-            <div class="sm:hidden">
-                <div class="badge-scroll-container overflow-x-auto pb-4">
-                    <div class="flex items-center gap-4 px-4" style="width: max-content;">
-                        <!-- LaunchIgniter Badge -->
-                        <div class="flex-shrink-0">
-                            <a href="https://launchigniter.com/product/al-tool-finder?ref=badge-al-tool-finder"
-                                target="_blank" class="inline-block active:scale-95 transition-transform duration-200">
-                                <img src="https://launchigniter.com/api/badge/al-tool-finder?theme=light"
-                                    alt="Featured on LaunchIgniter" width="185" height="48" />
-                            </a>
-                        </div>
-
-                        <!-- SaasHub Badge -->
-                        <div class="flex-shrink-0">
-                            <a href='https://www.saashub.com/ai-tool-finder?utm_source=badge&utm_campaign=badge&utm_content=ai-tool-finder&badge_variant=color&badge_kind=approved'
-                                target='_blank' class="inline-block active:scale-95 transition-transform duration-200">
-                                <img src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1"
-                                    alt="AllAITool.tech badge" style="width: 130px; height: auto;" />
-                            </a>
-                        </div>
-
-                        <!-- Product Hunt Badge -->
-                        <div class="flex-shrink-0">
-                            <a href="https://www.producthunt.com/products/ai-tool-finder/reviews?utm_source=badge-product_review&utm_medium=badge&utm_source=badge-ai&#0045;tool&#0045;finder"
-                                target="_blank" class="inline-block active:scale-95 transition-transform duration-200">
-                                <img src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1087668&theme=light"
-                                    alt="AI&#0032;Tool&#0032;Finder - Product Hunt" style="width: 220px; height: 48px;"
-                                    width="220" height="48" />
-                            </a>
-                        </div>
-
-
-                    </div>
-                </div>
-                <!-- Mobile scroll indicator -->
-                <div class="flex justify-center mt-2">
-                    <p class="text-xs text-gray-400">← Swipe to see all badges →</p>
-                </div>
-            </div>
-
-            <p class="text-sm text-gray-500 mt-4 animate-fadeInUp" style="animation-delay: 0.7s;">
-                ⭐ Verified on Product Hunt, SaasHub & LaunchIgniter • Help us grow by leaving reviews!
+    <!-- Quick Introduction with SEO Content -->
+    <section class="py-12 px-4 bg-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <p class="mobile-intro-text text-lg text-gray-600 mb-6 leading-relaxed animate-fadeInUp">
+                Welcome to <strong>AllAITool.tech</strong> – your comprehensive <strong>AI tools directory</strong>
+                featuring 500+ curated tools for students, professionals, and creators. Discover <strong>free AI
+                    tools</strong>, <a href="/blogs/best-ai-tools-for-resume-and-job-applications-in-2025/"
+                    class="text-blue-600 hover:text-blue-700 font-medium">resume AI tools</a>, <a
+                    href="/blogs/best-free-ai-image-generators-2025/"
+                    class="text-purple-600 hover:text-purple-700 font-medium">AI image generators</a>, and expert <a
+                    href="/blogs/" class="text-green-600 hover:text-green-700 font-medium">guides & tutorials</a>.
             </p>
         </div>
     </section>
 
     <!-- Top AI Tools Carousel Section -->
-    <section id="top-tools" class="bg-white py-12 px-4 border-b border-gray-100 animate-fadeInUp"
+    <section id="top-tools" class="carousel-section bg-white py-12 px-4 border-b border-gray-100 animate-fadeInUp"
         style="animation-delay: 0.6s;">
         <div class="max-w-7xl mx-auto">
             <div class="mb-6 text-center">
                 <h2 class="text-3xl font-bold text-gray-800 tracking-tight animate-scaleIn"
                     style="animation-delay: 0.8s;">Top AI Tools</h2>
                 <p class="text-gray-500 mt-2 text-sm max-w-xl mx-auto animate-fadeInUp" style="animation-delay: 1s;">
-                    Hand‑picked essentials everyone is exploring
-                    right now</p>
+                    Hand‑picked essentials everyone is exploring right now</p>
                 <div class="flex items-center gap-2 justify-center text-xs text-gray-400 mt-3 animate-fadeInUp"
                     style="animation-delay: 1.2s;">
                     <span
@@ -2225,9 +2505,10 @@
     </section>
 
     <!-- Category Filter Buttons -->
-    <section class="py-12 px-4 bg-white">
+    <section class="mobile-categories-wrapper py-12 px-4 bg-white">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800 animate-on-scroll">Browse by Category</h2>
+            <h2 class="mobile-categories-header text-3xl font-bold text-center mb-8 text-gray-800 animate-on-scroll">
+                Browse by Category</h2>
 
             <!-- Desktop Categories -->
             <div class="desktop-categories flex flex-wrap justify-center gap-4 md:gap-6 animate-on-scroll"
@@ -2315,11 +2596,12 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 px-4 bg-white">
+    <section id="about" class="mobile-about py-20 px-4 bg-white">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16 animate-on-scroll">
-                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-6 animate-float">About AI Tool Finder</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <h2 class="mobile-about-title text-4xl md:text-5xl font-bold gradient-text mb-6 animate-float">About AI
+                    Tool Finder</h2>
+                <p class="mobile-about-subtitle text-xl text-gray-600 max-w-3xl mx-auto">
                     Your ultimate destination for discovering cutting-edge AI tools
                 </p>
             </div>
@@ -2330,11 +2612,19 @@
                         <span class="text-2xl text-white">🎯</span>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Our Mission</h3>
+                    <p class="text-gray-600 leading-relaxed text-center mb-4">
+                        AllAITool.tech is your comprehensive <strong>AI tools directory</strong> that empowers creators,
+                        developers, students, and professionals to discover the most powerful and trending AI tools
+                        across all categories.
+                    </p>
                     <p class="text-gray-600 leading-relaxed text-center">
-                        AI Tool Finder is a curated directory that empowers creators, developers, students, and
-                        professionals to easily explore the most powerful and trending AI tools across categories. We
-                        simplify your AI discovery experience — whether you're writing content, coding, editing videos,
-                        or building resumes.
+                        From <a href="/blogs/best-free-ai-image-generators-2025/"
+                            class="text-blue-600 hover:text-blue-700 font-medium">free AI image generators</a> to <a
+                            href="/blogs/best-ai-tools-for-resume-and-job-applications-in-2025/"
+                            class="text-green-600 hover:text-green-700 font-medium">professional resume AI tools</a>, we
+                        simplify your AI discovery journey with expert <a href="/blogs/"
+                            class="text-purple-600 hover:text-purple-700 font-medium">reviews, guides, and
+                            tutorials</a>.
                     </p>
                 </div>
 
@@ -2343,10 +2633,15 @@
                         <span class="text-2xl text-white">👨‍💻</span>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Created by Mithlesh Kumar</h3>
-                    <p class="text-gray-600 leading-relaxed text-center">
+                    <p class="text-gray-600 leading-relaxed text-center mb-4">
                         Passionate about making AI accessible to everyone, Mithlesh Kumar created this platform to
-                        bridge the gap between innovative AI tools and the people who need them. With a focus on user
-                        experience and comprehensive coverage, we're here to help you find the perfect AI solution.
+                        bridge the gap between innovative AI tools and the people who need them.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed text-center">
+                        Our focus on user experience and comprehensive coverage ensures you find the perfect <strong>AI
+                            for students</strong>, <strong>AI for business</strong>, and creative professionals. Explore
+                        our <a href="/blogs/" class="text-blue-600 hover:text-blue-700 font-medium">in-depth tutorials
+                            and reviews</a> for informed decisions.
                     </p>
                 </div>
             </div>
@@ -2436,6 +2731,66 @@
         </div>
     </section>
 
+    <!-- Simple Featured Content Section -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    📚 Expert Guides & Reviews
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Discover our comprehensive guides covering the best <strong>AI tools for students</strong>,
+                    <strong>free AI image generators</strong>, and more.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <!-- Featured Guide 1 -->
+                <div class="section-card p-6 text-center animate-on-scroll">
+                    <div class="feature-icon mb-4">
+                        <span class="text-2xl text-white">📄</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">
+                        Best AI Tools for Resume Building
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        Complete guide covering <strong>resume AI tools</strong> and <strong>AI for students</strong>
+                        preparing for job applications.
+                    </p>
+                    <a href="/blogs/best-ai-tools-for-resume-and-job-applications-in-2025/"
+                        class="btn-gradient text-white font-semibold py-2 px-6 rounded-full">
+                        Read Guide
+                    </a>
+                </div>
+
+                <!-- Featured Guide 2 -->
+                <div class="section-card p-6 text-center animate-on-scroll" style="animation-delay: 0.2s;">
+                    <div class="feature-icon mb-4">
+                        <span class="text-2xl text-white">🎨</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">
+                        Best Free AI Image Generators
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        Explore top <strong>AI image generators</strong> and creative tools for stunning visual content.
+                    </p>
+                    <a href="/blogs/best-free-ai-image-generators-2025/"
+                        class="btn-gradient text-white font-semibold py-2 px-6 rounded-full">
+                        Read Review
+                    </a>
+                </div>
+            </div>
+
+            <!-- Simple CTA -->
+            <div class="text-center animate-on-scroll" style="animation-delay: 0.4s;">
+                <a href="/blogs/"
+                    class="btn-gradient text-white font-semibold py-3 px-8 rounded-full inline-block shadow-lg hover:shadow-xl transition-all duration-300">
+                    📖 View All Guides & Tutorials
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- CTC (Call-to-Action) Section -->
     <section class="py-20 px-4 gradient-bg text-white">
         <div class="max-w-4xl mx-auto text-center">
@@ -2513,6 +2868,48 @@
                     document.body.removeChild(alert);
                 }, 300);
             }, 3000);
+        }
+
+        // Scroll indicator functionality
+        function initScrollIndicator() {
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            const scrollArrow = document.querySelector('.scroll-arrow');
+
+            if (scrollIndicator && scrollArrow) {
+                scrollArrow.addEventListener('click', function () {
+                    // Find the next section after hero
+                    const heroSection = document.querySelector('.gradient-bg');
+                    const nextSection = heroSection.nextElementSibling;
+
+                    if (nextSection) {
+                        nextSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+
+                // Hide scroll indicator when user starts scrolling
+                let scrollTimeout;
+                window.addEventListener('scroll', function () {
+                    const scrollY = window.scrollY;
+
+                    if (scrollY > 100) {
+                        scrollIndicator.style.opacity = '0';
+                        scrollIndicator.style.pointerEvents = 'none';
+                    } else {
+                        scrollIndicator.style.opacity = '1';
+                        scrollIndicator.style.pointerEvents = 'auto';
+                    }
+                });
+            }
+        }
+
+        // Initialize scroll indicator when DOM is loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initScrollIndicator);
+        } else {
+            initScrollIndicator();
         }
 
         // Smooth scrolling for anchor links
@@ -2637,7 +3034,7 @@
             }, 600);
         }
 
-        // Mobile menu toggle function
+        // Optimized mobile menu toggle function
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobileMenu');
             const hamburger = document.querySelector('.hamburger');
@@ -2645,21 +3042,23 @@
             const isActive = mobileMenu.classList.contains('active');
 
             if (isActive) {
-                // Close menu
+                // Close menu with optimized animation
                 mobileMenu.classList.remove('active');
                 hamburger.classList.remove('active');
 
                 // Hide menu completely after animation
                 setTimeout(() => {
                     mobileMenu.style.display = 'none';
-                }, 300);
+                }, 200); // Reduced from 300ms to match faster animation
             } else {
-                // Open menu
+                // Open menu with requestAnimationFrame for smooth animation
                 mobileMenu.style.display = 'block';
-                // Force reflow before adding active class
-                mobileMenu.offsetHeight;
-                mobileMenu.classList.add('active');
-                hamburger.classList.add('active');
+
+                // Use requestAnimationFrame for smooth transition
+                requestAnimationFrame(() => {
+                    mobileMenu.classList.add('active');
+                    hamburger.classList.add('active');
+                });
             }
         }
 
@@ -2873,14 +3272,43 @@
             // Add active class to clicked button
             element.classList.add('active');
 
-            // Also update desktop categories for consistency
+            // Get the category and trigger the actual filtering
             const category = element.getAttribute('data-category');
+
+            // Also update desktop categories for consistency
             document.querySelectorAll('.category-btn').forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.getAttribute('data-category') === category) {
                     btn.classList.add('active');
                 }
             });
+
+            // Get current search term
+            const searchInput = document.getElementById('searchInput');
+            const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+
+            // Reset pagination and call renderTools directly
+            if (typeof window.currentPage !== 'undefined') {
+                window.currentPage = 1;
+            }
+
+            // Call the renderTools function from app.js
+            if (typeof window.renderTools === 'function') {
+                window.renderTools(category, searchTerm);
+            } else if (typeof renderTools === 'function') {
+                renderTools(category, searchTerm);
+            }
+
+            // Scroll to the actual tools grid (not the carousel)
+            setTimeout(() => {
+                const toolsGrid = document.getElementById('toolsGrid');
+                if (toolsGrid) {
+                    toolsGrid.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }, 300);
 
             // Add pulse animation
             addPulseAnimation(element);
@@ -2981,6 +3409,43 @@
         if (toolsGrid) {
             gridObserver.observe(toolsGrid, { childList: true });
         }
+
+        // New SEO-focused functions for internal navigation
+        function scrollToSection(selector) {
+            const element = document.querySelector(selector);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Enhanced filterCategory function that works with new internal links
+        window.filterCategory = function (category) {
+            // Remove active from all category buttons
+            document.querySelectorAll('.category-btn, .category-cta-btn, .category-quick-link').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Add active to matching category buttons
+            document.querySelectorAll(`[data-category="${category}"]`).forEach(btn => {
+                btn.classList.add('active');
+            });
+
+            // Trigger the existing category filtering (from app.js)
+            if (typeof window.setActiveCategory === 'function') {
+                window.setActiveCategory(category);
+            }
+
+            // Scroll to tools section
+            setTimeout(() => {
+                scrollToSection('#top-tools');
+            }, 300);
+        };
+
+        // Global scroll to section function
+        window.scrollToSection = scrollToSection;
     </script>
 
     <script>

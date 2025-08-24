@@ -253,3 +253,10 @@ if (document.readyState === 'loading') {
     // DOM is already loaded
     initializeAppComponents();
 }
+
+// Make renderTools and currentPage globally accessible for mobile category filtering
+window.renderTools = renderTools;
+Object.defineProperty(window, 'currentPage', {
+    get: () => currentPage,
+    set: (value) => { currentPage = value; }
+});

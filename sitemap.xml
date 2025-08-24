@@ -1,23 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <!-- Homepage -->
+
+  <!-- Homepage - Main Landing Page -->
   <url>
     <loc>https://allaitool.tech/</loc>
-    <changefreq>weekly</changefreq>
+    <lastmod>2025-08-24</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Admin Page -->
+  <!-- Blog Hub - Main Blog Directory -->
   <url>
-    <loc>https://allaitool.tech/admin.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://allaitool.tech/blogs/</loc>
+    <lastmod>2025-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 
-  <!-- Blog: Best Free AI Image Generators 2025 -->
+  <!-- Featured Blog Posts - Standardized Slugs -->
   <url>
-    <loc>https://allaitool.tech/blogs/best-free-ai-image-generators-2025/index.html</loc>
+    <loc>https://allaitool.tech/blogs/best-ai-tools-for-resume-and-job-applications-in-2025/</loc>
+    <lastmod>2025-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://allaitool.tech/blogs/best-free-ai-image-generators-2025/</loc>
+    <lastmod>2025-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

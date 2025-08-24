@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Allow all blog content
+Allow: /blogs/
+
+# Disallow admin and system files
+Disallow: /admin.html
+Disallow: /admin.js
+
+# Prevent search/filter pages from indexing (avoid duplicates)
+Disallow: /*?search=
+Disallow: /*?category=
+Disallow: /*?featured=
+
+# Sitemap location
+Sitemap: https://allaitool.tech/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1

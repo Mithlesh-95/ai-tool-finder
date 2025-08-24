@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark-mode">
 
 <head>
     <meta charset="UTF-8">
@@ -15,7 +15,7 @@
 
     <!-- 🌐 Favicon -->
 
-<body class="bg-gray-50 font-sans">
+<body class="bg-gray-900 font-sans">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4W1BPVFS7V"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -816,9 +816,9 @@
         }
     </style>
     </head>
-    <script>(function () { try { const t = localStorage.getItem('theme'); if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark-mode'); } } catch (e) { } })();</script>
+    <script>(function () { try { const t = localStorage.getItem('theme'); if (t === 'light') { /* Only apply light mode if explicitly set */ } else { document.documentElement.classList.add('dark-mode'); } } catch (e) { document.documentElement.classList.add('dark-mode'); } })();</script>
 
-    <body class="bg-gray-50 font-sans">
+    <body class="bg-gray-900 font-sans">
         <!-- Navigation Bar -->
         <nav class="navbar fixed top-0 left-0 right-0 z-50">
             <div class="py-4 px-4">
@@ -1379,7 +1379,9 @@
                 }
             });
 
-            applyTheme(document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light');
+            // Initialize with dark theme as default
+            const currentTheme = localStorage.getItem('theme') || 'dark';
+            applyTheme(currentTheme);
         </script>
         </script>
     </body>

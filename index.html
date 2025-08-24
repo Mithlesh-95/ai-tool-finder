@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark-mode">
 
 <head>
     <meta charset="UTF-8">
@@ -63,30 +63,257 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ================= Enhanced Animations & Effects ================= */
+        /* ================= Mobile-First Performance Optimized Animations ================= */
+
+        /* Reduce motion for users who prefer it */
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Hardware acceleration for better performance */
+        .hw-accelerate {
+            transform: translateZ(0);
+            will-change: transform;
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+
+        /* Optimized keyframes with GPU acceleration */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translate3d(0, 20px, 0);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translate3d(0, 0, 0);
             }
         }
 
         @keyframes fadeInLeft {
             from {
                 opacity: 0;
-                transform: translateX(-30px);
+                transform: translate3d(-20px, 0, 0);
             }
 
             to {
                 opacity: 1;
-                transform: translateX(0);
+                transform: translate3d(0, 0, 0);
             }
         }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translate3d(20px, 0, 0);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale3d(0.95, 0.95, 1);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale3d(1, 1, 1);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate3d(0, 0, 0);
+            }
+
+            50% {
+                transform: translate3d(0, -5px, 0);
+            }
+        }
+
+        @keyframes glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 15px rgba(102, 126, 234, 0.5);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Mobile-optimized animation classes */
+        .animate-fadeInUp {
+            animation: fadeInUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            opacity: 0;
+        }
+
+        .animate-fadeInLeft {
+            animation: fadeInLeft 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            opacity: 0;
+        }
+
+        .animate-fadeInRight {
+            animation: fadeInRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            opacity: 0;
+        }
+
+        .animate-scaleIn {
+            animation: scaleIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            opacity: 0;
+        }
+
+        .animate-float {
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .animate-glow {
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .animate-shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        /* Mobile-specific performance optimizations */
+        @media (max-width: 768px) {
+
+            /* Reduce animation complexity on mobile */
+            .animate-fadeInUp {
+                animation-duration: 0.3s;
+            }
+
+            .animate-fadeInLeft,
+            .animate-fadeInRight {
+                animation-duration: 0.3s;
+            }
+
+            .animate-scaleIn {
+                animation-duration: 0.25s;
+            }
+
+            /* Disable heavy animations on mobile */
+            .animate-float {
+                animation: none;
+            }
+
+            .animate-shimmer {
+                animation-duration: 1s;
+            }
+
+            /* Reduce glow intensity on mobile */
+            .animate-glow {
+                animation-duration: 3s;
+            }
+        }
+
+        /* Enhanced gradient background with mobile optimization */
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+            will-change: auto;
+        }
+
+        .gradient-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.6;
+            background: radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        }
+
+        /* Mobile-optimized transitions and interactions */
+        @media (max-width: 768px) {
+
+            /* Faster transitions on mobile */
+            .transition-all {
+                transition-duration: 0.2s !important;
+            }
+
+            .transition-transform {
+                transition-duration: 0.15s !important;
+            }
+
+            /* Disable hover effects on mobile to prevent lag */
+            .hover\\:scale-105:hover {
+                transform: none !important;
+            }
+
+            .hover\\:opacity-80:hover {
+                opacity: 1 !important;
+            }
+
+            .hover\\:-translate-y-1:hover {
+                transform: none !important;
+            }
+
+            /* Optimize mobile category buttons */
+            .mobile-category-btn,
+            .mobile-grid-btn {
+                will-change: transform;
+                transform: translateZ(0);
+            }
+
+            /* Mobile-specific tool card optimizations */
+            .tool-card {
+                will-change: auto;
+                transform: translateZ(0);
+            }
+
+            /* Reduce box-shadow complexity on mobile */
+            .shadow-lg {
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+            }
+
+            .shadow-xl {
+                box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.1) !important;
+            }
+        }
+
+        /* Disable complex background effects on mobile for performance */
+        @media (max-width: 768px) {
+            .gradient-bg::before {
+                display: none;
+            }
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
 
         @keyframes fadeInRight {
             from {
@@ -442,6 +669,7 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            white-space: nowrap;
         }
 
         .category-btn::before {
@@ -471,6 +699,247 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             animation: glow 2s ease-in-out infinite;
+        }
+
+        /* Mobile-Friendly Category Section */
+        .mobile-categories {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .desktop-categories {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                height: 0 !important;
+                overflow: hidden !important;
+            }
+
+            .mobile-categories {
+                display: block;
+                padding: 1rem 0;
+                visibility: visible;
+                opacity: 1;
+            }
+
+            .mobile-category-scroll {
+                display: flex;
+                overflow-x: auto;
+                overflow-y: hidden;
+                gap: 12px;
+                padding: 0 1rem;
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                /* Firefox */
+                -ms-overflow-style: none;
+                /* IE */
+            }
+
+            .mobile-category-scroll::-webkit-scrollbar {
+                display: none;
+                /* Chrome, Safari */
+            }
+
+            .mobile-category-btn {
+                min-width: 140px;
+                height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 22px;
+                border: 2px solid #e2e8f0;
+                background: white;
+                color: #4a5568;
+                font-weight: 600;
+                font-size: 14px;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                flex-shrink: 0;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .mobile-category-btn::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+                transition: left 0.5s ease;
+            }
+
+            .mobile-category-btn:active::before {
+                left: 100%;
+            }
+
+            .mobile-category-btn:active {
+                transform: scale(0.95);
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                border-color: #667eea;
+            }
+
+            .mobile-category-btn.active {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                border-color: #667eea;
+                box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+            }
+
+            /* Mobile Category Grid */
+            .mobile-category-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+                padding: 1rem;
+                margin-top: 1rem;
+            }
+
+            .mobile-grid-btn {
+                height: 60px;
+                border-radius: 12px;
+                border: 2px solid #e2e8f0;
+                background: white;
+                color: #4a5568;
+                font-weight: 600;
+                font-size: 14px;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .mobile-grid-btn::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 0;
+                height: 0;
+                background: rgba(102, 126, 234, 0.1);
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                transition: all 0.4s ease;
+            }
+
+            .mobile-grid-btn:active::after {
+                width: 200px;
+                height: 200px;
+            }
+
+            .mobile-grid-btn:active {
+                transform: scale(0.98);
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                border-color: #667eea;
+            }
+
+            .mobile-grid-btn.active {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                border-color: #667eea;
+                box-shadow: 0 4px 16px rgba(102, 126, 234, 0.25);
+            }
+
+            /* Show All Button */
+            .mobile-show-all {
+                width: 100%;
+                margin-top: 1rem;
+                padding: 0 1rem;
+            }
+
+            .mobile-show-all-btn {
+                width: 100%;
+                height: 48px;
+                border-radius: 24px;
+                background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+                color: white;
+                font-weight: 700;
+                font-size: 16px;
+                border: none;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 15px rgba(240, 147, 251, 0.4);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .mobile-show-all-btn::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+                transition: left 0.6s ease;
+            }
+
+            .mobile-show-all-btn:active::before {
+                left: 100%;
+            }
+
+            .mobile-show-all-btn:active {
+                transform: scale(0.98);
+                box-shadow: 0 2px 10px rgba(240, 147, 251, 0.6);
+            }
+        }
+
+        /* Dark Mode Mobile Categories */
+        @media (max-width: 768px) {
+            html.dark-mode .mobile-category-btn {
+                background: #1d1833;
+                color: #e5e7ef;
+                border-color: #2c2742;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            }
+
+            html.dark-mode .mobile-category-btn:active {
+                background: linear-gradient(135deg, #6a4c93 0%, #9d7ade 100%);
+                border-color: #6a4c93;
+            }
+
+            html.dark-mode .mobile-category-btn.active {
+                background: linear-gradient(135deg, #6a4c93 0%, #9d7ade 100%);
+                border-color: #6a4c93;
+                box-shadow: 0 4px 12px rgba(106, 76, 147, 0.4);
+            }
+
+            html.dark-mode .mobile-grid-btn {
+                background: #1d1833;
+                color: #e5e7ef;
+                border-color: #2c2742;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+            }
+
+            html.dark-mode .mobile-grid-btn:active {
+                background: linear-gradient(135deg, #6a4c93 0%, #9d7ade 100%);
+                border-color: #6a4c93;
+            }
+
+            html.dark-mode .mobile-grid-btn.active {
+                background: linear-gradient(135deg, #6a4c93 0%, #9d7ade 100%);
+                border-color: #6a4c93;
+                box-shadow: 0 4px 16px rgba(106, 76, 147, 0.35);
+            }
+
+            html.dark-mode .mobile-show-all-btn {
+                background: linear-gradient(135deg, #6a4c93 0%, #9d7ade 100%);
+                box-shadow: 0 4px 15px rgba(106, 76, 147, 0.5);
+            }
+
+            html.dark-mode .mobile-show-all-btn:active {
+                box-shadow: 0 2px 10px rgba(106, 76, 147, 0.7);
+            }
         }
 
         .section-card {
@@ -1076,6 +1545,19 @@
 
         #topToolsCarousel {
             scroll-behavior: smooth;
+            transform: translateZ(0);
+            will-change: scroll-position;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Mobile-optimized carousel performance */
+        @media (max-width: 768px) {
+            #topToolsCarousel {
+                scroll-behavior: auto;
+                /* Disable smooth scroll on mobile for better performance */
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+            }
         }
 
         #topToolsCarousel::-webkit-scrollbar {
@@ -1469,11 +1951,42 @@
         html.dark-mode .gradient-bg .bg-white {
             background: #f5f6fb !important;
         }
+
+        /* Product Hunt Badge Dark Mode Styling */
+        html.dark-mode .ph-badge-section {
+            background: #161329 !important;
+            border-color: rgba(255, 255, 255, 0.06) !important;
+        }
+
+        html.dark-mode .ph-badge-section p {
+            color: #8b90b5 !important;
+        }
+
+        html.dark-mode .ph-badge-section img {
+            filter: brightness(0.95) contrast(1.05);
+            transition: filter 0.3s ease;
+        }
+
+        html.dark-mode .ph-badge-section a:hover img {
+            filter: brightness(1.1) contrast(1.1);
+        }
+
+        /* Badge Container Mobile Responsiveness */
+        @media (max-width: 640px) {
+            .ph-badge-section .flex {
+                gap: 1rem;
+            }
+
+            .ph-badge-section img {
+                max-width: 200px;
+                height: auto;
+            }
+        }
     </style>
 </head>
-<script>(function () { try { const s = localStorage.getItem('theme'); if (s === 'dark' || (!s && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark-mode'); } } catch (e) { } })();</script>
+<script>(function () { try { const s = localStorage.getItem('theme'); if (s === 'light') { /* Only apply light mode if explicitly set */ } else { document.documentElement.classList.add('dark-mode'); } } catch (e) { document.documentElement.classList.add('dark-mode'); } })();</script>
 
-<body class="bg-gray-50 font-sans">
+<body class="bg-gray-900 font-sans">
     <!-- Navigation Bar -->
     <nav class="navbar fixed top-0 left-0 right-0 z-50">
         <div class="py-4 px-4">
@@ -1544,6 +2057,37 @@
         </div>
     </section>
 
+    <!-- Product Hunt & SaasHub Badges -->
+    <section class="ph-badge-section py-8 px-4 bg-white border-b border-gray-100">
+        <div class="max-w-6xl mx-auto text-center animate-fadeInUp" style="animation-delay: 0.5s;">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                <!-- Product Hunt Badge -->
+                <div class="inline-block">
+                    <a href="https://www.producthunt.com/products/ai-tool-finder/reviews?utm_source=badge-product_review&utm_medium=badge&utm_source=badge-ai&#0045;tool&#0045;finder"
+                        target="_blank"
+                        class="inline-block hover:scale-105 transition-transform duration-300 hover:opacity-80">
+                        <img src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1087668&theme=light"
+                            alt="AI&#0032;Tool&#0032;Finder - The&#0032;fastest&#0032;way&#0032;to&#0032;find&#0032;useful&#0032;AI&#0032;tools&#0044;&#0032;all&#0032;in&#0032;one&#0032;place&#0046; | Product Hunt"
+                            style="width: 250px; height: 54px;" width="250" height="54" />
+                    </a>
+                </div>
+
+                <!-- SaasHub Badge -->
+                <div class="inline-block">
+                    <a href='https://www.saashub.com/ai-tool-finder?utm_source=badge&utm_campaign=badge&utm_content=ai-tool-finder&badge_variant=color&badge_kind=approved'
+                        target='_blank'
+                        class="inline-block hover:scale-105 transition-transform duration-300 hover:opacity-80">
+                        <img src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1"
+                            alt="AllAITool.tech badge" style="max-width: 150px; height: auto;" />
+                    </a>
+                </div>
+            </div>
+            <p class="text-sm text-gray-500 mt-4 animate-fadeInUp" style="animation-delay: 0.7s;">
+                ⭐ Verified on Product Hunt & SaasHub • Help us grow by leaving reviews!
+            </p>
+        </div>
+    </section>
+
     <!-- Top AI Tools Carousel Section -->
     <section id="top-tools" class="bg-white py-12 px-4 border-b border-gray-100 animate-fadeInUp"
         style="animation-delay: 0.6s;">
@@ -1575,7 +2119,10 @@
     <section class="py-12 px-4 bg-white">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-3xl font-bold text-center mb-8 text-gray-800 animate-on-scroll">Browse by Category</h2>
-            <div class="flex flex-wrap justify-center gap-4 md:gap-6 animate-on-scroll" id="categoryButtons">
+
+            <!-- Desktop Categories -->
+            <div class="desktop-categories flex flex-wrap justify-center gap-4 md:gap-6 animate-on-scroll"
+                id="categoryButtons">
                 <button
                     class="category-btn active px-6 py-3 rounded-full font-semibold shadow-md bg-white text-gray-700 border-2 border-gray-200"
                     data-category="all" onclick="addPulseAnimation(this)">All Tools</button>
@@ -1597,6 +2144,52 @@
                 <button
                     class="category-btn px-6 py-3 rounded-full font-semibold shadow-md bg-white text-gray-700 border-2 border-gray-200"
                     data-category="youtube" onclick="addPulseAnimation(this)">YouTube</button>
+            </div>
+
+            <!-- Mobile Categories -->
+            <div class="mobile-categories">
+                <!-- Horizontal Scroll Categories -->
+                <div class="mobile-category-scroll animate-on-scroll">
+                    <button class="mobile-category-btn active" data-category="all"
+                        onclick="handleMobileCategoryClick(this)">All Tools</button>
+                    <button class="mobile-category-btn" data-category="ai-companion"
+                        onclick="handleMobileCategoryClick(this)">AI Companion</button>
+                    <button class="mobile-category-btn" data-category="content-writing"
+                        onclick="handleMobileCategoryClick(this)">Content Writing</button>
+                    <button class="mobile-category-btn" data-category="coding"
+                        onclick="handleMobileCategoryClick(this)">Coding</button>
+                    <button class="mobile-category-btn" data-category="video-editing"
+                        onclick="handleMobileCategoryClick(this)">Video Editing</button>
+                    <button class="mobile-category-btn" data-category="resume"
+                        onclick="handleMobileCategoryClick(this)">Resume</button>
+                    <button class="mobile-category-btn" data-category="youtube"
+                        onclick="handleMobileCategoryClick(this)">YouTube</button>
+                </div>
+
+                <!-- Alternative: Grid Layout for Mobile (hidden by default) -->
+                <div class="mobile-category-grid animate-on-scroll" style="display: none;" id="mobileGrid">
+                    <button class="mobile-grid-btn active" data-category="all"
+                        onclick="handleMobileCategoryClick(this)">All Tools</button>
+                    <button class="mobile-grid-btn" data-category="ai-companion"
+                        onclick="handleMobileCategoryClick(this)">AI Companion</button>
+                    <button class="mobile-grid-btn" data-category="content-writing"
+                        onclick="handleMobileCategoryClick(this)">Content Writing</button>
+                    <button class="mobile-grid-btn" data-category="coding"
+                        onclick="handleMobileCategoryClick(this)">Coding</button>
+                    <button class="mobile-grid-btn" data-category="video-editing"
+                        onclick="handleMobileCategoryClick(this)">Video Editing</button>
+                    <button class="mobile-grid-btn" data-category="resume"
+                        onclick="handleMobileCategoryClick(this)">Resume</button>
+                    <button class="mobile-grid-btn" data-category="youtube"
+                        onclick="handleMobileCategoryClick(this)">YouTube</button>
+                </div>
+
+                <!-- Toggle View Button -->
+                <div class="mobile-show-all animate-on-scroll">
+                    <button class="mobile-show-all-btn" onclick="toggleMobileCategoryView()" id="toggleViewBtn">
+                        Switch to Grid View
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -1893,14 +2486,17 @@
 
         window.addEventListener('scroll', requestTick);
 
-        // Animation on scroll functionality
+        // Optimized animation on scroll functionality
         function animateOnScroll() {
             const elements = document.querySelectorAll('.animate-on-scroll');
             const windowHeight = window.innerHeight;
+            const isMobile = window.innerWidth <= 768;
+            const elementVisible = isMobile ? 100 : 150; // Reduce trigger distance on mobile
 
             elements.forEach(element => {
+                if (element.classList.contains('animate-fadeInUp')) return; // Skip already animated
+
                 const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
 
                 if (elementTop < windowHeight - elementVisible) {
                     element.classList.add('animate-fadeInUp');
@@ -1908,22 +2504,33 @@
             });
         }
 
-        // Add stagger animation to grid items
+        // Optimized stagger animation for mobile
         function animateGridItems() {
             const gridItems = document.querySelectorAll('#toolsGrid .card-hover');
+            const isMobile = window.innerWidth <= 768;
+            const staggerDelay = isMobile ? 0.05 : 0.1; // Faster on mobile
+
             gridItems.forEach((item, index) => {
-                item.style.animationDelay = `${index * 0.1}s`;
+                item.style.animationDelay = `${index * staggerDelay}s`;
                 item.classList.add('animate-fadeInUp');
             });
         }
 
-        // Add pulse animation to category buttons on click
+        // Throttled pulse animation to prevent performance issues
+        let pulseTimeout;
         function addPulseAnimation(button) {
+            if (pulseTimeout) return; // Prevent multiple rapid calls
+
             button.classList.add('animate-pulse');
-            setTimeout(() => {
+            pulseTimeout = setTimeout(() => {
                 button.classList.remove('animate-pulse');
+                pulseTimeout = null;
             }, 600);
         }
+        setTimeout(() => {
+            button.classList.remove('animate-pulse');
+        }, 600);
+
 
         // Mobile menu toggle function
         function toggleMobileMenu() {
@@ -2120,17 +2727,29 @@
             const card = carouselTrack.querySelector('.top-tools-card');
             if (!card) return;
             const cardWidth = card.getBoundingClientRect().width + 24; // include gap
-            carousel.scrollBy({ left: direction * cardWidth * 2, behavior: 'smooth' });
+            const scrollAmount = direction * cardWidth * 2;
+
+            // Use requestAnimationFrame for better mobile performance
+            if (window.innerWidth <= 768) {
+                carousel.scrollLeft += scrollAmount;
+            } else {
+                carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
         }
 
         function startAutoScroll() {
             stopAutoScroll();
+            // Reduce auto-scroll speed and frequency on mobile
+            const scrollSpeed = window.innerWidth <= 768 ? 0.8 : 1.2;
+            const frameRate = window.innerWidth <= 768 ? 32 : 16; // Lower FPS on mobile
+
             autoScrollId = setInterval(() => {
                 if (isHovering) return;
-                carousel.scrollLeft += 1.2; // speed
+                carousel.scrollLeft += scrollSpeed;
                 handleLooping();
-            }, 16); // ~60fps
+            }, frameRate);
         }
+
         function stopAutoScroll() { if (autoScrollId) clearInterval(autoScrollId); }
 
         // Initialize after DOM ready (index.html already parsed when script runs at end of body)
@@ -2139,24 +2758,114 @@
         // Initialize scroll animations
         animateOnScroll();
 
+        // Mobile Category Functions
+        function handleMobileCategoryClick(element) {
+            // Remove active class from all mobile category buttons
+            document.querySelectorAll('.mobile-category-btn, .mobile-grid-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Add active class to clicked button
+            element.classList.add('active');
+
+            // Also update desktop categories for consistency
+            const category = element.getAttribute('data-category');
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-category') === category) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Add pulse animation
+            addPulseAnimation(element);
+
+            // Trigger haptic feedback on mobile
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
+        }
+
+        function toggleMobileCategoryView() {
+            const scrollView = document.querySelector('.mobile-category-scroll');
+            const gridView = document.getElementById('mobileGrid');
+            const toggleBtn = document.getElementById('toggleViewBtn');
+
+            if (gridView.style.display === 'none') {
+                // Switch to grid view
+                scrollView.style.display = 'none';
+                gridView.style.display = 'grid';
+                toggleBtn.textContent = 'Switch to Scroll View';
+                toggleBtn.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+            } else {
+                // Switch to scroll view
+                scrollView.style.display = 'flex';
+                gridView.style.display = 'none';
+                toggleBtn.textContent = 'Switch to Grid View';
+                toggleBtn.style.background = 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)';
+            }
+
+            // Add animation effect
+            toggleBtn.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                toggleBtn.style.transform = 'scale(1)';
+            }, 150);
+        }
+
         // Add intersection observer for better performance
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: window.innerWidth <= 768 ? '0px 0px -25px 0px' : '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animate-fadeInUp');
+                    observer.unobserve(entry.target); // Stop observing after animation
                 }
             });
         }, observerOptions);
 
-        // Observe all elements with animate-on-scroll class
+        // Observe elements for mobile-optimized animations
         document.querySelectorAll('.animate-on-scroll').forEach(el => {
             observer.observe(el);
         });
+
+        // Mobile-specific performance optimizations
+        if (window.innerWidth <= 768) {
+            // Reduce animation delays on mobile
+            const animatedElements = document.querySelectorAll('[style*="animation-delay"]');
+            animatedElements.forEach(el => {
+                const currentDelay = el.style.animationDelay;
+                if (currentDelay) {
+                    const delayValue = parseFloat(currentDelay);
+                    el.style.animationDelay = `${delayValue * 0.7}s`; // 30% faster
+                }
+            });
+
+            // Optimize touch interactions
+            document.addEventListener('touchstart', function () { }, { passive: true });
+            document.addEventListener('touchmove', function () { }, { passive: true });
+
+            // Disable hover effects on mobile for better performance
+            const hoverElements = document.querySelectorAll('.hover\\:scale-105, .hover\\:opacity-80');
+            hoverElements.forEach(el => {
+                el.style.transition = 'none';
+            });
+        }
+
+        // Throttled scroll handler for better mobile performance
+        let scrollTimeout;
+        const optimizedScrollHandler = () => {
+            if (scrollTimeout) return;
+            scrollTimeout = setTimeout(() => {
+                animateOnScroll();
+                scrollTimeout = null;
+            }, window.innerWidth <= 768 ? 100 : 50); // Less frequent on mobile
+        };
+
+        window.addEventListener('scroll', optimizedScrollHandler, { passive: true });
 
         // Add loading animation to grid when items are loaded
         const gridObserver = new MutationObserver(() => {
@@ -2170,13 +2879,15 @@
     </script>
 
     <script>
-        // Theme toggle logic
+        // Theme toggle logic - Dark mode is now default
         function applyTheme(theme) {
             const root = document.documentElement; const dark = theme === 'dark'; root.classList.toggle('dark-mode', dark); const pressed = dark ? 'true' : 'false'; document.querySelectorAll('#themeToggle,#themeToggleMobile').forEach(b => { if (b) { b.setAttribute('aria-pressed', pressed); } });
         }
         function toggleTheme() { const dark = document.documentElement.classList.contains('dark-mode'); const next = dark ? 'light' : 'dark'; try { localStorage.setItem('theme', next); } catch (e) { } applyTheme(next); }
         ['themeToggle', 'themeToggleMobile'].forEach(id => { const el = document.getElementById(id); if (el) { el.addEventListener('click', toggleTheme); } });
-        applyTheme(document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light');
+        // Initialize with dark theme as default
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        applyTheme(currentTheme);
     </script>
 
     <script type="module" src="app.js"></script>

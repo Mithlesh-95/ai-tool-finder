@@ -1971,6 +1971,63 @@
             filter: brightness(1.1) contrast(1.1);
         }
 
+        /* Mobile Badge Scroll Container */
+        .badge-scroll-container {
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE 10+ */
+        }
+
+        .badge-scroll-container::-webkit-scrollbar {
+            display: none;
+            /* Chrome/Safari */
+        }
+
+        /* Mobile Badge Container Styling */
+        @media (max-width: 640px) {
+            .ph-badge-section .badge-scroll-container {
+                position: relative;
+            }
+
+            .ph-badge-section .badge-scroll-container::before,
+            .ph-badge-section .badge-scroll-container::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                width: 20px;
+                pointer-events: none;
+                z-index: 1;
+            }
+
+            .ph-badge-section .badge-scroll-container::before {
+                left: 0;
+                background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+            }
+
+            .ph-badge-section .badge-scroll-container::after {
+                right: 0;
+                background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+            }
+
+            .ph-badge-section img {
+                max-width: none;
+                height: auto;
+            }
+
+            /* Dark mode gradient overlays */
+            html.dark-mode .ph-badge-section .badge-scroll-container::before {
+                background: linear-gradient(to right, rgba(22, 19, 41, 1), rgba(22, 19, 41, 0));
+            }
+
+            html.dark-mode .ph-badge-section .badge-scroll-container::after {
+                background: linear-gradient(to left, rgba(22, 19, 41, 1), rgba(22, 19, 41, 0));
+            }
+        }
+
         /* Badge Container Mobile Responsiveness */
         @media (max-width: 640px) {
             .ph-badge-section .flex {
@@ -2057,10 +2114,11 @@
         </div>
     </section>
 
-    <!-- Product Hunt & SaasHub Badges -->
+    <!-- Verification Badges -->
     <section class="ph-badge-section py-8 px-4 bg-white border-b border-gray-100">
         <div class="max-w-6xl mx-auto text-center animate-fadeInUp" style="animation-delay: 0.5s;">
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+            <!-- Desktop: Flex row, Mobile: Horizontal scroll -->
+            <div class="hidden sm:flex flex-row items-center justify-center gap-6">
                 <!-- Product Hunt Badge -->
                 <div class="inline-block">
                     <a href="https://www.producthunt.com/products/ai-tool-finder/reviews?utm_source=badge-product_review&utm_medium=badge&utm_source=badge-ai&#0045;tool&#0045;finder"
@@ -2081,9 +2139,60 @@
                             alt="AllAITool.tech badge" style="max-width: 150px; height: auto;" />
                     </a>
                 </div>
+
+                <!-- LaunchIgniter Badge -->
+                <div class="inline-block">
+                    <a href="https://launchigniter.com/product/al-tool-finder?ref=badge-al-tool-finder" target="_blank"
+                        class="inline-block hover:scale-105 transition-transform duration-300 hover:opacity-80">
+                        <img src="https://launchigniter.com/api/badge/al-tool-finder?theme=light"
+                            alt="Featured on LaunchIgniter" width="212" height="55" />
+                    </a>
+                </div>
             </div>
+
+            <!-- Mobile: Horizontal scrollable badges -->
+            <div class="sm:hidden">
+                <div class="badge-scroll-container overflow-x-auto pb-4">
+                    <div class="flex items-center gap-4 px-4" style="width: max-content;">
+                        <!-- LaunchIgniter Badge -->
+                        <div class="flex-shrink-0">
+                            <a href="https://launchigniter.com/product/al-tool-finder?ref=badge-al-tool-finder"
+                                target="_blank" class="inline-block active:scale-95 transition-transform duration-200">
+                                <img src="https://launchigniter.com/api/badge/al-tool-finder?theme=light"
+                                    alt="Featured on LaunchIgniter" width="185" height="48" />
+                            </a>
+                        </div>
+
+                        <!-- SaasHub Badge -->
+                        <div class="flex-shrink-0">
+                            <a href='https://www.saashub.com/ai-tool-finder?utm_source=badge&utm_campaign=badge&utm_content=ai-tool-finder&badge_variant=color&badge_kind=approved'
+                                target='_blank' class="inline-block active:scale-95 transition-transform duration-200">
+                                <img src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1"
+                                    alt="AllAITool.tech badge" style="width: 130px; height: auto;" />
+                            </a>
+                        </div>
+
+                        <!-- Product Hunt Badge -->
+                        <div class="flex-shrink-0">
+                            <a href="https://www.producthunt.com/products/ai-tool-finder/reviews?utm_source=badge-product_review&utm_medium=badge&utm_source=badge-ai&#0045;tool&#0045;finder"
+                                target="_blank" class="inline-block active:scale-95 transition-transform duration-200">
+                                <img src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1087668&theme=light"
+                                    alt="AI&#0032;Tool&#0032;Finder - Product Hunt" style="width: 220px; height: 48px;"
+                                    width="220" height="48" />
+                            </a>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!-- Mobile scroll indicator -->
+                <div class="flex justify-center mt-2">
+                    <p class="text-xs text-gray-400">← Swipe to see all badges →</p>
+                </div>
+            </div>
+
             <p class="text-sm text-gray-500 mt-4 animate-fadeInUp" style="animation-delay: 0.7s;">
-                ⭐ Verified on Product Hunt & SaasHub • Help us grow by leaving reviews!
+                ⭐ Verified on Product Hunt, SaasHub & LaunchIgniter • Help us grow by leaving reviews!
             </p>
         </div>
     </section>
@@ -2527,10 +2636,6 @@
                 pulseTimeout = null;
             }, 600);
         }
-        setTimeout(() => {
-            button.classList.remove('animate-pulse');
-        }, 600);
-
 
         // Mobile menu toggle function
         function toggleMobileMenu() {

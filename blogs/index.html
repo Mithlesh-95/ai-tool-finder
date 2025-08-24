@@ -4,36 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- 🏷️ Title -->
-    <title>AI Tools Blog - Latest AI Insights | AllAITool.tech</title>
+    <title>AllAITool.tech - AI Tools Blog</title>
 
     <!-- 🔍 SEO Meta -->
     <meta name="description"
-        content="Discover the latest AI tools, insights, and tutorials. Stay updated with comprehensive guides on AI image generators, writing tools, coding assistants, and more." />
-    <meta name="keywords"
-        content="AI tools blog, AI tutorials, best AI tools 2025, AI image generators, AI writing tools, AI coding assistants, AI guides" />
-    <meta name="author" content="Mithlesh Kumar" />
-    <meta name="robots" content="index, follow" />
-
-    <!-- 📱 Social Meta -->
-    <meta property="og:title" content="AI Tools Blog - Latest AI Insights | AllAITool.tech" />
-    <meta property="og:description"
-        content="Discover the latest AI tools, insights, and tutorials. Stay updated with comprehensive guides on AI tools." />
-    <meta property="og:image" content="../logo.png" />
-    <meta property="og:url" content="https://allaitool.tech/blogs/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="AllAITool.tech" />
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="AI Tools Blog - Latest AI Insights" />
-    <meta name="twitter:description" content="Discover the latest AI tools, insights, and tutorials." />
-    <meta name="twitter:image" content="../logo.png" />
+        content="Discover the latest AI tools, tutorials, and insights. Stay updated with the best AI technology for your needs." />
+    <meta name="keywords" content="AI tools blog, artificial intelligence, AI tutorials, tech blog, AI insights" />
 
     <!-- 🌐 Favicon -->
-    <link rel="icon" href="../logo.png" type="image/png" />
 
-    <!-- Google Analytics -->
+<body class="bg-gray-50 font-sans">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4W1BPVFS7V"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -113,67 +95,324 @@
             margin: 0 auto 1rem;
         }
 
-        /* Navigation styles */
+        /* ================= Enhanced Navigation Animations ================= */
         .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+            box-shadow: 0 2px 16px -4px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            transform: translateY(0);
         }
 
+        .navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.05), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .navbar:hover::before {
+            left: 100%;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.15);
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .navbar .max-w-6xl {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Enhanced Logo Animation */
+        .navbar .flex.items-center a {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .navbar .flex.items-center a:hover {
+            transform: translateX(5px) scale(1.02);
+        }
+
+        .navbar .flex.items-center a img {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .navbar .flex.items-center a:hover img {
+            transform: rotate(5deg) scale(1.1);
+            filter: drop-shadow(0 8px 16px rgba(102, 126, 234, 0.3));
+        }
+
+        .navbar .flex.items-center a span {
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #374151, #4b5563);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .navbar .flex.items-center a:hover span {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Enhanced Nav Links */
         .nav-link {
             color: #374151;
             font-weight: 500;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+            border-radius: 12px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-50%);
         }
 
         .nav-link:hover {
             color: #667eea;
-            transform: translateY(-1px);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px -8px rgba(102, 126, 234, 0.4);
         }
 
+        .nav-link:hover::before {
+            transform: scaleX(1);
+        }
+
+        .nav-link:hover::after {
+            width: 80%;
+        }
+
+        .nav-link:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        /* Floating effect for desktop menu */
+        .desktop-menu {
+            display: flex;
+            padding: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            box-shadow: 0 4px 20px -4px rgba(102, 126, 234, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .desktop-menu:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(102, 126, 234, 0.2);
+            box-shadow: 0 8px 30px -6px rgba(102, 126, 234, 0.25);
+        }
+
+        /* Enhanced Mobile Menu */
         .mobile-menu {
             display: none;
             background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(102, 126, 234, 0.12);
+            box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.15);
             opacity: 0;
             max-height: 0;
             overflow: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
+            transform: translateY(-20px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 0 0 20px 20px;
+            position: relative;
+        }
+
+        .mobile-menu::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+            background-size: 200% 100%;
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
         }
 
         .mobile-menu.active {
             display: block;
             opacity: 1;
-            max-height: 300px;
+            max-height: 400px;
             transform: translateY(0);
         }
 
-        .desktop-menu {
-            display: flex;
-        }
-
-        @media (max-width: 767px) {
-            .desktop-menu {
-                display: none;
-            }
-        }
-
+        /* Enhanced Hamburger */
         .hamburger {
             display: none;
             flex-direction: column;
             cursor: pointer;
-            padding: 8px;
-            background: none;
-            border: none;
-            transition: all 0.3s ease;
+            padding: 12px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hamburger::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.2), transparent);
+            transition: left 0.3s ease;
         }
 
         .hamburger:hover {
-            transform: translateY(-1px);
+            transform: translateY(-2px) scale(1.05);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
+            border-color: rgba(102, 126, 234, 0.3);
+            box-shadow: 0 8px 25px -8px rgba(102, 126, 234, 0.4);
+        }
+
+        .hamburger:hover::before {
+            left: 100%;
+        }
+
+        .hamburger:active {
+            transform: scale(0.95);
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            margin: 3px 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+            background: linear-gradient(90deg, #f56565, #ed64a6);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -7px);
+            background: linear-gradient(90deg, #f56565, #ed64a6);
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 767px) {
+            .desktop-menu {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-menu .nav-link {
+                display: block;
+                padding: 16px 20px;
+                font-size: 1.125rem;
+                border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+                margin: 0 16px;
+                border-radius: 12px;
+                animation: slideInRight 0.3s ease forwards;
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            .mobile-menu.active .nav-link:nth-child(1) {
+                animation-delay: 0.1s;
+            }
+
+            .mobile-menu.active .nav-link:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+
+            .mobile-menu.active .nav-link:nth-child(3) {
+                animation-delay: 0.3s;
+            }
+
+            .mobile-menu.active .nav-link:nth-child(4) {
+                animation-delay: 0.4s;
+            }
+
+            .mobile-menu .nav-link:last-child {
+                border-bottom: none;
+                margin-bottom: 16px;
+            }
+
+            @keyframes slideInRight {
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+        }
+
+        @media (min-width: 768px) {
+            .mobile-menu {
+                display: none !important;
+            }
         }
 
         .hamburger span {
@@ -260,475 +499,889 @@
             border-color: #667eea;
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
-    </style>
-</head>
 
-<body class="bg-gray-50 font-sans">
-    <!-- Navigation Bar -->
-    <nav class="navbar fixed top-0 left-0 right-0 z-50">
-        <div class="py-4 px-4">
-            <div class="max-w-6xl mx-auto flex items-center justify-between">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <a href="../" class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
-                        <img src="../logo.png" alt="AllAITool.tech Logo" class="h-10 w-10">
-                        <span class="text-xl font-bold text-gray-800">AllAITool.tech</span>
-                    </a>
-                </div>
+        /* ================= Enhanced Theme Toggle System ================= */
+        .theme-toggle {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, #6a4c93 0%, #9d7ade 100%);
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            box-shadow:
+                0 4px 14px -4px rgba(106, 76, 147, 0.6),
+                0 2px 6px -2px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
 
-                <!-- Desktop Navigation -->
-                <div class="desktop-menu items-center space-x-8">
-                    <a href="../" class="nav-link">Home</a>
-                    <a href="./" class="nav-link font-bold text-purple-600">Blogs</a>
-                    <a href="../#about" class="nav-link">About</a>
-                    <a href="../#contact" class="nav-link">Contact/Suggestions</a>
-                </div>
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3), transparent 70%);
+            transform: scale(0);
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
 
-                <!-- Mobile Hamburger -->
-                <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
+        .theme-toggle:hover {
+            transform: translateY(-4px) scale(1.1) rotate(5deg);
+            box-shadow:
+                0 15px 35px -8px rgba(106, 76, 147, 0.8),
+                0 6px 20px -4px rgba(0, 0, 0, .6),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
 
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="mobile-menu" style="display: none;">
-            <div class="max-w-6xl mx-auto px-8 py-4">
-                <div class="flex flex-col space-y-2">
-                    <a href="../" class="nav-link">Home</a>
-                    <a href="./" class="nav-link font-bold text-purple-600">Blogs</a>
-                    <a href="../#about" class="nav-link">About</a>
-                    <a href="../#contact" class="nav-link">Contact/Suggestions</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+        .theme-toggle:hover::before {
+            transform: scale(1);
+        }
 
-    <!-- Spotlight Article -->
-    <section class="py-16 px-4 bg-white pt-28">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold gradient-text mb-4">🌟 Editor's Pick</h2>
-                <p class="text-gray-600">This week's must-read AI breakthrough you can't afford to miss</p>
-            </div>
+        .theme-toggle:active {
+            transform: translateY(-2px) scale(0.95) rotate(-2deg);
+        }
 
-            <div class="section-card overflow-hidden max-w-4xl mx-auto">
-                <div class="md:flex">
-                    <div class="md:w-1/2">
-                        <img src="best-free-ai-image-generators-2025/featured-image.jpg"
-                            alt="Best Free AI Image Generators 2025" class="w-full h-64 md:h-full object-cover"
-                            loading="lazy"
-                            onerror="this.src='https://150205861.v2.pressablecdn.com/wp-content/uploads/Best-AI-Image-Generator.jpg'">
-                    </div>
-                    <div class="md:w-1/2 p-8">
-                        <div class="flex items-center space-x-2 mb-4">
-                            <span class="category-tag">AI Tools</span>
-                            <span class="blog-meta">January 15, 2025</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">
-                            <a href="best-free-ai-image-generators-2025/"
-                                class="hover:text-purple-600 transition-colors">
-                                Best Free AI Image Generators 2025
-                            </a>
-                        </h3>
-                        <p class="blog-excerpt mb-6">
-                            Discover the most powerful free AI image generators available in 2025. Compare features,
-                            capabilities, and create stunning images with these top-rated AI tools for artists,
-                            designers, and content creators.
-                        </p>
-                        <div class="flex items-center justify-between">
-                            <div class="blog-meta">
-                                <span>By Mithlesh Kumar</span>
-                                <span class="mx-2">•</span>
-                                <span>8 min read</span>
-                            </div>
-                            <a href="best-free-ai-image-generators-2025/"
-                                class="btn-gradient text-white px-6 py-2 rounded-full text-sm font-semibold">
-                                Read More
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        .theme-toggle .sun {
+            opacity: 0;
+            transform: scale(.4) rotate(-90deg);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+        }
 
-    <!-- Blog Categories -->
-    <section class="py-12 px-4 bg-gray-50">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Browse by Category</h2>
-            <div class="flex flex-wrap justify-center gap-4 md:gap-6">
-                <button
-                    class="category-tag bg-white text-gray-700 border-2 border-gray-200 hover:bg-purple-100 transition-colors">
-                    All Posts
-                </button>
-                <button
-                    class="category-tag bg-white text-gray-700 border-2 border-gray-200 hover:bg-purple-100 transition-colors">
-                    AI Image Tools
-                </button>
-                <button
-                    class="category-tag bg-white text-gray-700 border-2 border-gray-200 hover:bg-purple-100 transition-colors">
-                    AI Writing
-                </button>
-                <button
-                    class="category-tag bg-white text-gray-700 border-2 border-gray-200 hover:bg-purple-100 transition-colors">
-                    Coding AI
-                </button>
-                <button
-                    class="category-tag bg-white text-gray-700 border-2 border-gray-200 hover:bg-purple-100 transition-colors">
-                    Video AI
-                </button>
-                <button
-                    class="category-tag bg-white text-gray-700 border-2 border-gray-200 hover:bg-purple-100 transition-colors">
-                    Tutorials
-                </button>
-            </div>
-        </div>
-    </section>
+        .theme-toggle .moon {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.6));
+        }
 
-    <!-- Recent Blog Posts -->
-    <section class="py-16 px-4 bg-white">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold gradient-text mb-4">Latest Articles</h2>
-                <p class="text-gray-600">Stay up-to-date with the newest AI tools and insights</p>
-            </div>
+        html.dark-mode .theme-toggle {
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            color: #241134;
+            border-color: rgba(255, 255, 255, 0.35);
+            box-shadow:
+                0 4px 14px -4px rgba(253, 160, 133, 0.6),
+                0 2px 6px -2px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Blog Post 1 -->
-                <article class="blog-card section-card overflow-hidden">
-                    <div class="h-48 bg-gradient-to-br from-purple-400 to-blue-500 flex items-center justify-center">
-                        <span class="text-white text-6xl">🤖</span>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center space-x-2 mb-3">
-                            <span class="category-tag">AI Writing</span>
-                            <span class="blog-meta">Coming Soon</span>
-                        </div>
-                        <h3
-                            class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
-                            Best AI Writing Tools 2025
-                        </h3>
-                        <p class="blog-excerpt mb-4">
-                            Comprehensive guide to the most powerful AI writing assistants that can help you create
-                            better content faster...
-                        </p>
-                        <div class="blog-meta">
-                            <span>6 min read</span>
-                        </div>
-                    </div>
-                </article>
+        html.dark-mode .theme-toggle:hover {
+            transform: translateY(-4px) scale(1.1) rotate(-5deg);
+            box-shadow:
+                0 15px 35px -8px rgba(253, 160, 133, 0.8),
+                0 6px 20px -4px rgba(0, 0, 0, .5),
+                inset 0 2px 0 rgba(255, 255, 255, 0.5);
+        }
 
-                <!-- Blog Post 2 -->
-                <article class="blog-card section-card overflow-hidden">
-                    <div class="h-48 bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center">
-                        <span class="text-white text-6xl">🎥</span>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center space-x-2 mb-3">
-                            <span class="category-tag">Video AI</span>
-                            <span class="blog-meta">Coming Soon</span>
-                        </div>
-                        <h3
-                            class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
-                            Top AI Video Generators 2025
-                        </h3>
-                        <p class="blog-excerpt mb-4">
-                            Create stunning videos with AI. Compare the best AI video generation tools available for
-                            free...
-                        </p>
-                        <div class="blog-meta">
-                            <span>7 min read</span>
-                        </div>
-                    </div>
-                </article>
+        html.dark-mode .theme-toggle .sun {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+            filter: drop-shadow(0 0 10px rgba(246, 211, 101, 0.8));
+        }
 
-                <!-- Blog Post 3 -->
-                <article class="blog-card section-card overflow-hidden">
-                    <div class="h-48 bg-gradient-to-br from-yellow-400 to-red-500 flex items-center justify-center">
-                        <span class="text-white text-6xl">💻</span>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center space-x-2 mb-3">
-                            <span class="category-tag">Coding AI</span>
-                            <span class="blog-meta">Coming Soon</span>
-                        </div>
-                        <h3
-                            class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
-                            Best AI Coding Assistants 2025
-                        </h3>
-                        <p class="blog-excerpt mb-4">
-                            Boost your programming productivity with these top AI coding tools and assistants...
-                        </p>
-                        <div class="blog-meta">
-                            <span>9 min read</span>
-                        </div>
-                    </div>
-                </article>
+        html.dark-mode .theme-toggle .moon {
+            opacity: 0;
+            transform: scale(.3) rotate(90deg);
+            filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
+        }
 
-                <!-- Blog Post 4 -->
-                <article class="blog-card section-card overflow-hidden">
-                    <div class="h-48 bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center">
-                        <span class="text-white text-6xl">🎨</span>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center space-x-2 mb-3">
-                            <span class="category-tag">Tutorials</span>
-                            <span class="blog-meta">Coming Soon</span>
-                        </div>
-                        <h3
-                            class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
-                            How to Create Professional AI Art
-                        </h3>
-                        <p class="blog-excerpt mb-4">
-                            Step-by-step guide to creating professional-quality artwork using AI image generators...
-                        </p>
-                        <div class="blog-meta">
-                            <span>12 min read</span>
-                        </div>
-                    </div>
-                </article>
+        /* Theme toggle pulse animation */
+        @keyframes themePulse {
 
-                <!-- Blog Post 5 -->
-                <article class="blog-card section-card overflow-hidden">
-                    <div class="h-48 bg-gradient-to-br from-indigo-400 to-cyan-500 flex items-center justify-center">
-                        <span class="text-white text-6xl">⚡</span>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center space-x-2 mb-3">
-                            <span class="category-tag">AI Tools</span>
-                            <span class="blog-meta">Coming Soon</span>
-                        </div>
-                        <h3
-                            class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
-                            AI Productivity Tools for 2025
-                        </h3>
-                        <p class="blog-excerpt mb-4">
-                            Discover AI tools that can 10x your productivity and streamline your workflow...
-                        </p>
-                        <div class="blog-meta">
-                            <span>8 min read</span>
-                        </div>
-                    </div>
-                </article>
+            0%,
+            100% {
+                box-shadow:
+                    0 4px 14px -4px rgba(106, 76, 147, 0.6),
+                    0 2px 6px -2px rgba(0, 0, 0, 0.4),
+                    0 0 0 0 rgba(106, 76, 147, 0.4);
+            }
 
-                <!-- Blog Post 6 -->
-                <article class="blog-card section-card overflow-hidden">
-                    <div class="h-48 bg-gradient-to-br from-teal-400 to-blue-500 flex items-center justify-center">
-                        <span class="text-white text-6xl">🔮</span>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center space-x-2 mb-3">
-                            <span class="category-tag">AI Tools</span>
-                            <span class="blog-meta">Coming Soon</span>
-                        </div>
-                        <h3
-                            class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
-                            Future of AI: What's Coming in 2025
-                        </h3>
-                        <p class="blog-excerpt mb-4">
-                            Explore the upcoming AI trends and tools that will shape the future of technology...
-                        </p>
-                        <div class="blog-meta">
-                            <span>10 min read</span>
-                        </div>
-                    </div>
-                </article>
-            </div>
-
-            <!-- Load More Button -->
-            <div class="text-center mt-12">
-                <button class="btn-gradient text-white font-semibold py-3 px-8 rounded-full shadow-lg">
-                    📚 Load More Articles
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter Signup -->
-    <section class="py-16 px-4 bg-gray-50">
-        <div class="max-w-4xl mx-auto">
-            <div class="section-card p-8 text-center">
-                <div class="feature-icon mx-auto mb-6">
-                    <span class="text-2xl text-white">📬</span>
-                </div>
-                <h2 class="text-3xl font-bold gradient-text mb-4">Stay Updated</h2>
-                <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
-                    Get the latest AI tools reviews, tutorials, and insights delivered straight to your inbox. No spam,
-                    just valuable content.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                    <input type="email" placeholder="Enter your email"
-                        class="search-box flex-1 px-6 py-3 text-gray-800 focus:outline-none">
-                    <button class="btn-gradient text-white font-semibold py-3 px-6 rounded-full">
-                        Subscribe
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Back to Main Site -->
-    <section class="py-12 px-4 bg-white">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-2xl font-bold gradient-text mb-4">Explore AI Tools Directory</h2>
-            <p class="text-gray-600 mb-6">
-                Ready to discover and try the AI tools we write about?
-            </p>
-            <a href="../" class="btn-gradient text-white font-semibold py-3 px-8 rounded-full shadow-lg inline-block">
-                🔍 Browse AI Tools Directory
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12 px-4">
-        <div class="max-w-6xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <h3 class="text-2xl font-bold mb-2">
-                        <a href="../" class="hover:text-purple-400 transition-colors">AI Tool Finder</a>
-                    </h3>
-                    <p class="text-gray-400">Discover the best AI tools for your needs</p>
-                </div>
-                <div class="flex space-x-8">
-                    <a href="../" class="text-gray-400 hover:text-white transition-colors">Home</a>
-                    <a href="./" class="text-gray-400 hover:text-white transition-colors">Blog</a>
-                    <a href="../#about" class="text-gray-400 hover:text-white transition-colors">About</a>
-                    <a href="../#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a>
-                </div>
-            </div>
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
-                <p class="text-gray-400">&copy; 2025 AI Tool Finder. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script>
-        // Mobile menu toggle function
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            const hamburger = document.querySelector('.hamburger');
-
-            const isActive = mobileMenu.classList.contains('active');
-
-            if (isActive) {
-                // Close menu
-                mobileMenu.classList.remove('active');
-                hamburger.classList.remove('active');
-
-                // Hide menu completely after animation
-                setTimeout(() => {
-                    mobileMenu.style.display = 'none';
-                }, 300);
-            } else {
-                // Open menu
-                mobileMenu.style.display = 'block';
-                // Force reflow before adding active class
-                mobileMenu.offsetHeight;
-                mobileMenu.classList.add('active');
-                hamburger.classList.add('active');
+            50% {
+                box-shadow:
+                    0 4px 14px -4px rgba(106, 76, 147, 0.6),
+                    0 2px 6px -2px rgba(0, 0, 0, 0.4),
+                    0 0 0 8px rgba(106, 76, 147, 0.1);
             }
         }
 
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('#mobileMenu a').forEach(link => {
-            link.addEventListener('click', () => {
+        .theme-toggle:focus {
+            animation: themePulse 1.5s infinite;
+            outline: none;
+        }
+
+        /* Dark mode overrides */
+        html.dark-mode body {
+            background: #0f0d17;
+            color: #f3f4f9;
+        }
+
+        html.dark-mode .bg-gray-50 {
+            background: #0f0d17 !important;
+        }
+
+        html.dark-mode .bg-white {
+            background: #161329 !important;
+        }
+
+        /* Dark mode navbar styles */
+        html.dark-mode .navbar {
+            background: rgba(22, 19, 41, 0.88);
+            border-bottom: 1px solid rgba(157, 122, 222, 0.15);
+            box-shadow: 0 2px 16px -4px rgba(0, 0, 0, 0.3);
+        }
+
+        html.dark-mode .navbar::before {
+            background: linear-gradient(90deg, transparent, rgba(157, 122, 222, 0.1), transparent);
+        }
+
+        html.dark-mode .navbar.scrolled {
+            background: rgba(22, 19, 41, 0.95);
+            border-bottom: 1px solid rgba(157, 122, 222, 0.25);
+            box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.4);
+        }
+
+        html.dark-mode .navbar .flex.items-center a span {
+            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        html.dark-mode .navbar .flex.items-center a:hover span {
+            background: linear-gradient(135deg, #a78bfa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        html.dark-mode .nav-link {
+            color: #e5e7eb;
+        }
+
+        html.dark-mode .nav-link::before {
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.15), rgba(196, 132, 252, 0.15));
+        }
+
+        html.dark-mode .nav-link::after {
+            background: linear-gradient(90deg, #a78bfa, #c084fc);
+        }
+
+        html.dark-mode .nav-link:hover {
+            color: #a78bfa;
+            box-shadow: 0 8px 25px -8px rgba(167, 139, 250, 0.4);
+        }
+
+        html.dark-mode .desktop-menu {
+            background: rgba(22, 19, 41, 0.2);
+            border-color: rgba(157, 122, 222, 0.15);
+            box-shadow: 0 4px 20px -4px rgba(157, 122, 222, 0.2);
+        }
+
+        html.dark-mode .desktop-menu:hover {
+            background: rgba(22, 19, 41, 0.3);
+            border-color: rgba(157, 122, 222, 0.25);
+            box-shadow: 0 8px 30px -6px rgba(157, 122, 222, 0.3);
+        }
+
+        html.dark-mode .mobile-menu {
+            background: rgba(22, 19, 41, 0.95);
+            border-bottom: 1px solid rgba(157, 122, 222, 0.2);
+            box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.4);
+        }
+
+        html.dark-mode .mobile-menu::before {
+            background: linear-gradient(90deg, #a78bfa, #c084fc, #a78bfa);
+        }
+
+        html.dark-mode .hamburger {
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.15), rgba(196, 132, 252, 0.15));
+            border-color: rgba(157, 122, 222, 0.25);
+        }
+
+        html.dark-mode .hamburger:hover {
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.2), rgba(196, 132, 252, 0.2));
+            border-color: rgba(157, 122, 222, 0.4);
+            box-shadow: 0 8px 25px -8px rgba(167, 139, 250, 0.4);
+        }
+
+        html.dark-mode .hamburger span {
+            background: linear-gradient(90deg, #a78bfa, #c084fc);
+            box-shadow: 0 2px 4px rgba(167, 139, 250, 0.3);
+        }
+
+        html.dark-mode .hamburger.active span:nth-child(1),
+        html.dark-mode .hamburger.active span:nth-child(3) {
+            background: linear-gradient(90deg, #f56565, #ed64a6);
+        }
+
+        html.dark-mode .mobile-menu .nav-link {
+            border-bottom: 1px solid rgba(157, 122, 222, 0.1);
+        }
+
+        html.dark-mode .nav-link {
+            color: #d7dbef;
+        }
+
+        html.dark-mode .nav-link:hover {
+            color: #b794f6;
+        }
+
+        html.dark-mode .mobile-menu {
+            background: rgba(22, 19, 41, 0.95);
+            border-bottom: 1px solid rgba(157, 122, 222, 0.15);
+        }
+
+        html.dark-mode .hamburger span {
+            background: #e5e7ef;
+        }
+
+        html.dark-mode .section-card {
+            background: #161329;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: #f3f4f9;
+        }
+
+        html.dark-mode .blog-card .blog-excerpt {
+            color: #b4b6c7;
+        }
+
+        html.dark-mode .blog-meta {
+            color: #8d94b8;
+        }
+
+        html.dark-mode h1,
+        html.dark-mode h2,
+        html.dark-mode h3,
+        html.dark-mode h4 {
+            color: #f5f6fb !important;
+        }
+
+        html.dark-mode .text-gray-800 {
+            color: #f5f6fb !important;
+        }
+
+        html.dark-mode .text-gray-600 {
+            color: #b4b6c7 !important;
+        }
+
+        html.dark-mode .text-gray-400 {
+            color: #7b829d !important;
+        }
+
+        html.dark-mode h2.gradient-text,
+        html.dark-mode .gradient-text {
+            background: linear-gradient(135deg, #9d7ade 0%, #d6bcfa 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        html.dark-mode .category-tag {
+            background: linear-gradient(135deg, #6a4c93 0%, #9d7ade 100%);
+        }
+
+        html.dark-mode .search-box {
+            background: #1d1833;
+            border-color: #2c2742;
+            color: #f3f4f9;
+        }
+
+        html.dark-mode .search-box:focus {
+            box-shadow: 0 0 0 3px rgba(157, 122, 222, 0.25);
+        }
+
+        html.dark-mode footer.bg-gray-800 {
+            background: #0d0b15;
+        }
+
+        html.dark-mode footer .text-gray-400 {
+            color: #6c728d;
+        }
+
+        html.dark-mode footer a:hover {
+            color: #b794f6;
+        }
+    </style>
+    </head>
+    <script>(function () { try { const t = localStorage.getItem('theme'); if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark-mode'); } } catch (e) { } })();</script>
+
+    <body class="bg-gray-50 font-sans">
+        <!-- Navigation Bar -->
+        <nav class="navbar fixed top-0 left-0 right-0 z-50">
+            <div class="py-4 px-4">
+                <div class="max-w-6xl mx-auto flex items-center justify-between">
+                    <!-- Logo -->
+                    <div class="flex items-center">
+                        <a href="../" class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+                            <img src="../logo.png" alt="AllAITool.tech Logo" class="h-10 w-10">
+                            <span class="text-xl font-bold text-gray-800">AI Tool Finder</span>
+                        </a>
+                    </div>
+
+                    <!-- Desktop Navigation -->
+                    <div class="desktop-menu items-center space-x-6">
+                        <a href="../" class="nav-link">Home</a>
+                        <a href="./" class="nav-link font-bold text-purple-600">Blogs</a>
+                        <a href="../#about" class="nav-link">About</a>
+                        <a href="../#contact" class="nav-link">Contact/Suggestions</a>
+                        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode"
+                            aria-pressed="false">
+                            <span class="sun">☀️</span>
+                            <span class="moon">🌙</span>
+                        </button>
+                    </div>
+
+                    <!-- Mobile Hamburger -->
+                    <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="mobile-menu" style="display: none;">
+                <div class="max-w-6xl mx-auto px-8 py-4">
+                    <div class="flex flex-col space-y-2">
+                        <a href="../" class="nav-link">Home</a>
+                        <a href="./" class="nav-link font-bold text-purple-600">Blogs</a>
+                        <a href="../#about" class="nav-link">About</a>
+                        <a href="../#contact" class="nav-link">Contact/Suggestions</a>
+                        <button id="themeToggleMobile" class="theme-toggle mt-4 self-start"
+                            aria-label="Toggle dark mode" aria-pressed="false">
+                            <span class="sun">☀️</span>
+                            <span class="moon">🌙</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Editor's Pick -->
+        <section class="py-16 px-4 bg-white pt-28">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold gradient-text mb-4">� Editor's Pick</h2>
+                    <p class="text-gray-600">This week's must-read AI breakthroughs you can't afford to miss</p>
+                </div>
+
+                <!-- First Pick - AI Resume Tools -->
+                <div class="section-card overflow-hidden max-w-4xl mx-auto mb-8">
+                    <div class="md:flex">
+                        <div class="md:w-1/2 relative group">
+                            <picture>
+                                <source type="image/webp"
+                                    srcset="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=1200&q=70&fm=webp" />
+                                <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=1200&q=80"
+                                    alt="AI resume builder interface showing structured resume sections and optimization suggestions"
+                                    class="w-full h-64 md:h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                    loading="lazy" decoding="async" width="1200" height="800"
+                                    onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgdmlld0JveD0iMCAwIDQwMCAyNTAiIGZpbGw9IiMxMTIyMzQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNTAiIGZpbGw9IiMyMTMyNDQiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZmlsbD0iI2ZmZiIgZm9udC1zaXplPSIyMiIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UmVzdW1lIFVpPC90ZXh0Pjwvc3ZnPi';">
+                            </picture>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-tr from-purple-900/40 via-transparent to-indigo-700/30 opacity-0 group-hover:opacity-100 transition-opacity">
+                            </div>
+                        </div>
+                        <div class="md:w-1/2 p-8">
+                            <div class="flex items-center space-x-2 mb-4">
+                                <span class="category-tag">Career Tools</span>
+                                <span class="blog-meta">August 23, 2025</span>
+                                <span
+                                    class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">NEW</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">
+                                <a href="Best-AI-Tools-for-Resume-and-Job-Applications-in-2025/"
+                                    class="hover:text-purple-600 transition-colors">
+                                    Best AI Tools for Resume & Job Applications in 2025
+                                </a>
+                            </h3>
+                            <p class="blog-excerpt mb-6">
+                                Discover the most powerful AI tools for resume building, ATS optimization, interview
+                                prep,
+                                and job applications in 2025. Complete guide for students and fresh graduates preparing
+                                for placements and internships.
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <div class="blog-meta">
+                                    <span>By Mithlesh Kumar</span>
+                                    <span class="mx-2">•</span>
+                                    <span>12 min read</span>
+                                </div>
+                                <a href="Best-AI-Tools-for-Resume-and-Job-Applications-in-2025/"
+                                    class="btn-gradient text-white px-6 py-2 rounded-full text-sm font-semibold">
+                                    Read Guide →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Second Pick - AI Image Generators -->
+                <div class="section-card overflow-hidden max-w-4xl mx-auto">
+                    <div class="md:flex">
+                        <div class="md:w-1/2">
+                            <img src="best-free-ai-image-generators-2025/featured-image.jpg"
+                                alt="Best Free AI Image Generators 2025" class="w-full h-64 md:h-full object-cover"
+                                loading="lazy"
+                                onerror="this.src='https://150205861.v2.pressablecdn.com/wp-content/uploads/Best-AI-Image-Generator.jpg'">
+                        </div>
+                        <div class="md:w-1/2 p-8">
+                            <div class="flex items-center space-x-2 mb-4">
+                                <span class="category-tag">AI Tools</span>
+                                <span class="blog-meta">August 15, 2025</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">
+                                <a href="best-free-ai-image-generators-2025/"
+                                    class="hover:text-purple-600 transition-colors">
+                                    Best Free AI Image Generators 2025
+                                </a>
+                            </h3>
+                            <p class="blog-excerpt mb-6">
+                                Discover the most powerful free AI image generators available in 2025. Compare features,
+                                capabilities, and create stunning images with these top-rated AI tools for artists,
+                                designers, and content creators.
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <div class="blog-meta">
+                                    <span>By Mithlesh Kumar</span>
+                                    <span class="mx-2">•</span>
+                                    <span>8 min read</span>
+                                </div>
+                                <a href="best-free-ai-image-generators-2025/"
+                                    class="btn-gradient text-white px-6 py-2 rounded-full text-sm font-semibold">
+                                    Read More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Categories -->
+        <section class="py-12 px-4 bg-gray-50">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Browse by Category</h2>
+                <div class="flex flex-wrap justify-center gap-4 md:gap-6">
+                    <button
+                        class="category-tag bg-white text-gray-700 border-2 border-gray-200 hover:bg-purple-100 transition-colors">
+                        All Posts
+                    </button>
+                    <button
+                        class="category-tag bg-white text-gray-700 border-2 border-gray-200 hover:bg-purple-100 transition-colors">
+                        AI Image Tools
+                    </button>
+                    <button
+                        class="category-tag bg-white text-gray-700 border-2 border-gray-200 hover:bg-purple-100 transition-colors">
+                        AI Writing
+                    </button>
+                    <button
+                        class="category-tag bg-white text-gray-700 border-2 border-gray-200 hover:bg-purple-100 transition-colors">
+                        Coding AI
+                    </button>
+                    <button
+                        class="category-tag bg-white text-gray-700 border-2 border-gray-200 hover:bg-purple-100 transition-colors">
+                        Video AI
+                    </button>
+                    <button
+                        class="category-tag bg-white text-gray-700 border-2 border-gray-200 hover:bg-purple-100 transition-colors">
+                        Tutorials
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Blog Posts -->
+        <section class="py-16 px-4 bg-white">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold gradient-text mb-4">Latest Articles</h2>
+                    <p class="text-gray-600">Stay up-to-date with the newest AI tools and insights</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Blog Post 1 -->
+                    <article class="blog-card section-card overflow-hidden">
+                        <div
+                            class="h-48 bg-gradient-to-br from-purple-400 to-blue-500 flex items-center justify-center">
+                            <span class="text-white text-6xl">🤖</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="category-tag">AI Writing</span>
+                                <span class="blog-meta">Coming Soon</span>
+                            </div>
+                            <h3
+                                class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
+                                Best AI Writing Tools 2025
+                            </h3>
+                            <p class="blog-excerpt mb-4">
+                                Comprehensive guide to the most powerful AI writing assistants that can help you create
+                                better content faster...
+                            </p>
+                            <div class="blog-meta">
+                                <span>6 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 2 -->
+                    <article class="blog-card section-card overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center">
+                            <span class="text-white text-6xl">🎥</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="category-tag">Video AI</span>
+                                <span class="blog-meta">Coming Soon</span>
+                            </div>
+                            <h3
+                                class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
+                                Top AI Video Generators 2025
+                            </h3>
+                            <p class="blog-excerpt mb-4">
+                                Create stunning videos with AI. Compare the best AI video generation tools available for
+                                free...
+                            </p>
+                            <div class="blog-meta">
+                                <span>7 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 3 -->
+                    <article class="blog-card section-card overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-yellow-400 to-red-500 flex items-center justify-center">
+                            <span class="text-white text-6xl">💻</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="category-tag">Coding AI</span>
+                                <span class="blog-meta">Coming Soon</span>
+                            </div>
+                            <h3
+                                class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
+                                Best AI Coding Assistants 2025
+                            </h3>
+                            <p class="blog-excerpt mb-4">
+                                Boost your programming productivity with these top AI coding tools and assistants...
+                            </p>
+                            <div class="blog-meta">
+                                <span>9 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 4 -->
+                    <article class="blog-card section-card overflow-hidden">
+                        <div
+                            class="h-48 bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center">
+                            <span class="text-white text-6xl">🎨</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="category-tag">Tutorials</span>
+                                <span class="blog-meta">Coming Soon</span>
+                            </div>
+                            <h3
+                                class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
+                                How to Create Professional AI Art
+                            </h3>
+                            <p class="blog-excerpt mb-4">
+                                Step-by-step guide to creating professional-quality artwork using AI image generators...
+                            </p>
+                            <div class="blog-meta">
+                                <span>12 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 5 -->
+                    <article class="blog-card section-card overflow-hidden">
+                        <div
+                            class="h-48 bg-gradient-to-br from-indigo-400 to-cyan-500 flex items-center justify-center">
+                            <span class="text-white text-6xl">⚡</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="category-tag">AI Tools</span>
+                                <span class="blog-meta">Coming Soon</span>
+                            </div>
+                            <h3
+                                class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
+                                AI Productivity Tools for 2025
+                            </h3>
+                            <p class="blog-excerpt mb-4">
+                                Discover AI tools that can 10x your productivity and streamline your workflow...
+                            </p>
+                            <div class="blog-meta">
+                                <span>8 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 6 -->
+                    <article class="blog-card section-card overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-teal-400 to-blue-500 flex items-center justify-center">
+                            <span class="text-white text-6xl">🔮</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="category-tag">AI Tools</span>
+                                <span class="blog-meta">Coming Soon</span>
+                            </div>
+                            <h3
+                                class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
+                                Future of AI: What's Coming in 2025
+                            </h3>
+                            <p class="blog-excerpt mb-4">
+                                Explore the upcoming AI trends and tools that will shape the future of technology...
+                            </p>
+                            <div class="blog-meta">
+                                <span>10 min read</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Load More Button -->
+                <div class="text-center mt-12">
+                    <button class="btn-gradient text-white font-semibold py-3 px-8 rounded-full shadow-lg">
+                        📚 Load More Articles
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Signup -->
+        <section class="py-16 px-4 bg-gray-50">
+            <div class="max-w-4xl mx-auto">
+                <div class="section-card p-8 text-center">
+                    <div class="feature-icon mx-auto mb-6">
+                        <span class="text-2xl text-white">📬</span>
+                    </div>
+                    <h2 class="text-3xl font-bold gradient-text mb-4">Stay Updated</h2>
+                    <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+                        Get the latest AI tools reviews, tutorials, and insights delivered straight to your inbox. No
+                        spam,
+                        just valuable content.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                        <input type="email" placeholder="Enter your email"
+                            class="search-box flex-1 px-6 py-3 text-gray-800 focus:outline-none">
+                        <button class="btn-gradient text-white font-semibold py-3 px-6 rounded-full">
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Back to Main Site -->
+        <section class="py-12 px-4 bg-white">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-2xl font-bold gradient-text mb-4">Explore AI Tools Directory</h2>
+                <p class="text-gray-600 mb-6">
+                    Ready to discover and try the AI tools we write about?
+                </p>
+                <a href="../"
+                    class="btn-gradient text-white font-semibold py-3 px-8 rounded-full shadow-lg inline-block">
+                    🔍 Browse AI Tools Directory
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white py-12 px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-6 md:mb-0">
+                        <h3 class="text-2xl font-bold mb-2">
+                            <a href="../" class="hover:text-purple-400 transition-colors">AI Tool Finder</a>
+                        </h3>
+                        <p class="text-gray-400">Discover the best AI tools for your needs</p>
+                    </div>
+                    <div class="flex space-x-8">
+                        <a href="../" class="text-gray-400 hover:text-white transition-colors">Home</a>
+                        <a href="./" class="text-gray-400 hover:text-white transition-colors">Blog</a>
+                        <a href="../#about" class="text-gray-400 hover:text-white transition-colors">About</a>
+                        <a href="../#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a>
+                    </div>
+                </div>
+                <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                    <p class="text-gray-400">&copy; 2025 AI Tool Finder. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script>
+            // Mobile menu toggle function
+            function toggleMobileMenu() {
                 const mobileMenu = document.getElementById('mobileMenu');
                 const hamburger = document.querySelector('.hamburger');
 
-                mobileMenu.classList.remove('active');
-                hamburger.classList.remove('active');
+                const isActive = mobileMenu.classList.contains('active');
 
-                // Hide menu completely after animation
-                setTimeout(() => {
-                    mobileMenu.style.display = 'none';
-                }, 300);
-            });
-        });
+                if (isActive) {
+                    // Close menu
+                    mobileMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
 
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            const mobileMenu = document.getElementById('mobileMenu');
-            const hamburger = document.querySelector('.hamburger');
-            const navbar = document.querySelector('.navbar');
-
-            // Check if click is outside the navbar
-            if (!navbar.contains(e.target) && mobileMenu.classList.contains('active')) {
-                mobileMenu.classList.remove('active');
-                hamburger.classList.remove('active');
-
-                // Hide menu completely after animation
-                setTimeout(() => {
-                    mobileMenu.style.display = 'none';
-                }, 300);
-            }
-        });
-
-        // Handle window resize to ensure proper menu state
-        window.addEventListener('resize', () => {
-            const mobileMenu = document.getElementById('mobileMenu');
-            const hamburger = document.querySelector('.hamburger');
-
-            if (window.innerWidth >= 768) {
-                // Desktop view - hide mobile menu completely
-                mobileMenu.classList.remove('active');
-                hamburger.classList.remove('active');
-                mobileMenu.style.display = 'none';
-            }
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add scroll-to-top functionality
-        window.addEventListener('scroll', function () {
-            const scrollButton = document.getElementById('scrollToTop');
-            if (window.pageYOffset > 300) {
-                if (!scrollButton) {
-                    const button = document.createElement('button');
-                    button.id = 'scrollToTop';
-                    button.innerHTML = '↑';
-                    button.className = 'fixed bottom-6 right-6 bg-purple-600 text-white w-12 h-12 rounded-full shadow-lg hover:bg-purple-700 transition-all z-50';
-                    button.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-                    document.body.appendChild(button);
-                }
-            } else if (scrollButton) {
-                scrollButton.remove();
-            }
-        });
-
-        // Search functionality
-        document.getElementById('searchInput').addEventListener('input', function (e) {
-            const searchTerm = e.target.value.toLowerCase();
-            const blogCards = document.querySelectorAll('.blog-card');
-
-            blogCards.forEach(card => {
-                const title = card.querySelector('h3').textContent.toLowerCase();
-                const excerpt = card.querySelector('.blog-excerpt').textContent.toLowerCase();
-
-                if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
-                    card.style.display = 'block';
+                    // Hide menu completely after animation
+                    setTimeout(() => {
+                        mobileMenu.style.display = 'none';
+                    }, 300);
                 } else {
-                    card.style.display = searchTerm === '' ? 'block' : 'none';
+                    // Open menu
+                    mobileMenu.style.display = 'block';
+                    // Force reflow before adding active class
+                    mobileMenu.offsetHeight;
+                    mobileMenu.classList.add('active');
+                    hamburger.classList.add('active');
+                }
+            }
+
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('#mobileMenu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    const mobileMenu = document.getElementById('mobileMenu');
+                    const hamburger = document.querySelector('.hamburger');
+
+                    mobileMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+
+                    // Hide menu completely after animation
+                    setTimeout(() => {
+                        mobileMenu.style.display = 'none';
+                    }, 300);
+                });
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                const mobileMenu = document.getElementById('mobileMenu');
+                const hamburger = document.querySelector('.hamburger');
+                const navbar = document.querySelector('.navbar');
+
+                // Check if click is outside the navbar
+                if (!navbar.contains(e.target) && mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+
+                    // Hide menu completely after animation
+                    setTimeout(() => {
+                        mobileMenu.style.display = 'none';
+                    }, 300);
                 }
             });
-        });
-    </script>
-</body>
+
+            // Handle window resize to ensure proper menu state
+            window.addEventListener('resize', () => {
+                const mobileMenu = document.getElementById('mobileMenu');
+                const hamburger = document.querySelector('.hamburger');
+
+                if (window.innerWidth >= 768) {
+                    // Desktop view - hide mobile menu completely
+                    mobileMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                    mobileMenu.style.display = 'none';
+                }
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add scroll-to-top functionality
+            window.addEventListener('scroll', function () {
+                const scrollButton = document.getElementById('scrollToTop');
+                if (window.pageYOffset > 300) {
+                    if (!scrollButton) {
+                        const button = document.createElement('button');
+                        button.id = 'scrollToTop';
+                        button.innerHTML = '↑';
+                        button.className = 'fixed bottom-6 right-6 bg-purple-600 text-white w-12 h-12 rounded-full shadow-lg hover:bg-purple-700 transition-all z-50';
+                        button.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+                        document.body.appendChild(button);
+                    }
+                } else if (scrollButton) {
+                    scrollButton.remove();
+                }
+            });
+
+            // Search functionality
+            document.getElementById('searchInput').addEventListener('input', function (e) {
+                const searchTerm = e.target.value.toLowerCase();
+                const blogCards = document.querySelectorAll('.blog-card');
+
+                blogCards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const excerpt = card.querySelector('.blog-excerpt').textContent.toLowerCase();
+
+                    if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = searchTerm === '' ? 'block' : 'none';
+                    }
+                });
+            });
+
+
+            // ========== Theme Toggle Script ========== 
+            function applyTheme(theme) {
+                const root = document.documentElement;
+                const dark = theme === 'dark';
+                root.classList.toggle('dark-mode', dark);
+                const pressed = dark ? 'true' : 'false';
+                document.querySelectorAll('#themeToggle, #themeToggleMobile').forEach(b => {
+                    if (b) b.setAttribute('aria-pressed', pressed);
+                });
+            }
+
+            function toggleTheme() {
+                const dark = document.documentElement.classList.contains('dark-mode');
+                const next = dark ? 'light' : 'dark';
+                try {
+                    localStorage.setItem('theme', next);
+                } catch (e) { }
+                applyTheme(next);
+            }
+
+            ['themeToggle', 'themeToggleMobile'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.addEventListener('click', toggleTheme);
+                }
+            });
+
+            applyTheme(document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light');
+        </script>
+        </script>
+    </body>
 
 </html>

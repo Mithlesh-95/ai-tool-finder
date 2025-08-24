@@ -63,42 +63,445 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* ================= Enhanced Animations & Effects ================= */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(102, 126, 234, 0.6);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-fadeInLeft {
+            animation: fadeInLeft 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-fadeInRight {
+            animation: fadeInRight 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-scaleIn {
+            animation: scaleIn 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .animate-glow {
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .animate-shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+
+        /* Enhanced gradient background with moving particles effect */
         .gradient-bg {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gradient-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            animation: float 8s ease-in-out infinite;
         }
 
         .card-hover {
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .card-hover:hover::before {
+            left: 100%;
         }
 
         .card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
 
-        .category-btn {
+        /* ================= Tool Card Animations ================= */
+        .tool-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                linear-gradient(135deg, transparent, transparent) border-box;
+        }
+
+        .dark .tool-card {
+            background: linear-gradient(rgb(31, 41, 55), rgb(31, 41, 55)) padding-box,
+                linear-gradient(135deg, transparent, transparent) border-box;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .dark .tool-card::before {
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.2), transparent);
+        }
+
+        .tool-card:hover::before {
+            left: 100%;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-12px) rotateX(5deg) rotateY(-2deg);
+            box-shadow:
+                0 25px 50px -12px rgba(102, 126, 234, 0.3),
+                0 0 0 1px rgba(102, 126, 234, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            border-color: rgba(102, 126, 234, 0.2);
+        }
+
+        .dark .tool-card:hover {
+            box-shadow:
+                0 25px 50px -12px rgba(139, 92, 246, 0.4),
+                0 0 0 1px rgba(139, 92, 246, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .tool-card .tool-title {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .tool-card:hover .tool-title {
+            color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .dark .tool-card:hover .tool-title {
+            color: #a78bfa;
+        }
+
+        .tool-card .tool-price {
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .tool-card:hover .tool-price {
+            transform: scale(1.1) rotate(-5deg);
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+        }
+
+        .dark .tool-card:hover .tool-price {
+            background: linear-gradient(135deg, #34d399, #10b981);
+            color: #064e3b;
+        }
+
+        .tool-card .tool-description {
             transition: all 0.3s ease;
         }
 
-        .category-btn:hover {
+        .tool-card:hover .tool-description {
+            color: #4b5563;
+            transform: translateX(3px);
+        }
+
+        .dark .tool-card:hover .tool-description {
+            color: #d1d5db;
+        }
+
+        .tool-card .tool-tag {
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card .tool-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.4s;
+        }
+
+        .tool-card:hover .tool-tag {
             transform: translateY(-2px);
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+        }
+
+        .dark .tool-card:hover .tool-tag {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+
+        .tool-card:hover .tool-tag::before {
+            left: 100%;
+        }
+
+        .tool-card .try-now-btn {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            transform-origin: center;
+        }
+
+        .tool-card .try-now-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s, height 0.4s;
+        }
+
+        .tool-card:hover .try-now-btn {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px -5px rgba(102, 126, 234, 0.6);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .dark .tool-card:hover .try-now-btn {
+            box-shadow: 0 15px 35px -5px rgba(139, 92, 246, 0.6);
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+        }
+
+        .tool-card:hover .try-now-btn::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .tool-card .try-now-btn:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        /* Stagger animation for cards */
+        .tool-card.animate-in {
+            animation: toolCardSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes toolCardSlideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Special hover effect for featured tools */
+        .tool-card.featured {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+
+        .dark .tool-card.featured {
+            background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+        }
+
+        .tool-card.featured:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .dark .tool-card.featured:hover {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+        }
+
+        .tool-card.featured:hover .tool-title,
+        .tool-card.featured:hover .tool-description {
+            color: white;
+        }
+
+        .tool-card.featured:hover .tool-price {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .tool-card.featured:hover .tool-tag {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .category-btn {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s, height 0.4s;
+        }
+
+        .category-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .category-btn:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 15px 35px -5px rgba(102, 126, 234, 0.4);
         }
 
         .category-btn.active {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            animation: glow 2s ease-in-out infinite;
         }
 
         .section-card {
             background: white;
             border-radius: 1rem;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        .section-card:hover::after {
+            transform: translateX(0);
         }
 
         .section-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-8px) rotateX(5deg);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(102, 126, 234, 0.2);
         }
 
         .gradient-text {
@@ -110,12 +513,32 @@
 
         .btn-gradient {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-gradient::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s;
+        }
+
+        .btn-gradient:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .btn-gradient:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.6);
         }
 
         .feature-icon {
@@ -127,106 +550,382 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 1rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
         }
 
-        /* Navigation styles */
+        .feature-icon::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-icon:hover::before {
+            opacity: 0.7;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .feature-icon:hover {
+            transform: translateY(-5px) scale(1.1) rotate(10deg);
+            animation: float 2s ease-in-out infinite;
+        }
+
+        /* ================= Enhanced Navigation Animations ================= */
         .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+            box-shadow: 0 2px 16px -4px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            transform: translateY(0);
         }
 
+        .navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.05), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .navbar:hover::before {
+            left: 100%;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.15);
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .navbar .max-w-6xl {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Enhanced Logo Animation */
+        .navbar .flex.items-center a {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .navbar .flex.items-center a:hover {
+            transform: translateX(5px) scale(1.02);
+        }
+
+        .navbar .flex.items-center a img {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .navbar .flex.items-center a:hover img {
+            transform: rotate(5deg) scale(1.1);
+            filter: drop-shadow(0 8px 16px rgba(102, 126, 234, 0.3));
+        }
+
+        .navbar .flex.items-center a span {
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #374151, #4b5563);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .navbar .flex.items-center a:hover span {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Enhanced Nav Links */
         .nav-link {
             color: #374151;
             font-weight: 500;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+            border-radius: 12px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-50%);
         }
 
         .nav-link:hover {
             color: #667eea;
-            transform: translateY(-1px);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px -8px rgba(102, 126, 234, 0.4);
         }
 
+        .nav-link:hover::before {
+            transform: scaleX(1);
+        }
+
+        .nav-link:hover::after {
+            width: 80%;
+        }
+
+        .nav-link:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        /* Floating effect for desktop menu */
+        .desktop-menu {
+            display: flex;
+            padding: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            box-shadow: 0 4px 20px -4px rgba(102, 126, 234, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .desktop-menu:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(102, 126, 234, 0.2);
+            box-shadow: 0 8px 30px -6px rgba(102, 126, 234, 0.25);
+        }
+
+        /* Enhanced Mobile Menu */
         .mobile-menu {
             display: none;
             background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(102, 126, 234, 0.12);
+            box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.15);
             opacity: 0;
             max-height: 0;
             overflow: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
+            transform: translateY(-20px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 0 0 20px 20px;
+            position: relative;
+        }
+
+        .mobile-menu::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+            background-size: 200% 100%;
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
         }
 
         .mobile-menu.active {
             display: block;
             opacity: 1;
-            max-height: 300px;
+            max-height: 400px;
             transform: translateY(0);
         }
 
-        .desktop-menu {
-            display: flex;
-        }
-
-        @media (max-width: 767px) {
-            .desktop-menu {
-                display: none;
-            }
-        }
-
+        /* Enhanced Hamburger */
         .hamburger {
             display: none;
             flex-direction: column;
             cursor: pointer;
-            padding: 8px;
-            background: none;
-            border: none;
-            transition: all 0.3s ease;
+            padding: 12px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hamburger::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.2), transparent);
+            transition: left 0.3s ease;
         }
 
         .hamburger:hover {
-            transform: translateY(-1px);
+            transform: translateY(-2px) scale(1.05);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
+            border-color: rgba(102, 126, 234, 0.3);
+            box-shadow: 0 8px 25px -8px rgba(102, 126, 234, 0.4);
+        }
+
+        .hamburger:hover::before {
+            left: 100%;
+        }
+
+        .hamburger:active {
+            transform: scale(0.95);
         }
 
         .hamburger span {
-            width: 25px;
+            width: 28px;
             height: 3px;
-            background: #374151;
+            background: linear-gradient(90deg, #667eea, #764ba2);
             margin: 3px 0;
-            transition: all 0.3s ease;
-            border-radius: 2px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
         }
 
         .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
+            transform: rotate(45deg) translate(6px, 6px);
+            background: linear-gradient(90deg, #f56565, #ed64a6);
         }
 
         .hamburger.active span:nth-child(2) {
             opacity: 0;
+            transform: scale(0);
         }
 
         .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -6px);
+            transform: rotate(-45deg) translate(8px, -7px);
+            background: linear-gradient(90deg, #f56565, #ed64a6);
         }
 
+        /* Mobile responsive */
         @media (max-width: 767px) {
+            .desktop-menu {
+                display: none;
+            }
+
             .hamburger {
                 display: flex;
             }
 
             .mobile-menu .nav-link {
                 display: block;
-                padding: 12px 0;
+                padding: 16px 20px;
                 font-size: 1.125rem;
-                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+                margin: 0 16px;
+                border-radius: 12px;
+                animation: slideInRight 0.3s ease forwards;
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            .mobile-menu.active .nav-link:nth-child(1) {
+                animation-delay: 0.1s;
+            }
+
+            .mobile-menu.active .nav-link:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+
+            .mobile-menu.active .nav-link:nth-child(3) {
+                animation-delay: 0.3s;
+            }
+
+            .mobile-menu.active .nav-link:nth-child(4) {
+                animation-delay: 0.4s;
             }
 
             .mobile-menu .nav-link:last-child {
                 border-bottom: none;
+                margin-bottom: 16px;
+            }
+
+            @keyframes slideInRight {
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+
+            @keyframes fadeOut {
+                from {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+
+                to {
+                    opacity: 0;
+                    transform: scale(0.8);
+                }
+            }
+        }
+
+        /* Scroll to top button animations */
+        #scrollToTop {
+            animation: bounceIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) translateY(50px);
+            }
+
+            50% {
+                transform: scale(1.05) translateY(-10px);
+            }
+
+            70% {
+                transform: scale(0.9) translateY(0px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0px);
             }
         }
 
@@ -235,8 +934,544 @@
                 display: none !important;
             }
         }
+
+        /* Top AI Tools Carousel - Dark Theme */
+        .top-tools-card {
+            position: relative;
+            flex: 0 0 auto;
+            min-width: 240px;
+            max-width: 260px;
+            width: 250px;
+            padding: 1.2rem 1.3rem 1.4rem;
+            border-radius: 20px;
+            background: #2d1b69;
+            /* solid to prevent banding */
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow:
+                0 6px 18px -6px rgba(45, 27, 105, 0.55),
+                0 4px 10px -4px rgba(106, 76, 147, 0.35);
+            overflow: hidden;
+            transition: transform .35s ease, box-shadow .35s ease;
+        }
+
+        .top-tools-card * {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Removed pseudo-element overlay causing white wash */
+
+        .top-tools-card:hover {
+            transform: translateY(-6px);
+            box-shadow:
+                0 14px 28px -8px rgba(45, 27, 105, 0.65),
+                0 6px 16px -6px rgba(106, 76, 147, 0.5);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 42px;
+            height: 42px;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(26, 11, 46, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow:
+                0 8px 24px -4px rgba(26, 11, 46, 0.6),
+                0 4px 12px -2px rgba(106, 76, 147, 0.4);
+            color: #b794f6;
+            cursor: pointer;
+            transition: all .35s ease;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+
+        .carousel-btn:hover:not([disabled]) {
+            background: linear-gradient(135deg, #6a4c93 0%, #9d7ade 100%);
+            color: #fff;
+            box-shadow:
+                0 12px 32px -6px rgba(26, 11, 46, 0.8),
+                0 6px 16px -4px rgba(157, 122, 222, 0.6);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn[disabled] {
+            opacity: .4;
+            cursor: not-allowed;
+        }
+
+        .carousel-btn.left {
+            left: -4px;
+        }
+
+        .carousel-btn.right {
+            right: -4px;
+        }
+
+        @media (max-width: 640px) {
+            .carousel-btn {
+                width: 36px;
+                height: 36px;
+            }
+
+            .top-tools-card {
+                min-width: 200px;
+                width: 210px;
+                padding: .9rem 1rem 1.1rem;
+            }
+        }
+
+        .logo-pill {
+            width: 54px;
+            height: 54px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #9d7ade 0%, #b794f6 50%, #d6bcfa 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #1a0b2e;
+            box-shadow:
+                0 6px 20px -4px rgba(157, 122, 222, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .top-tools-explore {
+            background: rgba(157, 122, 222, 0.15);
+            border: 1.5px solid rgba(183, 148, 246, 0.8);
+            color: #e9d8fd;
+            font-weight: 600;
+            font-size: .85rem;
+            padding: .6rem 1rem;
+            border-radius: 9999px;
+            transition: all .35s ease;
+            box-shadow:
+                0 4px 12px -3px rgba(157, 122, 222, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .top-tools-explore:hover {
+            background: linear-gradient(135deg, #b794f6 0%, #d6bcfa 100%);
+            color: #1a0b2e;
+            transform: translateY(-2px);
+            box-shadow:
+                0 8px 20px -6px rgba(183, 148, 246, 0.6),
+                0 4px 12px -2px rgba(214, 188, 250, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Gradient mask removed to prevent white overlay band */
+        .carousel-gradient-mask {
+            display: none !important;
+        }
+
+        #topToolsCarousel {
+            scroll-behavior: smooth;
+        }
+
+        #topToolsCarousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* ================= Enhanced Theme Toggle System ================= */
+        .theme-toggle {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, #6a4c93 0%, #9d7ade 100%);
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            box-shadow:
+                0 4px 14px -4px rgba(106, 76, 147, 0.6),
+                0 2px 6px -2px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3), transparent 70%);
+            transform: scale(0);
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-4px) scale(1.1) rotate(5deg);
+            box-shadow:
+                0 15px 35px -8px rgba(106, 76, 147, 0.8),
+                0 6px 20px -4px rgba(0, 0, 0, .6),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .theme-toggle:hover::before {
+            transform: scale(1);
+        }
+
+        .theme-toggle:active {
+            transform: translateY(-2px) scale(0.95) rotate(-2deg);
+        }
+
+        .theme-toggle .sun {
+            opacity: 0;
+            transform: scale(.4) rotate(-90deg);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+        }
+
+        .theme-toggle .moon {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.6));
+        }
+
+        .dark-mode .theme-toggle {
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            color: #241134;
+            border-color: rgba(255, 255, 255, 0.35);
+            box-shadow:
+                0 4px 14px -4px rgba(253, 160, 133, 0.6),
+                0 2px 6px -2px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        .dark-mode .theme-toggle:hover {
+            transform: translateY(-4px) scale(1.1) rotate(-5deg);
+            box-shadow:
+                0 15px 35px -8px rgba(253, 160, 133, 0.8),
+                0 6px 20px -4px rgba(0, 0, 0, .5),
+                inset 0 2px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        .dark-mode .theme-toggle .sun {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+            filter: drop-shadow(0 0 10px rgba(246, 211, 101, 0.8));
+        }
+
+        .dark-mode .theme-toggle .moon {
+            opacity: 0;
+            transform: scale(.3) rotate(90deg);
+            filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
+        }
+
+        /* Theme toggle pulse animation */
+        @keyframes themePulse {
+
+            0%,
+            100% {
+                box-shadow:
+                    0 4px 14px -4px rgba(106, 76, 147, 0.6),
+                    0 2px 6px -2px rgba(0, 0, 0, 0.4),
+                    0 0 0 0 rgba(106, 76, 147, 0.4);
+            }
+
+            50% {
+                box-shadow:
+                    0 4px 14px -4px rgba(106, 76, 147, 0.6),
+                    0 2px 6px -2px rgba(0, 0, 0, 0.4),
+                    0 0 0 8px rgba(106, 76, 147, 0.1);
+            }
+        }
+
+        .theme-toggle:focus {
+            animation: themePulse 1.5s infinite;
+            outline: none;
+        }
+
+        /* Navbar breathing animation when idle */
+        @keyframes navbarBreath {
+
+            0%,
+            100% {
+                box-shadow: 0 2px 16px -4px rgba(0, 0, 0, 0.08);
+            }
+
+            50% {
+                box-shadow: 0 4px 20px -4px rgba(102, 126, 234, 0.12);
+            }
+        }
+
+        .navbar:not(.scrolled):not(:hover) {
+            animation: navbarBreath 4s ease-in-out infinite;
+        }
+
+        html.dark-mode body {
+            background: #0f0d17;
+            color: #f3f4f9;
+        }
+
+        /* Dark mode navbar styles */
+        html.dark-mode .navbar {
+            background: rgba(22, 19, 41, 0.88);
+            border-bottom: 1px solid rgba(157, 122, 222, 0.15);
+            box-shadow: 0 2px 16px -4px rgba(0, 0, 0, 0.3);
+        }
+
+        html.dark-mode .navbar::before {
+            background: linear-gradient(90deg, transparent, rgba(157, 122, 222, 0.1), transparent);
+        }
+
+        html.dark-mode .navbar.scrolled {
+            background: rgba(22, 19, 41, 0.95);
+            border-bottom: 1px solid rgba(157, 122, 222, 0.25);
+            box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.4);
+        }
+
+        html.dark-mode .navbar .flex.items-center a span {
+            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        html.dark-mode .navbar .flex.items-center a:hover span {
+            background: linear-gradient(135deg, #a78bfa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        html.dark-mode .nav-link {
+            color: #e5e7eb;
+        }
+
+        html.dark-mode .nav-link::before {
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.15), rgba(196, 132, 252, 0.15));
+        }
+
+        html.dark-mode .nav-link::after {
+            background: linear-gradient(90deg, #a78bfa, #c084fc);
+        }
+
+        html.dark-mode .nav-link:hover {
+            color: #a78bfa;
+            box-shadow: 0 8px 25px -8px rgba(167, 139, 250, 0.4);
+        }
+
+        html.dark-mode .desktop-menu {
+            background: rgba(22, 19, 41, 0.2);
+            border-color: rgba(157, 122, 222, 0.15);
+            box-shadow: 0 4px 20px -4px rgba(157, 122, 222, 0.2);
+        }
+
+        html.dark-mode .desktop-menu:hover {
+            background: rgba(22, 19, 41, 0.3);
+            border-color: rgba(157, 122, 222, 0.25);
+            box-shadow: 0 8px 30px -6px rgba(157, 122, 222, 0.3);
+        }
+
+        html.dark-mode .mobile-menu {
+            background: rgba(22, 19, 41, 0.95);
+            border-bottom: 1px solid rgba(157, 122, 222, 0.2);
+            box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.4);
+        }
+
+        html.dark-mode .mobile-menu::before {
+            background: linear-gradient(90deg, #a78bfa, #c084fc, #a78bfa);
+        }
+
+        html.dark-mode .hamburger {
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.15), rgba(196, 132, 252, 0.15));
+            border-color: rgba(157, 122, 222, 0.25);
+        }
+
+        html.dark-mode .hamburger:hover {
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.2), rgba(196, 132, 252, 0.2));
+            border-color: rgba(157, 122, 222, 0.4);
+            box-shadow: 0 8px 25px -8px rgba(167, 139, 250, 0.4);
+        }
+
+        html.dark-mode .hamburger span {
+            background: linear-gradient(90deg, #a78bfa, #c084fc);
+            box-shadow: 0 2px 4px rgba(167, 139, 250, 0.3);
+        }
+
+        html.dark-mode .hamburger.active span:nth-child(1),
+        html.dark-mode .hamburger.active span:nth-child(3) {
+            background: linear-gradient(90deg, #f56565, #ed64a6);
+        }
+
+        html.dark-mode .mobile-menu .nav-link {
+            border-bottom: 1px solid rgba(157, 122, 222, 0.1);
+        }
+
+        html.dark-mode .navbar.scrolled {
+            background: rgba(22, 19, 41, 0.95);
+            box-shadow: 0 4px 24px -6px rgba(0, 0, 0, 0.6);
+            border-bottom: 1px solid rgba(157, 122, 222, 0.25);
+        }
+
+        html.dark-mode .nav-link {
+            color: #d7dbef;
+        }
+
+        html.dark-mode .nav-link:hover {
+            color: #b794f6;
+            background: rgba(157, 122, 222, 0.12);
+        }
+
+        html.dark-mode .mobile-menu {
+            background: rgba(22, 19, 41, 0.95);
+            border-bottom: 1px solid rgba(157, 122, 222, 0.15);
+            box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.6);
+        }
+
+        html.dark-mode .hamburger span {
+            background: #e5e7ef;
+        }
+
+        html.dark-mode .gradient-bg {
+            background: radial-gradient(circle at 25% 30%, #3a1e7a 0%, #1a103d 55%, #0f0d17 100%);
+        }
+
+        html.dark-mode section.bg-white {
+            background: #161329 !important;
+        }
+
+        html.dark-mode section.bg-gray-50 {
+            background: #0f0d17 !important;
+        }
+
+        html.dark-mode .bg-white {
+            background: #161329 !important;
+        }
+
+        html.dark-mode .bg-gray-50 {
+            background: #0f0d17 !important;
+        }
+
+        html.dark-mode .text-gray-800 {
+            color: #f5f6fb !important;
+        }
+
+        html.dark-mode .text-gray-700 {
+            color: #e4e7f2 !important;
+        }
+
+        html.dark-mode .text-gray-600 {
+            color: #b4b6c7 !important;
+        }
+
+        html.dark-mode .text-gray-500 {
+            color: #9ca3c9 !important;
+        }
+
+        html.dark-mode .text-gray-400 {
+            color: #7b829d !important;
+        }
+
+        html.dark-mode .section-card {
+            background: #161329;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 6px 18px -6px rgba(0, 0, 0, 0.65), 0 3px 8px -3px rgba(0, 0, 0, 0.5);
+        }
+
+        html.dark-mode .section-card:hover {
+            box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.75), 0 4px 14px -4px rgba(0, 0, 0, 0.55);
+        }
+
+        html.dark-mode .feature-icon {
+            box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.6);
+        }
+
+        html.dark-mode .category-btn {
+            background: #1d1833;
+            color: #e5e7ef;
+            border-color: #2c2742;
+        }
+
+        html.dark-mode .category-btn:hover {
+            background: #241d42;
+        }
+
+        html.dark-mode .category-btn.active {
+            background: linear-gradient(135deg, #6a4c93 0%, #9d7ade 100%);
+            box-shadow: 0 6px 20px -6px rgba(157, 122, 222, 0.6);
+        }
+
+        html.dark-mode input[type="text"],
+        html.dark-mode .search-box {
+            background: #1d1833 !important;
+            color: #f3f4f9;
+            border: 2px solid #2c2742;
+        }
+
+        html.dark-mode input[type="text"]::placeholder {
+            color: #6f7290;
+        }
+
+        html.dark-mode .btn-gradient {
+            filter: brightness(1.05) contrast(1.05);
+        }
+
+        html.dark-mode .btn-gradient:hover {
+            box-shadow: 0 10px 24px -6px rgba(157, 122, 222, 0.7);
+        }
+
+        html.dark-mode footer.bg-gray-800 {
+            background: #0d0b15;
+        }
+
+        html.dark-mode footer .text-gray-400 {
+            color: #6c728d;
+        }
+
+        html.dark-mode footer a.text-gray-400:hover {
+            color: #b794f6;
+        }
+
+        html.dark-mode #paginationControls button {
+            background: #1d1833;
+            color: #d7dbef;
+            border: 1px solid #2c2742;
+        }
+
+        html.dark-mode #paginationControls button.active {
+            background: linear-gradient(135deg, #6a4c93 0%, #9d7ade 100%);
+            color: #fff;
+            border-color: transparent;
+        }
+
+        html.dark-mode #scrollToTop {
+            background: #6a4c93;
+        }
+
+        html.dark-mode #scrollToTop:hover {
+            background: #9d7ade;
+            color: #1a0b2e;
+        }
+
+        html.dark-mode .gradient-bg .bg-white {
+            background: #f5f6fb !important;
+        }
     </style>
 </head>
+<script>(function () { try { const s = localStorage.getItem('theme'); if (s === 'dark' || (!s && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark-mode'); } } catch (e) { } })();</script>
 
 <body class="bg-gray-50 font-sans">
     <!-- Navigation Bar -->
@@ -246,17 +1481,19 @@
                 <!-- Logo -->
                 <div class="flex items-center">
                     <a href="/" class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
-                        <img src="logo.png" alt="AllAITool.tech Logo" class="h-10 w-10">
-                        <span class="text-xl font-bold text-gray-800">AllAITool.tech</span>
+                        <img src="logo.png" alt="AI Tool Finder Logo" class="h-10 w-10">
+                        <span class="text-xl font-bold text-gray-800">AI Tool Finder</span>
                     </a>
                 </div>
 
                 <!-- Desktop Navigation -->
-                <div class="desktop-menu items-center space-x-8">
+                <div class="desktop-menu items-center space-x-6">
                     <a href="/" class="nav-link">Home</a>
                     <a href="/blogs/" class="nav-link">Blogs</a>
                     <a href="#about" class="nav-link">About</a>
                     <a href="#contact" class="nav-link">Contact/Suggestions</a>
+                    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode"
+                        aria-pressed="false"><span class="sun">☀️</span><span class="moon">🌙</span></button>
                 </div>
 
                 <!-- Mobile Hamburger -->
@@ -276,6 +1513,8 @@
                     <a href="/blogs/" class="nav-link">Blogs</a>
                     <a href="#about" class="nav-link">About</a>
                     <a href="#contact" class="nav-link">Contact/Suggestions</a>
+                    <button id="themeToggleMobile" class="theme-toggle mt-4 self-start" aria-label="Toggle dark mode"
+                        aria-pressed="false"><span class="sun">☀️</span><span class="moon">🌙</span></button>
                 </div>
             </div>
         </div>
@@ -284,19 +1523,20 @@
     <!-- Hero Section -->
     <section class="gradient-bg text-white py-20 px-4 pt-28">
         <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight animate-fadeInUp">
                 Find the Best AI Tools for Your Needs
             </h1>
-            <p class="text-xl md:text-2xl mb-10 opacity-90 max-w-2xl mx-auto">
+            <p class="text-xl md:text-2xl mb-10 opacity-90 max-w-2xl mx-auto animate-fadeInUp"
+                style="animation-delay: 0.2s;">
                 From creators to coders, discover the best AI tools in seconds.
             </p>
-            <div class="max-w-2xl mx-auto">
+            <div class="max-w-2xl mx-auto animate-fadeInUp" style="animation-delay: 0.4s;">
                 <div class="relative">
                     <input type="text" placeholder="Search for AI tools..."
-                        class="w-full px-6 py-4 text-lg text-gray-800 rounded-full border-0 shadow-lg focus:outline-none focus:ring-4 focus:ring-white/30"
+                        class="w-full px-6 py-4 text-lg text-gray-800 rounded-full border-0 shadow-lg focus:outline-none focus:ring-4 focus:ring-white/30 transition-all duration-300 hover:shadow-2xl"
                         id="searchInput">
                     <button
-                        class="absolute right-2 top-2 bg-gray-800 text-white px-6 py-2 rounded-full hover:bg-gray-700 transition-colors">
+                        class="absolute right-2 top-2 bg-gray-800 text-white px-6 py-2 rounded-full hover:bg-gray-700 transition-all duration-300 hover:scale-105">
                         Search
                     </button>
                 </div>
@@ -304,32 +1544,59 @@
         </div>
     </section>
 
+    <!-- Top AI Tools Carousel Section -->
+    <section id="top-tools" class="bg-white py-12 px-4 border-b border-gray-100 animate-fadeInUp"
+        style="animation-delay: 0.6s;">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-6 text-center">
+                <h2 class="text-3xl font-bold text-gray-800 tracking-tight animate-scaleIn"
+                    style="animation-delay: 0.8s;">Top AI Tools</h2>
+                <p class="text-gray-500 mt-2 text-sm max-w-xl mx-auto animate-fadeInUp" style="animation-delay: 1s;">
+                    Hand‑picked essentials everyone is exploring
+                    right now</p>
+                <div class="flex items-center gap-2 justify-center text-xs text-gray-400 mt-3 animate-fadeInUp"
+                    style="animation-delay: 1.2s;">
+                    <span
+                        class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 animate-pulse"></span>
+                    Auto scrolling • Hover to pause
+                </div>
+            </div>
+            <div class="relative animate-fadeInLeft" style="animation-delay: 1.4s;">
+                <button class="carousel-btn left" aria-label="Scroll left" id="topToolsPrev">&#10094;</button>
+                <div id="topToolsCarousel" class="overflow-hidden relative">
+                    <div id="topToolsTrack" class="flex gap-6 will-change-transform py-2"></div>
+                </div>
+                <button class="carousel-btn right" aria-label="Scroll right" id="topToolsNext">&#10095;</button>
+            </div>
+        </div>
+    </section>
+
     <!-- Category Filter Buttons -->
     <section class="py-12 px-4 bg-white">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Browse by Category</h2>
-            <div class="flex flex-wrap justify-center gap-4 md:gap-6" id="categoryButtons">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800 animate-on-scroll">Browse by Category</h2>
+            <div class="flex flex-wrap justify-center gap-4 md:gap-6 animate-on-scroll" id="categoryButtons">
                 <button
                     class="category-btn active px-6 py-3 rounded-full font-semibold shadow-md bg-white text-gray-700 border-2 border-gray-200"
-                    data-category="all">All Tools</button>
+                    data-category="all" onclick="addPulseAnimation(this)">All Tools</button>
                 <button
                     class="category-btn px-6 py-3 rounded-full font-semibold shadow-md bg-white text-gray-700 border-2 border-gray-200"
-                    data-category="ai-companion">AI Companion</button>
+                    data-category="ai-companion" onclick="addPulseAnimation(this)">AI Companion</button>
                 <button
                     class="category-btn px-6 py-3 rounded-full font-semibold shadow-md bg-white text-gray-700 border-2 border-gray-200"
-                    data-category="content-writing">Content Writing</button>
+                    data-category="content-writing" onclick="addPulseAnimation(this)">Content Writing</button>
                 <button
                     class="category-btn px-6 py-3 rounded-full font-semibold shadow-md bg-white text-gray-700 border-2 border-gray-200"
-                    data-category="coding">Coding</button>
+                    data-category="coding" onclick="addPulseAnimation(this)">Coding</button>
                 <button
                     class="category-btn px-6 py-3 rounded-full font-semibold shadow-md bg-white text-gray-700 border-2 border-gray-200"
-                    data-category="video-editing">Video Editing</button>
+                    data-category="video-editing" onclick="addPulseAnimation(this)">Video Editing</button>
                 <button
                     class="category-btn px-6 py-3 rounded-full font-semibold shadow-md bg-white text-gray-700 border-2 border-gray-200"
-                    data-category="resume">Resume</button>
+                    data-category="resume" onclick="addPulseAnimation(this)">Resume</button>
                 <button
                     class="category-btn px-6 py-3 rounded-full font-semibold shadow-md bg-white text-gray-700 border-2 border-gray-200"
-                    data-category="youtube">YouTube</button>
+                    data-category="youtube" onclick="addPulseAnimation(this)">YouTube</button>
             </div>
         </div>
     </section>
@@ -337,33 +1604,27 @@
     <!-- AI Tool Cards Grid -->
     <section class="py-16 px-4 bg-gray-50">
         <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="toolsGrid">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-on-scroll" id="toolsGrid">
                 <!-- Dynamically loaded cards will go here -->
             </div>
-
-            <!-- Show More Button (Mobile Only) -->
-            <div id="showMoreContainer" class="text-center mt-8" style="display: none;">
-                <button id="showMoreBtn"
-                    class="btn-gradient text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all">
-                    📱 Show More Tools
-                </button>
-            </div>
+            <!-- Pagination Controls -->
+            <div id="paginationControls" class="mt-10 flex flex-wrap justify-center gap-2 animate-on-scroll"></div>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="py-20 px-4 bg-white">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-6">About AI Tool Finder</h2>
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-6 animate-float">About AI Tool Finder</h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
                     Your ultimate destination for discovering cutting-edge AI tools
                 </p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-                <div class="section-card p-8">
-                    <div class="feature-icon">
+                <div class="section-card p-8 animate-on-scroll">
+                    <div class="feature-icon animate-float">
                         <span class="text-2xl text-white">🎯</span>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Our Mission</h3>
@@ -375,8 +1636,8 @@
                     </p>
                 </div>
 
-                <div class="section-card p-8">
-                    <div class="feature-icon">
+                <div class="section-card p-8 animate-on-scroll" style="animation-delay: 0.2s;">
+                    <div class="feature-icon animate-float" style="animation-delay: 1s;">
                         <span class="text-2xl text-white">👨‍💻</span>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Created by Mithlesh Kumar</h3>
@@ -389,16 +1650,16 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="text-center">
-                    <div class="feature-icon">
+                <div class="text-center animate-on-scroll">
+                    <div class="feature-icon animate-float">
                         <span class="text-2xl text-white">🔍</span>
                     </div>
                     <h4 class="text-xl font-semibold text-gray-800 mb-3">Curated Selection</h4>
                     <p class="text-gray-600">Hand-picked AI tools across multiple categories for quality assurance</p>
                 </div>
 
-                <div class="text-center">
-                    <div class="feature-icon">
+                <div class="text-center animate-on-scroll" style="animation-delay: 0.2s;">
+                    <div class="feature-icon animate-float" style="animation-delay: 0.5s;">
                         <span class="text-2xl text-white">⚡</span>
                     </div>
                     <h4 class="text-xl font-semibold text-gray-800 mb-3">Fast Discovery</h4>
@@ -406,8 +1667,8 @@
                     </p>
                 </div>
 
-                <div class="text-center">
-                    <div class="feature-icon">
+                <div class="text-center animate-on-scroll" style="animation-delay: 0.4s;">
+                    <div class="feature-icon animate-float" style="animation-delay: 1s;">
                         <span class="text-2xl text-white">🆓</span>
                     </div>
                     <h4 class="text-xl font-semibold text-gray-800 mb-3">Always Free</h4>
@@ -566,22 +1827,103 @@
             });
         });
 
-        // Add scroll-to-top functionality
-        window.addEventListener('scroll', function () {
+        // Enhanced scroll functionality with interactive navbar effects
+        let lastScrollY = window.pageYOffset;
+        let ticking = false;
+
+        function updateNavbar() {
+            const navbar = document.querySelector('.navbar');
             const scrollButton = document.getElementById('scrollToTop');
-            if (window.pageYOffset > 300) {
+            const currentScrollY = window.pageYOffset;
+
+            // Enhanced navbar scroll effect
+            if (currentScrollY > 20) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Hide/show navbar on scroll direction
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                // Scrolling down - hide navbar
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                // Scrolling up - show navbar
+                navbar.style.transform = 'translateY(0)';
+            }
+
+            lastScrollY = currentScrollY;
+
+            // Enhanced scroll to top button
+            if (currentScrollY > 300) {
                 if (!scrollButton) {
                     const button = document.createElement('button');
                     button.id = 'scrollToTop';
                     button.innerHTML = '↑';
-                    button.className = 'fixed bottom-6 right-6 bg-purple-600 text-white w-12 h-12 rounded-full shadow-lg hover:bg-purple-700 transition-all z-50';
-                    button.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+                    button.className = 'fixed bottom-6 right-6 bg-gradient-to-r from-purple-600 to-blue-600 text-white w-14 h-14 rounded-full shadow-xl hover:shadow-2xl hover:scale-110 transition-all duration-300 z-50 animate-fadeInUp';
+                    button.style.animation = 'fadeInUp 0.5s ease forwards';
+                    button.onclick = function () {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    };
                     document.body.appendChild(button);
                 }
-            } else if (scrollButton) {
-                scrollButton.remove();
+            } else {
+                if (scrollButton) {
+                    scrollButton.style.animation = 'fadeOut 0.3s ease forwards';
+                    setTimeout(() => {
+                        if (scrollButton && scrollButton.parentNode) {
+                            scrollButton.parentNode.removeChild(scrollButton);
+                        }
+                    }, 300);
+                }
             }
-        });
+
+            ticking = false;
+        }
+
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateNavbar);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestTick);
+
+        // Animation on scroll functionality
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            const windowHeight = window.innerHeight;
+
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('animate-fadeInUp');
+                }
+            });
+        }
+
+        // Add stagger animation to grid items
+        function animateGridItems() {
+            const gridItems = document.querySelectorAll('#toolsGrid .card-hover');
+            gridItems.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.1}s`;
+                item.classList.add('animate-fadeInUp');
+            });
+        }
+
+        // Add pulse animation to category buttons on click
+        function addPulseAnimation(button) {
+            button.classList.add('animate-pulse');
+            setTimeout(() => {
+                button.classList.remove('animate-pulse');
+            }, 600);
+        }
 
         // Mobile menu toggle function
         function toggleMobileMenu() {
@@ -655,6 +1997,186 @@
                 mobileMenu.style.display = 'none';
             }
         });
+
+        // ================= Top AI Tools Carousel =================
+        const TOP_TOOLS = [
+            {
+                name: 'ChatGPT',
+                tagline: 'Advanced conversational AI by OpenAI.',
+                link: 'https://chat.openai.com/',
+                logo: 'C'
+            },
+            {
+                name: 'Midjourney',
+                tagline: 'Create stunning images with AI prompts.',
+                link: 'https://www.midjourney.com/',
+                logo: 'M'
+            },
+            {
+                name: 'Runway',
+                tagline: 'AI video and creative media suite.',
+                link: 'https://runwayml.com/',
+                logo: 'R'
+            },
+            {
+                name: 'Jasper',
+                tagline: 'AI writing assistant for marketers.',
+                link: 'https://www.jasper.ai/',
+                logo: 'J'
+            },
+            {
+                name: 'Claude',
+                tagline: 'Helpful and safe AI assistant.',
+                link: 'https://claude.ai/',
+                logo: 'C'
+            },
+            {
+                name: 'Perplexity',
+                tagline: 'AI-powered answer engine with citations.',
+                link: 'https://www.perplexity.ai/',
+                logo: 'P'
+            },
+            {
+                name: 'Leonardo AI',
+                tagline: 'Generate production-quality game assets.',
+                link: 'https://leonardo.ai/',
+                logo: 'L'
+            },
+            {
+                name: 'Notion AI',
+                tagline: 'Smart writing & summarization inside Notion.',
+                link: 'https://www.notion.so/product/ai',
+                logo: 'N'
+            },
+            {
+                name: 'Gemini',
+                tagline: 'Google’s multimodal AI model suite.',
+                link: 'https://ai.google/discover/gemini/',
+                logo: 'G'
+            },
+            {
+                name: 'Synthesia',
+                tagline: 'Create AI videos with virtual avatars.',
+                link: 'https://www.synthesia.io/',
+                logo: 'S'
+            }
+        ];
+
+
+
+        function buildTopCard(tool) {
+            const placeholderLetter = tool.name.charAt(0).toUpperCase();
+            return `<div class="top-tools-card" data-tool="${tool.name}">
+                <div class="flex items-start gap-3 mb-3">
+                    <div class="logo-pill">${tool.logo || placeholderLetter}</div>
+                    <div class="flex-1">
+                        <h3 class="font-semibold leading-tight text-base text-white">${tool.name}</h3>
+                        <p class="text-xs mt-1 line-clamp-2 text-gray-300">${tool.tagline}</p>
+                    </div>
+                </div>
+                <a href="${tool.link}" target="_blank" rel="noopener" class="inline-block top-tools-explore">Explore →</a>
+            </div>`;
+        }
+
+        const carouselTrack = document.getElementById('topToolsTrack');
+        const carousel = document.getElementById('topToolsCarousel');
+        const btnPrev = document.getElementById('topToolsPrev');
+        const btnNext = document.getElementById('topToolsNext');
+        let autoScrollId = null;
+        let isHovering = false;
+
+        function initTopToolsCarousel() {
+            if (!carouselTrack) return;
+            // Populate two copies for seamless looping
+            const cardsHTML = TOP_TOOLS.map(buildTopCard).join('');
+            carouselTrack.innerHTML = cardsHTML + cardsHTML; // duplicate
+
+            // Set track width implicitly via flex; measure total scrollable width
+            startAutoScroll();
+
+            carousel.addEventListener('mouseenter', () => { isHovering = true; });
+            carousel.addEventListener('mouseleave', () => { isHovering = false; });
+
+            btnPrev.addEventListener('click', () => manualScroll(-1));
+            btnNext.addEventListener('click', () => manualScroll(1));
+
+            carousel.addEventListener('scroll', handleLooping);
+            window.addEventListener('resize', () => {
+                // Snap to start to avoid misalignment after drastic width changes
+                handleLooping();
+            });
+        }
+
+        function handleLooping() {
+            const half = carouselTrack.scrollWidth / 2;
+            if (carousel.scrollLeft >= half) {
+                carousel.scrollLeft = carousel.scrollLeft - half;
+            } else if (carousel.scrollLeft < 0) {
+                carousel.scrollLeft = carousel.scrollLeft + half;
+            }
+        }
+
+        function manualScroll(direction) {
+            const card = carouselTrack.querySelector('.top-tools-card');
+            if (!card) return;
+            const cardWidth = card.getBoundingClientRect().width + 24; // include gap
+            carousel.scrollBy({ left: direction * cardWidth * 2, behavior: 'smooth' });
+        }
+
+        function startAutoScroll() {
+            stopAutoScroll();
+            autoScrollId = setInterval(() => {
+                if (isHovering) return;
+                carousel.scrollLeft += 1.2; // speed
+                handleLooping();
+            }, 16); // ~60fps
+        }
+        function stopAutoScroll() { if (autoScrollId) clearInterval(autoScrollId); }
+
+        // Initialize after DOM ready (index.html already parsed when script runs at end of body)
+        initTopToolsCarousel();
+
+        // Initialize scroll animations
+        animateOnScroll();
+
+        // Add intersection observer for better performance
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeInUp');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animate-on-scroll class
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add loading animation to grid when items are loaded
+        const gridObserver = new MutationObserver(() => {
+            setTimeout(animateGridItems, 100);
+        });
+
+        const toolsGrid = document.getElementById('toolsGrid');
+        if (toolsGrid) {
+            gridObserver.observe(toolsGrid, { childList: true });
+        }
+    </script>
+
+    <script>
+        // Theme toggle logic
+        function applyTheme(theme) {
+            const root = document.documentElement; const dark = theme === 'dark'; root.classList.toggle('dark-mode', dark); const pressed = dark ? 'true' : 'false'; document.querySelectorAll('#themeToggle,#themeToggleMobile').forEach(b => { if (b) { b.setAttribute('aria-pressed', pressed); } });
+        }
+        function toggleTheme() { const dark = document.documentElement.classList.contains('dark-mode'); const next = dark ? 'light' : 'dark'; try { localStorage.setItem('theme', next); } catch (e) { } applyTheme(next); }
+        ['themeToggle', 'themeToggleMobile'].forEach(id => { const el = document.getElementById(id); if (el) { el.addEventListener('click', toggleTheme); } });
+        applyTheme(document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light');
     </script>
 
     <script type="module" src="app.js"></script>

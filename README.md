@@ -44,6 +44,8 @@ This project is built with **HTML, CSS, JavaScript**, and **Firebase**.
    git clone https://github.com/your-username/allaitool.tech.git
    cd allaitool.tech
 
-## 📜 License
+---
+
+### 📜 License
 
 This project is licensed under the MIT License – feel free to use, share, and improve it.

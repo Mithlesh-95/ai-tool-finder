@@ -1,4 +1,4 @@
-# AllAITool.tech (AI Tool Finder)
+# AI Tool Finder
 
 Discover the best AI tools for your needs in seconds.  
 AllAITool.tech is a free, curated AI tools directory designed to empower creators, developers, students, and professionals.
@@ -43,3 +43,7 @@ This project is built with **HTML, CSS, JavaScript**, and **Firebase**.
    ```bash
    git clone https://github.com/your-username/allaitool.tech.git
    cd allaitool.tech
+
+## 📜 License
+
+This project is licensed under the MIT License – feel free to use, share, and improve it.

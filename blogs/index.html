@@ -6,12 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- 🏷️ Title -->
-    <title>AllAITool.tech - AI Tools Blog</title>
+    <title>AI Tools Blog 2025: 15-Week Mastery Series | Expert Reviews & Tutorials</title>
 
     <!-- 🔍 SEO Meta -->
     <meta name="description"
-        content="Discover the latest AI tools, tutorials, and insights. Stay updated with the best AI technology for your needs." />
-    <meta name="keywords" content="AI tools blog, artificial intelligence, AI tutorials, tech blog, AI insights" />
+        content="Weekly AI tools deep-dive guides covering writing, coding, video generation, productivity, and more. 15-week comprehensive series starting October 2025. Expert reviews, tutorials, and comparisons of the best AI tools for every use case." />
+    <meta name="keywords"
+        content="AI tools blog 2025, AI writing tools, AI coding assistants, AI video generators, artificial intelligence tutorials, best AI tools, AI productivity tools, AI marketing tools, free AI tools, AI tool reviews" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AI Tools Blog 2025: 15-Week Mastery Series | Expert Reviews & Tutorials">
+    <meta property="og:description"
+        content="Weekly AI tools deep-dive guides covering writing, coding, video generation, productivity, and more. 15-week comprehensive series starting October 2025.">
+    <meta property="og:url" content="https://allaitool.tech/blogs/">
+    <meta property="og:image" content="https://allaitool.tech/blog-og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="AI Tools Blog 2025: 15-Week Mastery Series">
+    <meta property="twitter:description"
+        content="Weekly AI tools deep-dive guides covering writing, coding, video generation, productivity, and more. Expert reviews and tutorials.">
+    <meta property="twitter:image" content="https://allaitool.tech/blog-og-image.jpg">
 
     <!-- 🌐 Favicon -->
 
@@ -37,8 +53,138 @@
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <style>
+        /* Blog-specific styles */
+        .blog-card {
+            transition: all 0.3s ease-out;
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-filter {
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+            min-width: 120px;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-filter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .category-filter:hover::before {
+            left: 100%;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInFromBottom {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .animate-slide-in {
+            animation: slideInFromBottom 0.6s ease-out;
+        }
+
+        .animate-fade-in-scale {
+            animation: fadeInScale 0.4s ease-out;
+        }
+
+        /* Search input enhancement */
+        .search-box {
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus {
+            box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.1);
+            border-color: #9333ea;
+        }
+
+        /* Progress bar animation */
+        .progress-bar {
+            transition: width 1s ease-out;
+            background: linear-gradient(45deg, #10b981, #3b82f6, #8b5cf6);
+            background-size: 200% 200%;
+            animation: gradient-shift 3s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Dark mode enhancements */
+        .dark-mode .category-filter {
+            border-color: rgba(75, 85, 99, 0.3);
+        }
+
+        .dark-mode .category-filter:not(.active) {
+            background: rgba(31, 41, 55, 0.8);
+            color: #e5e7eb;
+        }
+
+        .dark-mode .category-filter:not(.active):hover {
+            background: rgba(55, 65, 81, 0.9);
+            border-color: rgba(147, 51, 234, 0.5);
+        }
+    </style>
 
     <style>
         /* Reusing styles from main site */
@@ -976,31 +1122,101 @@
         <section class="py-12 px-4 bg-gray-50">
             <div class="max-w-6xl mx-auto">
                 <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Browse by Category</h2>
-                <div class="flex flex-wrap justify-center gap-4 md:gap-6">
-                    <button
-                        class="category-tag bg-white text-gray-700 border-2 border-gray-200 hover:bg-purple-100 transition-colors">
-                        All Posts
+                <div class="flex flex-wrap justify-center gap-3 md:gap-4">
+                    <button onclick="filterPosts('all')"
+                        class="category-filter active bg-gradient-to-r from-purple-600 to-blue-600 text-white border-2 border-transparent hover:from-purple-700 hover:to-blue-700 transition-all duration-300 ease-out transform hover:scale-105 shadow-lg hover:shadow-xl"
+                        data-category="all">
+                        <span class="flex items-center space-x-2">
+                            <span class="text-lg">📚</span>
+                            <span class="font-semibold">All Posts (15)</span>
+                        </span>
                     </button>
-                    <button
-                        class="category-tag bg-white text-gray-700 border-2 border-gray-200 hover:bg-purple-100 transition-colors">
-                        AI Image Tools
+                    <button onclick="filterPosts('ai-writing')"
+                        class="category-filter bg-white text-gray-700 border-2 border-gray-200 hover:border-purple-400 hover:bg-purple-50 hover:text-purple-700 transition-all duration-300 ease-out transform hover:scale-105 shadow-md hover:shadow-lg"
+                        data-category="ai-writing">
+                        <span class="flex items-center space-x-2">
+                            <span class="text-lg">✍️</span>
+                            <span class="font-medium">AI Writing</span>
+                        </span>
                     </button>
-                    <button
-                        class="category-tag bg-white text-gray-700 border-2 border-gray-200 hover:bg-purple-100 transition-colors">
-                        AI Writing
+                    <button onclick="filterPosts('coding-ai')"
+                        class="category-filter bg-white text-gray-700 border-2 border-gray-200 hover:border-yellow-400 hover:bg-yellow-50 hover:text-yellow-700 transition-all duration-300 ease-out transform hover:scale-105 shadow-md hover:shadow-lg"
+                        data-category="coding-ai">
+                        <span class="flex items-center space-x-2">
+                            <span class="text-lg">💻</span>
+                            <span class="font-medium">Coding AI</span>
+                        </span>
                     </button>
-                    <button
-                        class="category-tag bg-white text-gray-700 border-2 border-gray-200 hover:bg-purple-100 transition-colors">
-                        Coding AI
+                    <button onclick="filterPosts('video-ai')"
+                        class="category-filter bg-white text-gray-700 border-2 border-gray-200 hover:border-green-400 hover:bg-green-50 hover:text-green-700 transition-all duration-300 ease-out transform hover:scale-105 shadow-md hover:shadow-lg"
+                        data-category="video-ai">
+                        <span class="flex items-center space-x-2">
+                            <span class="text-lg">🎬</span>
+                            <span class="font-medium">Video AI</span>
+                        </span>
                     </button>
-                    <button
-                        class="category-tag bg-white text-gray-700 border-2 border-gray-200 hover:bg-purple-100 transition-colors">
-                        Video AI
+                    <button onclick="filterPosts('productivity')"
+                        class="category-filter bg-white text-gray-700 border-2 border-gray-200 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-700 transition-all duration-300 ease-out transform hover:scale-105 shadow-md hover:shadow-lg"
+                        data-category="productivity">
+                        <span class="flex items-center space-x-2">
+                            <span class="text-lg">⚡</span>
+                            <span class="font-medium">Productivity</span>
+                        </span>
                     </button>
-                    <button
-                        class="category-tag bg-white text-gray-700 border-2 border-gray-200 hover:bg-purple-100 transition-colors">
-                        Tutorials
+                    <button onclick="filterPosts('tutorials')"
+                        class="category-filter bg-white text-gray-700 border-2 border-gray-200 hover:border-pink-400 hover:bg-pink-50 hover:text-pink-700 transition-all duration-300 ease-out transform hover:scale-105 shadow-md hover:shadow-lg"
+                        data-category="tutorials">
+                        <span class="flex items-center space-x-2">
+                            <span class="text-lg">🎨</span>
+                            <span class="font-medium">Tutorials</span>
+                        </span>
                     </button>
+                    <button onclick="filterPosts('business-ai')"
+                        class="category-filter bg-white text-gray-700 border-2 border-gray-200 hover:border-emerald-400 hover:bg-emerald-50 hover:text-emerald-700 transition-all duration-300 ease-out transform hover:scale-105 shadow-md hover:shadow-lg"
+                        data-category="business-ai">
+                        <span class="flex items-center space-x-2">
+                            <span class="text-lg">📊</span>
+                            <span class="font-medium">Business AI</span>
+                        </span>
+                    </button>
+                    <button onclick="filterPosts('marketing-ai')"
+                        class="category-filter bg-white text-gray-700 border-2 border-gray-200 hover:border-rose-400 hover:bg-rose-50 hover:text-rose-700 transition-all duration-300 ease-out transform hover:scale-105 shadow-md hover:shadow-lg"
+                        data-category="marketing-ai">
+                        <span class="flex items-center space-x-2">
+                            <span class="text-lg">📈</span>
+                            <span class="font-medium">Marketing</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Content Strategy Banner -->
+        <section class="py-12 px-4 bg-gradient-to-r from-purple-900 via-blue-900 to-indigo-900 text-white">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="mb-6">
+                    <span class="bg-yellow-400 text-yellow-900 text-sm font-bold px-3 py-1 rounded-full">🚀 NEW</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    15-Week AI Tools Mastery Series
+                </h2>
+                <p class="text-xl text-purple-100 mb-8 max-w-3xl mx-auto">
+                    Every week from October 2025 to January 2026, we're publishing comprehensive guides covering the
+                    most powerful AI tools across all categories. Don't miss any updates!
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3">
+                        <span class="text-2xl">📊</span>
+                        <span class="font-semibold">15 Deep-Dive Guides</span>
+                    </div>
+                    <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3">
+                        <span class="text-2xl">⏰</span>
+                        <span class="font-semibold">Weekly Publishing</span>
+                    </div>
+                    <div class="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3">
+                        <span class="text-2xl">🎯</span>
+                        <span class="font-semibold">SEO Optimized</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1013,81 +1229,131 @@
                     <p class="text-gray-600">Stay up-to-date with the newest AI tools and insights</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Blog Post 1 -->
-                    <article class="blog-card section-card overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="blogGrid">
+                    <!-- Week 1: October 2025 -->
+                    <article class="blog-card section-card overflow-hidden" data-category="ai-writing"
+                        data-date="2025-10-01">
                         <div
                             class="h-48 bg-gradient-to-br from-purple-400 to-blue-500 flex items-center justify-center">
-                            <span class="text-white text-6xl">🤖</span>
+                            <span class="text-white text-6xl">✍️</span>
                         </div>
                         <div class="p-6">
                             <div class="flex items-center space-x-2 mb-3">
                                 <span class="category-tag">AI Writing</span>
-                                <span class="blog-meta">Coming Soon</span>
+                                <span class="blog-meta">October 1, 2025</span>
+                                <span
+                                    class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">SCHEDULED</span>
                             </div>
                             <h3
                                 class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
-                                Best AI Writing Tools 2025
+                                Best AI Writing Tools 2025: Complete Guide for Content Creators
                             </h3>
                             <p class="blog-excerpt mb-4">
-                                Comprehensive guide to the most powerful AI writing assistants that can help you create
-                                better content faster...
+                                Discover the most powerful AI writing assistants that help bloggers, marketers, and
+                                content creators produce high-quality content 10x faster. Compare features, pricing, and
+                                real-world performance.
                             </p>
                             <div class="blog-meta">
-                                <span>6 min read</span>
+                                <span>12 min read</span>
+                                <span class="mx-2">•</span>
+                                <span>AI Writing, Content Creation</span>
                             </div>
                         </div>
                     </article>
 
-                    <!-- Blog Post 2 -->
-                    <article class="blog-card section-card overflow-hidden">
-                        <div class="h-48 bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center">
-                            <span class="text-white text-6xl">🎥</span>
-                        </div>
-                        <div class="p-6">
-                            <div class="flex items-center space-x-2 mb-3">
-                                <span class="category-tag">Video AI</span>
-                                <span class="blog-meta">Coming Soon</span>
-                            </div>
-                            <h3
-                                class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
-                                Top AI Video Generators 2025
-                            </h3>
-                            <p class="blog-excerpt mb-4">
-                                Create stunning videos with AI. Compare the best AI video generation tools available for
-                                free...
-                            </p>
-                            <div class="blog-meta">
-                                <span>7 min read</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Blog Post 3 -->
-                    <article class="blog-card section-card overflow-hidden">
+                    <!-- Week 2: October 2025 -->
+                    <article class="blog-card section-card overflow-hidden" data-category="coding-ai"
+                        data-date="2025-10-08">
                         <div class="h-48 bg-gradient-to-br from-yellow-400 to-red-500 flex items-center justify-center">
                             <span class="text-white text-6xl">💻</span>
                         </div>
                         <div class="p-6">
                             <div class="flex items-center space-x-2 mb-3">
                                 <span class="category-tag">Coding AI</span>
-                                <span class="blog-meta">Coming Soon</span>
+                                <span class="blog-meta">October 8, 2025</span>
+                                <span
+                                    class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">SCHEDULED</span>
                             </div>
                             <h3
                                 class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
-                                Best AI Coding Assistants 2025
+                                AI Coding Assistants Showdown: GitHub Copilot vs Cursor vs Claude
                             </h3>
                             <p class="blog-excerpt mb-4">
-                                Boost your programming productivity with these top AI coding tools and assistants...
+                                Compare the top AI coding tools transforming software development. Detailed analysis of
+                                features, accuracy, and which tool wins for different programming languages and project
+                                types.
                             </p>
                             <div class="blog-meta">
-                                <span>9 min read</span>
+                                <span>15 min read</span>
+                                <span class="mx-2">•</span>
+                                <span>Programming, Developer Tools</span>
                             </div>
                         </div>
                     </article>
 
-                    <!-- Blog Post 4 -->
-                    <article class="blog-card section-card overflow-hidden">
+                    <!-- Week 3: October 2025 -->
+                    <article class="blog-card section-card overflow-hidden" data-category="video-ai"
+                        data-date="2025-10-15">
+                        <div class="h-48 bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center">
+                            <span class="text-white text-6xl">🎬</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="category-tag">Video AI</span>
+                                <span class="blog-meta">October 15, 2025</span>
+                                <span
+                                    class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">SCHEDULED</span>
+                            </div>
+                            <h3
+                                class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
+                                Free AI Video Generators: Runway, Pika Labs, and More Compared
+                            </h3>
+                            <p class="blog-excerpt mb-4">
+                                Create stunning videos without expensive software. Test results from top free AI video
+                                generators including quality comparisons, feature breakdowns, and step-by-step
+                                tutorials.
+                            </p>
+                            <div class="blog-meta">
+                                <span>10 min read</span>
+                                <span class="mx-2">•</span>
+                                <span>Video Creation, AI Tools</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Week 4: October 2025 -->
+                    <article class="blog-card section-card overflow-hidden" data-category="productivity"
+                        data-date="2025-10-22">
+                        <div
+                            class="h-48 bg-gradient-to-br from-indigo-400 to-cyan-500 flex items-center justify-center">
+                            <span class="text-white text-6xl">⚡</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="category-tag">Productivity</span>
+                                <span class="blog-meta">October 22, 2025</span>
+                                <span
+                                    class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">SCHEDULED</span>
+                            </div>
+                            <h3
+                                class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
+                                AI Productivity Stack: 15 Tools That Will 10x Your Output in 2025
+                            </h3>
+                            <p class="blog-excerpt mb-4">
+                                Build the ultimate AI-powered productivity system. Discover how successful entrepreneurs
+                                and professionals use AI to automate workflows and boost efficiency by 1000%.
+                            </p>
+                            <div class="blog-meta">
+                                <span>18 min read</span>
+                                <span class="mx-2">•</span>
+                                <span>Productivity, Workflow</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Week 5: October 2025 -->
+                    <article class="blog-card section-card overflow-hidden" data-category="tutorials"
+                        data-date="2025-10-29">
                         <div
                             class="h-48 bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center">
                             <span class="text-white text-6xl">🎨</span>
@@ -1095,74 +1361,545 @@
                         <div class="p-6">
                             <div class="flex items-center space-x-2 mb-3">
                                 <span class="category-tag">Tutorials</span>
-                                <span class="blog-meta">Coming Soon</span>
+                                <span class="blog-meta">October 29, 2025</span>
+                                <span
+                                    class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">SCHEDULED</span>
                             </div>
                             <h3
                                 class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
-                                How to Create Professional AI Art
+                                AI Art Mastery: From Prompt Engineering to Professional Results
                             </h3>
                             <p class="blog-excerpt mb-4">
-                                Step-by-step guide to creating professional-quality artwork using AI image generators...
+                                Master the art of AI image generation with advanced prompting techniques, style control,
+                                and post-processing tips. Turn your creative ideas into stunning professional artwork.
                             </p>
                             <div class="blog-meta">
-                                <span>12 min read</span>
+                                <span>14 min read</span>
+                                <span class="mx-2">•</span>
+                                <span>Creative, Tutorial</span>
                             </div>
                         </div>
                     </article>
 
-                    <!-- Blog Post 5 -->
-                    <article class="blog-card section-card overflow-hidden">
+                    <!-- Week 6: November 2025 -->
+                    <article class="blog-card section-card overflow-hidden" data-category="business-ai"
+                        data-date="2025-11-05">
                         <div
-                            class="h-48 bg-gradient-to-br from-indigo-400 to-cyan-500 flex items-center justify-center">
-                            <span class="text-white text-6xl">⚡</span>
+                            class="h-48 bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center">
+                            <span class="text-white text-6xl">📊</span>
                         </div>
                         <div class="p-6">
                             <div class="flex items-center space-x-2 mb-3">
-                                <span class="category-tag">AI Tools</span>
-                                <span class="blog-meta">Coming Soon</span>
+                                <span class="category-tag">Business AI</span>
+                                <span class="blog-meta">November 5, 2025</span>
+                                <span
+                                    class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">SCHEDULED</span>
                             </div>
                             <h3
                                 class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
-                                AI Productivity Tools for 2025
+                                AI Business Intelligence Tools: Data Analysis Made Simple
                             </h3>
                             <p class="blog-excerpt mb-4">
-                                Discover AI tools that can 10x your productivity and streamline your workflow...
+                                Transform raw data into actionable insights without technical skills. Review of
+                                AI-powered analytics platforms that help small businesses make data-driven decisions.
                             </p>
                             <div class="blog-meta">
-                                <span>8 min read</span>
+                                <span>11 min read</span>
+                                <span class="mx-2">•</span>
+                                <span>Business, Analytics</span>
                             </div>
                         </div>
                     </article>
 
-                    <!-- Blog Post 6 -->
-                    <article class="blog-card section-card overflow-hidden">
-                        <div class="h-48 bg-gradient-to-br from-teal-400 to-blue-500 flex items-center justify-center">
+                    <!-- Week 7: November 2025 -->
+                    <article class="blog-card section-card overflow-hidden" data-category="marketing-ai"
+                        data-date="2025-11-12">
+                        <div class="h-48 bg-gradient-to-br from-rose-400 to-pink-500 flex items-center justify-center">
+                            <span class="text-white text-6xl">📈</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="category-tag">Marketing AI</span>
+                                <span class="blog-meta">November 12, 2025</span>
+                                <span
+                                    class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">SCHEDULED</span>
+                            </div>
+                            <h3
+                                class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
+                                AI Marketing Revolution: Tools That Generate Leads on Autopilot
+                            </h3>
+                            <p class="blog-excerpt mb-4">
+                                Automate your entire marketing funnel with AI. From content creation to lead nurturing,
+                                discover tools that help small businesses compete with enterprise-level marketing teams.
+                            </p>
+                            <div class="blog-meta">
+                                <span>16 min read</span>
+                                <span class="mx-2">•</span>
+                                <span>Marketing, Lead Generation</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Week 8: November 2025 -->
+                    <article class="blog-card section-card overflow-hidden" data-category="design-ai"
+                        data-date="2025-11-19">
+                        <div
+                            class="h-48 bg-gradient-to-br from-violet-400 to-purple-500 flex items-center justify-center">
+                            <span class="text-white text-6xl">🎨</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="category-tag">Design AI</span>
+                                <span class="blog-meta">November 19, 2025</span>
+                                <span
+                                    class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">SCHEDULED</span>
+                            </div>
+                            <h3
+                                class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
+                                No-Code AI Design: Create Professional Graphics Without Skills
+                            </h3>
+                            <p class="blog-excerpt mb-4">
+                                Design stunning graphics, logos, and marketing materials using AI tools that require
+                                zero design experience. Complete workflow for non-designers to create professional
+                                visuals.
+                            </p>
+                            <div class="blog-meta">
+                                <span>13 min read</span>
+                                <span class="mx-2">•</span>
+                                <span>Design, Graphics</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Week 9: November 2025 -->
+                    <article class="blog-card section-card overflow-hidden" data-category="automation"
+                        data-date="2025-11-26">
+                        <div class="h-48 bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center">
+                            <span class="text-white text-6xl">🤖</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="category-tag">Automation</span>
+                                <span class="blog-meta">November 26, 2025</span>
+                                <span
+                                    class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">SCHEDULED</span>
+                            </div>
+                            <h3
+                                class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
+                                AI Workflow Automation: Zapier vs Make vs Microsoft Power Automate
+                            </h3>
+                            <p class="blog-excerpt mb-4">
+                                Build intelligent automation workflows that handle repetitive tasks while you sleep.
+                                Compare top platforms and learn to create your first AI-powered automation in 15
+                                minutes.
+                            </p>
+                            <div class="blog-meta">
+                                <span>17 min read</span>
+                                <span class="mx-2">•</span>
+                                <span>Automation, Workflow</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Week 10: December 2025 -->
+                    <article class="blog-card section-card overflow-hidden" data-category="research-ai"
+                        data-date="2025-12-03">
+                        <div
+                            class="h-48 bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
+                            <span class="text-white text-6xl">🔬</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="category-tag">Research AI</span>
+                                <span class="blog-meta">December 3, 2025</span>
+                                <span
+                                    class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">SCHEDULED</span>
+                            </div>
+                            <h3
+                                class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
+                                AI Research Assistant Tools: Perplexity, Claude, and Research GPT Compared
+                            </h3>
+                            <p class="blog-excerpt mb-4">
+                                Accelerate your research process with AI tools that can analyze papers, summarize
+                                findings, and generate insights. Perfect for students, academics, and professionals.
+                            </p>
+                            <div class="blog-meta">
+                                <span>14 min read</span>
+                                <span class="mx-2">•</span>
+                                <span>Research, Academic</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Week 11: December 2025 -->
+                    <article class="blog-card section-card overflow-hidden" data-category="social-media"
+                        data-date="2025-12-10">
+                        <div class="h-48 bg-gradient-to-br from-red-400 to-pink-500 flex items-center justify-center">
+                            <span class="text-white text-6xl">📱</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="category-tag">Social Media</span>
+                                <span class="blog-meta">December 10, 2025</span>
+                                <span
+                                    class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">SCHEDULED</span>
+                            </div>
+                            <h3
+                                class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
+                                AI Social Media Management: Content Creation to Scheduling Automation
+                            </h3>
+                            <p class="blog-excerpt mb-4">
+                                Manage multiple social media accounts effortlessly with AI. From viral content creation
+                                to optimal posting times, automate your entire social media strategy.
+                            </p>
+                            <div class="blog-meta">
+                                <span>12 min read</span>
+                                <span class="mx-2">•</span>
+                                <span>Social Media, Content</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Week 12: December 2025 -->
+                    <article class="blog-card section-card overflow-hidden" data-category="e-commerce"
+                        data-date="2025-12-17">
+                        <div
+                            class="h-48 bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center">
+                            <span class="text-white text-6xl">🛒</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="category-tag">E-commerce</span>
+                                <span class="blog-meta">December 17, 2025</span>
+                                <span
+                                    class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">SCHEDULED</span>
+                            </div>
+                            <h3
+                                class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
+                                AI E-commerce Tools: Product Descriptions, Pricing, and Customer Service
+                            </h3>
+                            <p class="blog-excerpt mb-4">
+                                Scale your online store with AI-powered tools for product optimization, dynamic pricing,
+                                automated customer support, and conversion rate optimization.
+                            </p>
+                            <div class="blog-meta">
+                                <span>15 min read</span>
+                                <span class="mx-2">•</span>
+                                <span>E-commerce, Business</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Week 13: December 2025 -->
+                    <article class="blog-card section-card overflow-hidden" data-category="education"
+                        data-date="2025-12-24">
+                        <div
+                            class="h-48 bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center">
+                            <span class="text-white text-6xl">🎓</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="category-tag">Education</span>
+                                <span class="blog-meta">December 24, 2025</span>
+                                <span
+                                    class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">SCHEDULED</span>
+                            </div>
+                            <h3
+                                class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
+                                AI Learning Revolution: Personalized Education and Skill Development
+                            </h3>
+                            <p class="blog-excerpt mb-4">
+                                Transform how you learn with AI tutors, personalized curriculums, and adaptive learning
+                                platforms. The future of education is here and it's personalized to you.
+                            </p>
+                            <div class="blog-meta">
+                                <span>16 min read</span>
+                                <span class="mx-2">•</span>
+                                <span>Education, Learning</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Week 14: December 2025 -->
+                    <article class="blog-card section-card overflow-hidden" data-category="future-trends"
+                        data-date="2025-12-31">
+                        <div
+                            class="h-48 bg-gradient-to-br from-purple-400 to-indigo-500 flex items-center justify-center">
                             <span class="text-white text-6xl">🔮</span>
                         </div>
                         <div class="p-6">
                             <div class="flex items-center space-x-2 mb-3">
-                                <span class="category-tag">AI Tools</span>
-                                <span class="blog-meta">Coming Soon</span>
+                                <span class="category-tag">Future Trends</span>
+                                <span class="blog-meta">December 31, 2025</span>
+                                <span
+                                    class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">SCHEDULED</span>
                             </div>
                             <h3
                                 class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
-                                Future of AI: What's Coming in 2025
+                                AI Predictions 2026: What's Coming Next in Artificial Intelligence
                             </h3>
                             <p class="blog-excerpt mb-4">
-                                Explore the upcoming AI trends and tools that will shape the future of technology...
+                                Look into the crystal ball of AI development. Expert predictions, emerging technologies,
+                                and how to prepare for the next wave of AI innovations coming in 2026.
                             </p>
                             <div class="blog-meta">
-                                <span>10 min read</span>
+                                <span>20 min read</span>
+                                <span class="mx-2">•</span>
+                                <span>Future, Trends</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Week 15: January 2026 -->
+                    <article class="blog-card section-card overflow-hidden" data-category="year-review"
+                        data-date="2026-01-07">
+                        <div class="h-48 bg-gradient-to-br from-teal-400 to-cyan-500 flex items-center justify-center">
+                            <span class="text-white text-6xl">📅</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="category-tag">Year Review</span>
+                                <span class="blog-meta">January 7, 2026</span>
+                                <span
+                                    class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">SCHEDULED</span>
+                            </div>
+                            <h3
+                                class="text-xl font-bold text-gray-800 mb-3 hover:text-purple-600 transition-colors cursor-pointer">
+                                AI Tools Year in Review: Best Discoveries and Biggest Breakthroughs of 2025
+                            </h3>
+                            <p class="blog-excerpt mb-4">
+                                Comprehensive recap of the most impactful AI tools that emerged in 2025. Winners,
+                                losers, surprises, and the tools that changed how we work forever.
+                            </p>
+                            <div class="blog-meta">
+                                <span>25 min read</span>
+                                <span class="mx-2">•</span>
+                                <span>Review, Analysis</span>
                             </div>
                         </div>
                     </article>
                 </div>
 
-                <!-- Load More Button -->
-                <div class="text-center mt-12">
-                    <button class="btn-gradient text-white font-semibold py-3 px-8 rounded-full shadow-lg">
-                        📚 Load More Articles
-                    </button>
+                <!-- Content Schedule & Progress Section -->
+                <div class="text-center mt-12 mb-8">
+                    <div
+                        class="bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 rounded-xl p-8 max-w-5xl mx-auto shadow-2xl border border-purple-500/20">
+                        <h3 class="text-3xl font-bold text-white mb-2">📅 Content Publishing Schedule</h3>
+                        <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-blue-400 mx-auto mb-6 rounded-full">
+                        </div>
+                        <p class="text-purple-100 mb-8 text-lg">
+                            We're publishing comprehensive AI tool guides every week. Here's what's coming up in our
+                            15-week content series:
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                            <div
+                                class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300">
+                                <h4 class="font-bold text-purple-300 mb-4 text-lg flex items-center">
+                                    <span class="text-2xl mr-2">🗓️</span>
+                                    October 2025
+                                </h4>
+                                <ul class="text-white/90 space-y-2">
+                                    <li class="flex items-center"><span class="text-purple-400 mr-2">•</span> AI Writing
+                                        Tools Guide</li>
+                                    <li class="flex items-center"><span class="text-purple-400 mr-2">•</span> Coding
+                                        Assistants Comparison</li>
+                                    <li class="flex items-center"><span class="text-purple-400 mr-2">•</span> Free AI
+                                        Video Generators</li>
+                                    <li class="flex items-center"><span class="text-purple-400 mr-2">•</span> AI
+                                        Productivity Stack</li>
+                                    <li class="flex items-center"><span class="text-purple-400 mr-2">•</span> AI Art
+                                        Mastery Tutorial</li>
+                                </ul>
+                            </div>
+
+                            <div
+                                class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300">
+                                <h4 class="font-bold text-blue-300 mb-4 text-lg flex items-center">
+                                    <span class="text-2xl mr-2">📊</span>
+                                    November 2025
+                                </h4>
+                                <ul class="text-white/90 space-y-2">
+                                    <li class="flex items-center"><span class="text-blue-400 mr-2">•</span> Business
+                                        Intelligence Tools</li>
+                                    <li class="flex items-center"><span class="text-blue-400 mr-2">•</span> Marketing
+                                        Automation AI</li>
+                                    <li class="flex items-center"><span class="text-blue-400 mr-2">•</span> No-Code
+                                        Design Tools</li>
+                                    <li class="flex items-center"><span class="text-blue-400 mr-2">•</span> Workflow
+                                        Automation Guide</li>
+                                </ul>
+                            </div>
+
+                            <div
+                                class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300">
+                                <h4 class="font-bold text-indigo-300 mb-4 text-lg flex items-center">
+                                    <span class="text-2xl mr-2">🎯</span>
+                                    December 2025 & Beyond
+                                </h4>
+                                <ul class="text-white/90 space-y-2">
+                                    <li class="flex items-center"><span class="text-indigo-400 mr-2">•</span> AI
+                                        Research Assistants</li>
+                                    <li class="flex items-center"><span class="text-indigo-400 mr-2">•</span> Social
+                                        Media Automation</li>
+                                    <li class="flex items-center"><span class="text-indigo-400 mr-2">•</span> E-commerce
+                                        AI Tools</li>
+                                    <li class="flex items-center"><span class="text-indigo-400 mr-2">•</span>
+                                        Educational AI Platforms</li>
+                                    <li class="flex items-center"><span class="text-indigo-400 mr-2">•</span> 2026 AI
+                                        Predictions</li>
+                                    <li class="flex items-center"><span class="text-indigo-400 mr-2">•</span> 2025 Year
+                                        in Review</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div
+                            class="mt-8 p-6 bg-gradient-to-r from-green-500/20 to-blue-500/20 backdrop-blur-sm rounded-xl border border-green-400/30">
+                            <div class="flex items-center justify-center space-x-6">
+                                <span class="text-4xl">📈</span>
+                                <div class="text-center">
+                                    <div class="text-xl font-bold text-white mb-2">Progress: 2 of 17 Posts Published
+                                    </div>
+                                    <div class="w-80 bg-white/20 rounded-full h-4 mx-auto mt-2 overflow-hidden">
+                                        <div class="bg-gradient-to-r from-green-400 to-blue-400 h-4 rounded-full transition-all duration-1000 ease-out"
+                                            style="width: 12%"></div>
+                                    </div>
+                                    <div class="text-green-300 mt-3 font-medium">Next: AI Writing Tools Guide (Oct 1,
+                                        2025)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Feedback Community Section -->
+                <div class="max-w-4xl mx-auto mb-12">
+                    <div
+                        class="bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 rounded-2xl p-8 border-2 border-purple-500/20 shadow-2xl">
+                        <div class="text-center mb-6">
+                            <div class="flex justify-center space-x-2 mb-4">
+                                <span class="text-3xl animate-bounce" style="animation-delay: 0s;">🤝</span>
+                                <span class="text-3xl animate-bounce" style="animation-delay: 0.1s;">💬</span>
+                                <span class="text-3xl animate-bounce" style="animation-delay: 0.2s;">⭐</span>
+                            </div>
+                            <h3 class="text-3xl font-bold text-white mb-3">Community Spotlight</h3>
+                            <div
+                                class="w-32 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto mb-4 rounded-full">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="text-center md:text-left">
+                                <h4
+                                    class="text-xl font-bold text-white mb-4 flex items-center justify-center md:justify-start">
+                                    <span class="text-2xl mr-2">🚀</span>
+                                    Found an Amazing AI Tool?
+                                </h4>
+                                <p class="text-purple-100 mb-6 leading-relaxed">
+                                    Tried an amazing AI tool? Share it with us — we might feature it here! Our community
+                                    helps everyone discover the next breakthrough AI tool.
+                                </p>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-center md:justify-start space-x-3">
+                                        <span class="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></span>
+                                        <span class="text-purple-200">Tell us about hidden gems you've discovered</span>
+                                    </div>
+                                    <div class="flex items-center justify-center md:justify-start space-x-3">
+                                        <span class="w-2 h-2 bg-pink-400 rounded-full animate-pulse"
+                                            style="animation-delay: 0.5s;"></span>
+                                        <span class="text-purple-200">Share your real-world experience and
+                                            results</span>
+                                    </div>
+                                    <div class="flex items-center justify-center md:justify-start space-x-3">
+                                        <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"
+                                            style="animation-delay: 1s;"></span>
+                                        <span class="text-purple-200">Get featured in our weekly roundups</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 shadow-lg">
+                                <h4 class="text-lg font-bold text-white mb-4 flex items-center justify-center">
+                                    <span class="text-xl mr-2">💭</span>
+                                    Quick Submit
+                                </h4>
+                                <form action="https://formspree.io/f/movvbzwn" method="POST" id="communityForm"
+                                    class="space-y-4">
+                                    <input type="hidden" name="_subject"
+                                        value="New AI Tool Suggestion from AI Tool Finder Blog">
+                                    <input type="hidden" name="_next"
+                                        value="https://allaitool.tech/blogs/thank-you-suggestion">
+                                    <div>
+                                        <input type="text" name="tool_name" placeholder="AI Tool Name" required
+                                            class="w-full px-4 py-3 bg-white/10 border-2 border-white/20 rounded-lg text-white placeholder-purple-200 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-400/50 transition-all duration-300">
+                                    </div>
+                                    <div>
+                                        <textarea name="tool_description"
+                                            placeholder="Tell us why you love it! What makes it special?" rows="3"
+                                            required
+                                            class="w-full px-4 py-3 bg-white/10 border-2 border-white/20 rounded-lg text-white placeholder-purple-200 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-400/50 transition-all duration-300 resize-none"></textarea>
+                                    </div>
+                                    <div>
+                                        <input type="email" name="email" placeholder="Your email (optional)"
+                                            class="w-full px-4 py-3 bg-white/10 border-2 border-white/20 rounded-lg text-white placeholder-purple-200 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-400/50 transition-all duration-300">
+                                    </div>
+                                    <button type="submit"
+                                        class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                                        <span class="flex items-center justify-center space-x-2">
+                                            <span>🎯</span>
+                                            <span>Share Your Discovery</span>
+                                        </span>
+                                    </button>
+                                </form>
+                                <p class="text-xs text-purple-200 mt-3 text-center">
+                                    We'll review and potentially feature your submission
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 text-center">
+                            <div
+                                class="bg-gradient-to-r from-purple-800/50 to-indigo-800/50 rounded-xl p-4 border border-purple-400/30 backdrop-blur-sm">
+                                <p class="text-sm text-purple-100 mb-2">
+                                    <strong>💡 Pro Tip:</strong> The best submissions include specific use cases and
+                                    results!
+                                </p>
+                                <div class="flex flex-wrap justify-center gap-2 text-xs">
+                                    <span
+                                        class="bg-white/10 px-3 py-1 rounded-full text-purple-200 border border-white/20">#ProductivityBoost</span>
+                                    <span
+                                        class="bg-white/10 px-3 py-1 rounded-full text-purple-200 border border-white/20">#CreativeTools</span>
+                                    <span
+                                        class="bg-white/10 px-3 py-1 rounded-full text-purple-200 border border-white/20">#WorkflowGameChanger</span>
+                                    <span
+                                        class="bg-white/10 px-3 py-1 rounded-full text-purple-200 border border-white/20">#FreeTool</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Newsletter Signup for Updates -->
+                <div class="text-center">
+                    <div class="bg-white rounded-lg p-6 max-w-md mx-auto shadow-lg border-2 border-purple-200">
+                        <div class="text-2xl mb-3">�</div>
+                        <h4 class="text-lg font-bold text-gray-800 mb-2">Get Notified</h4>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Subscribe to get notified when new AI tool guides are published weekly.
+                        </p>
+                        <form action="https://formspree.io/f/movvbzwn" method="POST" class="flex gap-2">
+                            <input type="hidden" name="_subject"
+                                value="New Weekly Newsletter Subscription from AI Tool Finder Blog">
+                            <input type="hidden" name="_next" value="https://allaitool.tech/blogs/thank-you-newsletter">
+                            <input type="email" name="email" placeholder="Your email" required
+                                class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                            <button type="submit"
+                                class="bg-purple-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-purple-700 transition-colors">
+                                Subscribe
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1180,13 +1917,18 @@
                         spam,
                         just valuable content.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                        <input type="email" placeholder="Enter your email"
+                    <form action="https://formspree.io/f/movvbzwn" method="POST"
+                        class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                        <input type="hidden" name="_subject"
+                            value="New Blog Newsletter Subscription from AI Tool Finder">
+                        <input type="hidden" name="_next" value="https://allaitool.tech/blogs/thank-you-newsletter">
+                        <input type="email" name="email" placeholder="Enter your email" required
                             class="search-box flex-1 px-6 py-3 text-gray-800 focus:outline-none">
-                        <button class="btn-gradient text-white font-semibold py-3 px-6 rounded-full">
+                        <button type="submit"
+                            class="btn-gradient text-white font-semibold py-3 px-6 rounded-full hover:shadow-xl transition-all duration-300">
                             Subscribe
                         </button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </section>
@@ -1334,20 +2076,325 @@
                 }
             });
 
-            // Search functionality
+            // Enhanced Search functionality with animations
             document.getElementById('searchInput').addEventListener('input', function (e) {
                 const searchTerm = e.target.value.toLowerCase();
                 const blogCards = document.querySelectorAll('.blog-card');
+                const blogGrid = document.getElementById('blogGrid');
+                let visibleCount = 0;
 
-                blogCards.forEach(card => {
+                // Add loading animation
+                blogGrid.style.opacity = '0.7';
+                blogGrid.style.transition = 'opacity 0.2s ease-out';
+
+                // Clear category filter when searching
+                if (searchTerm) {
+                    const filterButtons = document.querySelectorAll('.category-filter');
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active', 'bg-gradient-to-r', 'from-purple-600', 'to-blue-600', 'text-white');
+                        btn.classList.add('bg-white', 'text-gray-700');
+                    });
+                }
+
+                blogCards.forEach((card, index) => {
                     const title = card.querySelector('h3').textContent.toLowerCase();
                     const excerpt = card.querySelector('.blog-excerpt').textContent.toLowerCase();
+                    const category = card.getAttribute('data-category') || '';
 
-                    if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
+                    card.style.transition = 'all 0.3s ease-out';
+
+                    if (title.includes(searchTerm) || excerpt.includes(searchTerm) || category.includes(searchTerm)) {
                         card.style.display = 'block';
+
+                        // Staggered slide-in animation
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0) scale(1)';
+                        }, index * 30);
+
+                        visibleCount++;
                     } else {
-                        card.style.display = searchTerm === '' ? 'block' : 'none';
+                        if (searchTerm !== '') {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(-15px) scale(0.97)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        } else {
+                            card.style.display = 'block';
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0) scale(1)';
+                            visibleCount++;
+                        }
                     }
+                });
+
+                // Restore grid animation
+                setTimeout(() => {
+                    blogGrid.style.opacity = '1';
+                }, 200);
+
+                // Update results count
+                setTimeout(() => {
+                    updateResultsCount(searchTerm, visibleCount);
+                }, 250);
+            });
+
+            // Category filtering functionality with animations
+            function filterPosts(category) {
+                const blogCards = document.querySelectorAll('.blog-card');
+                const filterButtons = document.querySelectorAll('.category-filter');
+                const blogGrid = document.getElementById('blogGrid');
+                let visibleCount = 0;
+
+                // Add loading animation
+                blogGrid.style.opacity = '0.5';
+                blogGrid.style.transform = 'translateY(10px)';
+                blogGrid.style.transition = 'all 0.3s ease-out';
+
+                // Update active button with enhanced styling
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active', 'bg-gradient-to-r', 'from-purple-600', 'to-blue-600', 'text-white', 'shadow-xl');
+                    btn.classList.add('bg-white', 'text-gray-700', 'shadow-md');
+                });
+
+                const activeButton = document.querySelector(`[data-category="${category}"]`);
+                if (activeButton) {
+                    activeButton.classList.add('active', 'bg-gradient-to-r', 'from-purple-600', 'to-blue-600', 'text-white', 'shadow-xl');
+                    activeButton.classList.remove('bg-white', 'text-gray-700', 'shadow-md');
+
+                    // Add pulse animation to active button
+                    activeButton.style.animation = 'pulse 0.5s ease-in-out';
+                    setTimeout(() => {
+                        activeButton.style.animation = '';
+                    }, 500);
+                }
+
+                // Animate cards out first
+                setTimeout(() => {
+                    blogCards.forEach((card, index) => {
+                        const cardCategory = card.getAttribute('data-category');
+                        card.style.transition = 'all 0.4s ease-out';
+
+                        if (category === 'all' || cardCategory === category) {
+                            card.style.display = 'block';
+                            card.classList.remove('filtered-out');
+
+                            // Staggered slide-in animation
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0) scale(1)';
+                            }, index * 50);
+
+                            visibleCount++;
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(-20px) scale(0.95)';
+                            card.classList.add('filtered-out');
+
+                            // Hide after animation
+                            setTimeout(() => {
+                                if (card.classList.contains('filtered-out')) {
+                                    card.style.display = 'none';
+                                }
+                            }, 400);
+                        }
+                    });
+
+                    // Restore grid animation
+                    setTimeout(() => {
+                        blogGrid.style.opacity = '1';
+                        blogGrid.style.transform = 'translateY(0)';
+                    }, 200);
+
+                    // Update results count with animation
+                    setTimeout(() => {
+                        updateResultsCount('', visibleCount, category);
+                    }, 300);
+                }, 100);
+            }
+
+            // Enhanced update results count with slide animation
+            function updateResultsCount(searchTerm, visibleCount, category = null) {
+                let existingCounter = document.getElementById('resultsCounter');
+
+                // Animate out existing counter
+                if (existingCounter) {
+                    existingCounter.style.transition = 'all 0.3s ease-out';
+                    existingCounter.style.opacity = '0';
+                    existingCounter.style.transform = 'translateY(-10px)';
+                    setTimeout(() => {
+                        existingCounter.remove();
+                    }, 300);
+                }
+
+                if (searchTerm || (category && category !== 'all')) {
+                    const blogGrid = document.getElementById('blogGrid');
+                    const counter = document.createElement('div');
+                    counter.id = 'resultsCounter';
+                    counter.className = 'text-center text-gray-700 mb-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl border border-purple-200 shadow-md';
+                    counter.style.opacity = '0';
+                    counter.style.transform = 'translateY(10px)';
+                    counter.style.transition = 'all 0.4s ease-out';
+
+                    let message = '';
+                    let emoji = '';
+
+                    if (searchTerm) {
+                        message = `Found ${visibleCount} result${visibleCount !== 1 ? 's' : ''} for "${searchTerm}"`;
+                        emoji = '🔍';
+                    } else if (category && category !== 'all') {
+                        const categoryName = category.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase());
+                        message = `Showing ${visibleCount} post${visibleCount !== 1 ? 's' : ''} in ${categoryName}`;
+                        emoji = getCategoryEmoji(category);
+                    }
+
+                    counter.innerHTML = `
+                        <div class="flex items-center justify-center space-x-3">
+                            <span class="text-2xl">${emoji}</span>
+                            <span class="font-semibold text-lg">${message}</span>
+                        </div>
+                    `;
+
+                    blogGrid.parentNode.insertBefore(counter, blogGrid);
+
+                    // Animate in new counter
+                    setTimeout(() => {
+                        counter.style.opacity = '1';
+                        counter.style.transform = 'translateY(0)';
+                    }, 100);
+                }
+            }
+
+            // Get emoji for category
+            function getCategoryEmoji(category) {
+                const emojis = {
+                    'ai-writing': '✍️',
+                    'coding-ai': '💻',
+                    'video-ai': '🎬',
+                    'productivity': '⚡',
+                    'tutorials': '🎨',
+                    'business-ai': '📊',
+                    'marketing-ai': '📈',
+                    'design-ai': '🎨',
+                    'automation': '🤖',
+                    'research-ai': '🔬',
+                    'social-media': '📱',
+                    'e-commerce': '🛒',
+                    'education': '🎓',
+                    'future-trends': '🔮',
+                    'year-review': '📅'
+                };
+                return emojis[category] || '📚';
+            }
+
+            // Update results count display
+            function updateResultsCount(searchTerm, visibleCount, category = null) {
+                let existingCounter = document.getElementById('resultsCounter');
+                if (existingCounter) {
+                    existingCounter.remove();
+                }
+
+                if (searchTerm || category) {
+                    const blogGrid = document.getElementById('blogGrid');
+                    const counter = document.createElement('div');
+                    counter.id = 'resultsCounter';
+                    counter.className = 'text-center text-gray-600 mb-6 p-4 bg-gray-100 rounded-lg';
+
+                    let message = '';
+                    if (searchTerm) {
+                        message = `Found ${visibleCount} result${visibleCount !== 1 ? 's' : ''} for "${searchTerm}"`;
+                    } else if (category && category !== 'all') {
+                        const categoryName = category.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase());
+                        message = `Showing ${visibleCount} post${visibleCount !== 1 ? 's' : ''} in ${categoryName}`;
+                    }
+
+                    counter.textContent = message;
+                    blogGrid.parentNode.insertBefore(counter, blogGrid);
+                }
+            }
+
+            // Sort functionality
+            function sortPosts(sortBy) {
+                const blogGrid = document.getElementById('blogGrid');
+                const posts = Array.from(blogGrid.querySelectorAll('.blog-card'));
+
+                posts.sort((a, b) => {
+                    if (sortBy === 'date-newest') {
+                        const dateA = new Date(a.getAttribute('data-date'));
+                        const dateB = new Date(b.getAttribute('data-date'));
+                        return dateB - dateA;
+                    } else if (sortBy === 'date-oldest') {
+                        const dateA = new Date(a.getAttribute('data-date'));
+                        const dateB = new Date(b.getAttribute('data-date'));
+                        return dateA - dateB;
+                    } else if (sortBy === 'title') {
+                        const titleA = a.querySelector('h3').textContent.toLowerCase();
+                        const titleB = b.querySelector('h3').textContent.toLowerCase();
+                        return titleA.localeCompare(titleB);
+                    }
+                });
+
+                // Re-append sorted posts
+                posts.forEach(post => blogGrid.appendChild(post));
+            }
+
+            // Add sort dropdown functionality (you can add this to the HTML)
+            function addSortControls() {
+                const blogSection = document.querySelector('#blogGrid').closest('section');
+                const headerDiv = blogSection.querySelector('.text-center.mb-12');
+
+                const sortContainer = document.createElement('div');
+                sortContainer.className = 'flex justify-center items-center gap-4 mt-4';
+                sortContainer.innerHTML = `
+                    <label class="text-gray-600">Sort by:</label>
+                    <select id="sortSelect" class="px-4 py-2 border border-gray-300 rounded-lg bg-white">
+                        <option value="date-newest">Newest First</option>
+                        <option value="date-oldest">Oldest First</option>
+                        <option value="title">Title A-Z</option>
+                    </select>
+                `;
+
+                headerDiv.appendChild(sortContainer);
+
+                document.getElementById('sortSelect').addEventListener('change', function (e) {
+                    sortPosts(e.target.value);
+                });
+            }
+
+            // Initialize sort controls
+            setTimeout(addSortControls, 100);
+
+            // User feedback form handling for Formspree
+            document.addEventListener('DOMContentLoaded', function () {
+                const feedbackForm = document.querySelector('#communityForm');
+                if (feedbackForm) {
+                    feedbackForm.addEventListener('submit', function (e) {
+                        const button = this.querySelector('button[type="submit"]');
+                        const originalText = button.innerHTML;
+
+                        // Show loading state
+                        button.innerHTML = '<span class="flex items-center justify-center space-x-2"><span>⏳</span><span>Submitting...</span></span>';
+                        button.disabled = true;
+
+                        // Allow form to submit to Formspree
+                        // Formspree will handle the redirect to thank you page
+                    });
+                }
+
+                // Newsletter form handling
+                const newsletterForms = document.querySelectorAll('form[action*="formspree"]');
+                newsletterForms.forEach(form => {
+                    form.addEventListener('submit', function (e) {
+                        const button = this.querySelector('button[type="submit"]');
+                        const originalText = button.innerHTML;
+
+                        // Show loading state
+                        button.innerHTML = 'Subscribing...';
+                        button.disabled = true;
+
+                        // Allow form to submit to Formspree
+                    });
                 });
             });
 

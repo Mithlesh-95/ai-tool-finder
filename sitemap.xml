@@ -4,7 +4,7 @@
   <!-- Homepage - Main Landing Page -->
   <url>
     <loc>https://allaitool.tech/</loc>
-    <lastmod>2025-08-24</lastmod>
+    <lastmod>2025-10-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -12,7 +12,7 @@
   <!-- Blog Hub - Main Blog Directory -->
   <url>
     <loc>https://allaitool.tech/blogs/</loc>
-    <lastmod>2025-08-24</lastmod>
+    <lastmod>2025-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -20,16 +20,53 @@
   <!-- Featured Blog Posts - Standardized Slugs -->
   <url>
     <loc>https://allaitool.tech/blogs/best-ai-tools-for-resume-and-job-applications-in-2025/</loc>
-    <lastmod>2025-08-24</lastmod>
+    <lastmod>2025-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://allaitool.tech/blogs/best-free-ai-image-generators-2025/</loc>
-    <lastmod>2025-08-24</lastmod>
+    <lastmod>2025-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <!-- Thank You Pages - User Experience -->
+  <url>
+    <loc>https://allaitool.tech/thank-you-contact.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://allaitool.tech/thank-you-suggestion.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://allaitool.tech/blogs/thank-you-newsletter.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://allaitool.tech/blogs/thank-you-suggestion.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Interactive Category Pages - Main Site Features -->
+  <url>
+    <loc>https://allaitool.tech/interactive-category-panels.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
 </urlset>

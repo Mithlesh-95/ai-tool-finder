@@ -4,6 +4,15 @@ Allow: /
 # Allow all blog content
 Allow: /blogs/
 
+# Allow thank-you pages (for form completions)
+Allow: /thank-you-contact.html
+Allow: /thank-you-suggestion.html
+Allow: /blogs/thank-you-newsletter.html
+Allow: /blogs/thank-you-suggestion.html
+
+# Allow interactive features
+Allow: /interactive-category-panels.html
+
 # Disallow admin and system files
 Disallow: /admin.html
 Disallow: /admin.js
@@ -12,6 +21,9 @@ Disallow: /admin.js
 Disallow: /*?search=
 Disallow: /*?category=
 Disallow: /*?featured=
+
+# Disallow form processing files (if any)
+Disallow: /app.js
 
 # Sitemap location
 Sitemap: https://allaitool.tech/sitemap.xml

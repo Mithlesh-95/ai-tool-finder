@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en" class="dark-mode">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 🏷️ Title -->
+    <title>AI Tool Reviews - AllAITool.tech | User Reviews & Ratings</title>
+
+    <!-- 🔍 SEO Meta -->
+    <meta name="description"
+        content="Read honest user reviews and ratings for the best AI tools. Get insights from real users about ChatGPT, Canva, Jasper, Midjourney and more AI tools." />
+    <meta name="keywords"
+        content="AI tool reviews, user reviews, AI tool ratings, ChatGPT review, Canva review, Jasper review, Midjourney review, AI tool comparison, user feedback" />
+    <meta name="author" content="Mithlesh" />
+
+    <!-- 📱 Social Meta -->
+    <meta property="og:title" content="AI Tool Reviews - AllAITool.tech | User Reviews & Ratings" />
+    <meta property="og:description"
+        content="Read honest user reviews and ratings for the best AI tools. Get insights from real users about ChatGPT, Canva, Jasper, Midjourney and more AI tools." />
+    <meta property="og:image" content="../logo.png" />
+    <meta property="og:url" content="https://allaitool.tech/reviews/" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AI Tool Reviews - AllAITool.tech | User Reviews & Ratings" />
+    <meta name="twitter:description"
+        content="Read honest user reviews and ratings for the best AI tools. Get insights from real users about ChatGPT, Canva, Jasper, Midjourney and more AI tools." />
+
+    <!-- 🌐 Favicon -->
+    <link rel="icon" href="../logo.png" type="image/png" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4W1BPVFS7V"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-4W1BPVFS7V');
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Suppress Tailwind CDN warning in production
+        if (typeof window !== 'undefined') {
+            const originalWarn = console.warn;
+            console.warn = function (...args) {
+                if (args[0] && args[0].includes && args[0].includes('Tailwind')) {
+                    return;
+                }
+                originalWarn.apply(console, args);
+            };
+        }
+    </script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Additional navbar styles for reviews page -->
+    <style>
+        /* ================= Enhanced Navigation Animations ================= */
+        .navbar {
+            background: rgba(22, 19, 41, 0.88);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(157, 122, 222, 0.15);
+            box-shadow: 0 2px 16px -4px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            transform: translateY(0);
+        }
+
+        .navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(157, 122, 222, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .navbar:hover::before {
+            left: 100%;
+        }
+
+        .navbar.scrolled {
+            background: rgba(22, 19, 41, 0.95);
+            box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.4);
+            border-bottom: 1px solid rgba(157, 122, 222, 0.25);
+            transform: translateY(-1px);
+        }
+
+        .navbar .max-w-6xl {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Enhanced Logo Animation */
+        .navbar .flex.items-center a {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .navbar .flex.items-center a:hover {
+            transform: translateX(5px) scale(1.02);
+        }
+
+        .navbar .flex.items-center a img {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .navbar .flex.items-center a:hover img {
+            transform: rotate(5deg) scale(1.1);
+            filter: drop-shadow(0 8px 16px rgba(157, 122, 222, 0.3));
+        }
+
+        .navbar .flex.items-center a span {
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .navbar .flex.items-center a:hover span {
+            background: linear-gradient(135deg, #a78bfa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Enhanced Nav Links */
+        .nav-link {
+            color: #e5e7eb;
+            font-weight: 500;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.15), rgba(196, 132, 252, 0.15));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+            border-radius: 12px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #a78bfa, #c084fc);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover {
+            color: #a78bfa;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px -8px rgba(167, 139, 250, 0.4);
+        }
+
+        .nav-link:hover::before {
+            transform: scaleX(1);
+        }
+
+        .nav-link:hover::after {
+            width: 80%;
+        }
+
+        .nav-link.active {
+            color: #a78bfa;
+            background: rgba(167, 139, 250, 0.15);
+            box-shadow: 0 4px 15px -4px rgba(167, 139, 250, 0.3);
+        }
+
+        .nav-link.active::after {
+            width: 80%;
+        }
+
+        /* Floating effect for desktop menu */
+        .desktop-menu {
+            display: flex;
+            padding: 0.5rem;
+            background: rgba(22, 19, 41, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid rgba(157, 122, 222, 0.15);
+            box-shadow: 0 4px 20px -4px rgba(157, 122, 222, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .desktop-menu:hover {
+            background: rgba(22, 19, 41, 0.3);
+            border-color: rgba(157, 122, 222, 0.25);
+            box-shadow: 0 8px 30px -6px rgba(157, 122, 222, 0.3);
+        }
+
+        /* Enhanced Mobile Menu */
+        .mobile-menu {
+            display: none;
+            background: rgba(22, 19, 41, 0.95);
+            border-bottom: 1px solid rgba(157, 122, 222, 0.2);
+            box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transform: translate3d(0, -10px, 0);
+            transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border-radius: 0 0 20px 20px;
+            position: relative;
+            will-change: transform, opacity, max-height;
+        }
+
+        .mobile-menu::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #a78bfa, #c084fc, #a78bfa);
+            background-size: 200% 100%;
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        .mobile-menu.active {
+            display: block;
+            opacity: 1;
+            max-height: 400px;
+            transform: translate3d(0, 0, 0);
+        }
+
+        .mobile-menu .nav-link {
+            border-bottom: 1px solid rgba(157, 122, 222, 0.1);
+        }
+
+        /* Enhanced Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 12px;
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.15), rgba(196, 132, 252, 0.15));
+            border: 2px solid rgba(157, 122, 222, 0.25);
+            border-radius: 12px;
+            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            will-change: transform;
+        }
+
+        .hamburger::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.2), transparent);
+            transition: left 0.2s ease;
+        }
+
+        .hamburger:hover {
+            transform: translate3d(0, -2px, 0) scale(1.05);
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.2), rgba(196, 132, 252, 0.2));
+            border-color: rgba(157, 122, 222, 0.4);
+            box-shadow: 0 8px 25px -8px rgba(167, 139, 250, 0.4);
+        }
+
+        .hamburger:hover::before {
+            left: 100%;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: linear-gradient(90deg, #a78bfa, #c084fc);
+            margin: 3px 0;
+            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(167, 139, 250, 0.3);
+            will-change: transform, opacity;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 767px) {
+            .desktop-menu {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .mobile-menu {
+                display: none !important;
+            }
+        }
+    </style>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "AI Tool Reviews - AllAITool.tech",
+        "description": "Read honest user reviews and ratings for the best AI tools. Get insights from real users about ChatGPT, Canva, Jasper, Midjourney and more AI tools.",
+        "url": "https://allaitool.tech/reviews/",
+        "mainEntity": {
+            "@type": "Review",
+            "reviewAspect": "AI Tools",
+            "name": "AI Tool Reviews Collection",
+            "description": "Comprehensive collection of user reviews for popular AI tools including ChatGPT, Canva, Jasper, and Midjourney."
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://allaitool.tech/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Reviews",
+                    "item": "https://allaitool.tech/reviews/"
+                }
+            ]
+        }
+    }
+    </script>
+</head>
+
+<body class="bg-gray-900 font-sans">
+    <!-- Navigation Bar -->
+    <nav class="navbar fixed top-0 left-0 right-0 z-50">
+        <div class="py-4 px-4">
+            <div class="max-w-6xl mx-auto flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="../" class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+                        <img src="../logo.png" alt="AI Tool Finder Logo" class="h-10 w-10">
+                        <span class="text-xl font-bold text-gray-800">AI Tool Finder</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="desktop-menu items-center space-x-6">
+                    <a href="../" class="nav-link">Home</a>
+                    <a href="../blogs/" class="nav-link">Blogs</a>
+                    <a href="../reviews/" class="nav-link active">Reviews</a>
+                    <a href="../#about" class="nav-link">About</a>
+                    <a href="../#suggestions" class="nav-link">Suggestions</a>
+                    <a href="../#contact" class="nav-link">Contact</a>
+                    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode"
+                        aria-pressed="false"><span class="sun">☀️</span><span class="moon">🌙</span></button>
+                </div>
+
+                <!-- Mobile Hamburger -->
+                <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu" style="display: none;">
+            <div class="max-w-6xl mx-auto px-8 py-4">
+                <div class="flex flex-col space-y-2">
+                    <a href="../" class="nav-link">Home</a>
+                    <a href="../blogs/" class="nav-link">Blogs</a>
+                    <a href="../reviews/" class="nav-link active">Reviews</a>
+                    <a href="../#about" class="nav-link">About</a>
+                    <a href="../#suggestions" class="nav-link">Suggestions</a>
+                    <a href="../#contact" class="nav-link">Contact</a>
+                    <button id="themeToggleMobile" class="theme-toggle mt-4 self-start" aria-label="Toggle dark mode"
+                        aria-pressed="false"><span class="sun">☀️</span><span class="moon">🌙</span></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-8 md:py-16 px-4 pt-24 md:pt-36 relative"
+        style="background: radial-gradient(circle at 25% 30%, #3a1e7a 0%, #1a103d 55%, #0f0d17 100%);">
+        <div class="max-w-4xl mx-auto text-center">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb text-white/80 text-sm mb-6 animate-fadeInUp">
+                <a href="../" class="hover:text-white transition-colors">Home</a>
+                <span class="mx-2">›</span>
+                <span class="text-white">Reviews</span>
+            </nav>
+
+            <!-- Main Tagline -->
+            <div class="mb-4 animate-fadeInUp">
+                <span
+                    class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium border border-white/40 text-white">
+                    ⭐ Real User Reviews & Ratings
+                </span>
+            </div>
+
+            <h1 class="hero-title text-4xl md:text-6xl font-bold mb-4 md:mb-6 leading-tight animate-fadeInUp">
+                AI Tool Reviews & Ratings
+            </h1>
+            <p class="hero-subtitle text-lg md:text-2xl mb-6 md:mb-10 opacity-90 max-w-2xl mx-auto animate-fadeInUp"
+                style="animation-delay: 0.2s;">
+                Discover what real users think about the best <strong>AI tools</strong>. Read honest reviews, ratings,
+                and user experiences to make informed decisions.
+            </p>
+
+            <!-- Search Bar -->
+            <div class="max-w-2xl mx-auto mb-6 md:mb-0 animate-fadeInUp" style="animation-delay: 0.4s;">
+                <div class="relative">
+                    <input type="text" placeholder="Search reviews by tool name, user, or keyword..."
+                        class="w-full px-4 md:px-6 py-3 md:py-4 text-base md:text-lg text-gray-800 rounded-full border-0 shadow-lg focus:outline-none focus:ring-4 focus:ring-white/30 transition-all duration-300 hover:shadow-2xl"
+                        id="reviewSearchInput">
+                    <button
+                        class="absolute right-2 top-2 bg-gray-800 text-white px-4 md:px-6 py-1 md:py-2 rounded-full hover:bg-gray-700 transition-all duration-300 hover:scale-105">
+                        Search
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="mt-6 md:mt-12 animate-fadeInUp" style="animation-delay: 0.6s;">
+                <div class="flex flex-wrap justify-center gap-6 text-white/90">
+                    <div class="text-center">
+                        <div class="text-2xl md:text-3xl font-bold">2,847</div>
+                        <div class="text-sm">Total Reviews</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl md:text-3xl font-bold">4.6★</div>
+                        <div class="text-sm">Average Rating</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl md:text-3xl font-bold">156</div>
+                        <div class="text-sm">AI Tools Reviewed</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl md:text-3xl font-bold">98%</div>
+                        <div class="text-sm">Verified Users</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter and Sort Section -->
+    <section class="py-6 px-4 border-b border-gray-700" style="background: #161329;">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <!-- Filter Options -->
+                <div class="flex flex-wrap items-center gap-4">
+                    <label class="text-sm font-medium text-gray-300">Filter by:</label>
+                    <select
+                        class="review-filter px-3 py-2 border border-gray-600 rounded-lg text-gray-300 focus:ring-2 focus:ring-blue-500"
+                        style="background: #1d1833;">
+                        <option value="all">All Reviews</option>
+                        <option value="5">5 Stars</option>
+                        <option value="4">4 Stars</option>
+                        <option value="3">3 Stars</option>
+                        <option value="2">2 Stars</option>
+                        <option value="1">1 Star</option>
+                        <option value="verified">Verified Only</option>
+                    </select>
+
+                    <select
+                        class="tool-filter px-3 py-2 border border-gray-600 rounded-lg text-gray-300 focus:ring-2 focus:ring-blue-500"
+                        style="background: #1d1833;">
+                        <option value="all">All Tools</option>
+                        <option value="chatgpt">ChatGPT</option>
+                        <option value="canva">Canva</option>
+                        <option value="jasper">Jasper</option>
+                        <option value="midjourney">Midjourney</option>
+                    </select>
+                </div>
+
+                <!-- Sort Options -->
+                <div class="flex items-center gap-4">
+                    <label class="text-sm font-medium text-gray-300">Sort by:</label>
+                    <select
+                        class="review-sort px-3 py-2 border border-gray-600 rounded-lg text-gray-300 focus:ring-2 focus:ring-blue-500"
+                        style="background: #1d1833;">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="highest">Highest Rated</option>
+                        <option value="lowest">Lowest Rated</option>
+                        <option value="helpful">Most Helpful</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Reviews Section -->
+    <section class="py-12 px-4" style="background: #0f0d17;">
+        <div class="max-w-6xl mx-auto">
+            <!-- Featured Reviews -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-white mb-8 text-center">
+                    Featured AI Tool Reviews
+                </h2>
+
+                <!-- Tool Review Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                    <!-- ChatGPT Review Card -->
+                    <div class="tool-review-card rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 animate-fadeInUp"
+                        style="background: #161329;">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-xl font-bold text-white">ChatGPT</h3>
+                                <div class="flex items-center bg-green-900 px-3 py-1 rounded-full">
+                                    <span class="text-yellow-500">★</span>
+                                    <span class="text-green-200 font-semibold ml-1">4.6</span>
+                                </div>
+                            </div>
+
+                            <div class="rating-bars mb-4">
+                                <div class="flex items-center text-sm text-gray-400 mb-1">
+                                    <span class="w-8">5★</span>
+                                    <div class="flex-1 mx-2 bg-gray-700 rounded-full h-2">
+                                        <div class="bg-yellow-500 h-2 rounded-full" style="width: 76%"></div>
+                                    </div>
+                                    <span class="w-8 text-right">756</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-400 mb-1">
+                                    <span class="w-8">4★</span>
+                                    <div class="flex-1 mx-2 bg-gray-700 rounded-full h-2">
+                                        <div class="bg-yellow-500 h-2 rounded-full" style="width: 32%"></div>
+                                    </div>
+                                    <span class="w-8 text-right">321</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-400 mb-1">
+                                    <span class="w-8">3★</span>
+                                    <div class="flex-1 mx-2 bg-gray-700 rounded-full h-2">
+                                        <div class="bg-yellow-500 h-2 rounded-full" style="width: 10%"></div>
+                                    </div>
+                                    <span class="w-8 text-right">98</span>
+                                </div>
+                            </div>
+
+                            <p class="text-gray-400 mb-4 text-sm">
+                                1,247 reviews from verified users
+                            </p>
+
+                            <button
+                                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
+                                onclick="loadToolReviews('chatgpt')">
+                                View All Reviews
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Canva Review Card -->
+                    <div class="tool-review-card rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 animate-fadeInUp"
+                        style="animation-delay: 0.1s; background: #161329;">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-xl font-bold text-white">Canva</h3>
+                                <div class="flex items-center bg-green-900 px-3 py-1 rounded-full">
+                                    <span class="text-yellow-500">★</span>
+                                    <span class="text-green-200 font-semibold ml-1">4.4</span>
+                                </div>
+                            </div>
+
+                            <div class="rating-bars mb-4">
+                                <div class="flex items-center text-sm text-gray-400 mb-1">
+                                    <span class="w-8">5★</span>
+                                    <div class="flex-1 mx-2 bg-gray-700 rounded-full h-2">
+                                        <div class="bg-yellow-500 h-2 rounded-full" style="width: 68%"></div>
+                                    </div>
+                                    <span class="w-8 text-right">542</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-400 mb-1">
+                                    <span class="w-8">4★</span>
+                                    <div class="flex-1 mx-2 bg-gray-700 rounded-full h-2">
+                                        <div class="bg-yellow-500 h-2 rounded-full" style="width: 25%"></div>
+                                    </div>
+                                    <span class="w-8 text-right">198</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-400 mb-1">
+                                    <span class="w-8">3★</span>
+                                    <div class="flex-1 mx-2 bg-gray-700 rounded-full h-2">
+                                        <div class="bg-yellow-500 h-2 rounded-full" style="width: 7%"></div>
+                                    </div>
+                                    <span class="w-8 text-right">56</span>
+                                </div>
+                            </div>
+
+                            <p class="text-gray-400 mb-4 text-sm">
+                                796 reviews from verified users
+                            </p>
+
+                            <button
+                                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
+                                onclick="loadToolReviews('canva')">
+                                View All Reviews
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Jasper Review Card -->
+                    <div class="tool-review-card rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 animate-fadeInUp"
+                        style="animation-delay: 0.2s; background: #161329;">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-xl font-bold text-white">Jasper</h3>
+                                <div class="flex items-center bg-green-900 px-3 py-1 rounded-full">
+                                    <span class="text-yellow-500">★</span>
+                                    <span class="text-green-200 font-semibold ml-1">4.3</span>
+                                </div>
+                            </div>
+
+                            <div class="rating-bars mb-4">
+                                <div class="flex items-center text-sm text-gray-400 mb-1">
+                                    <span class="w-8">5★</span>
+                                    <div class="flex-1 mx-2 bg-gray-700 rounded-full h-2">
+                                        <div class="bg-yellow-500 h-2 rounded-full" style="width: 61%"></div>
+                                    </div>
+                                    <span class="w-8 text-right">387</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-400 mb-1">
+                                    <span class="w-8">4★</span>
+                                    <div class="flex-1 mx-2 bg-gray-700 rounded-full h-2">
+                                        <div class="bg-yellow-500 h-2 rounded-full" style="width: 28%"></div>
+                                    </div>
+                                    <span class="w-8 text-right">178</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-400 mb-1">
+                                    <span class="w-8">3★</span>
+                                    <div class="flex-1 mx-2 bg-gray-700 rounded-full h-2">
+                                        <div class="bg-yellow-500 h-2 rounded-full" style="width: 11%"></div>
+                                    </div>
+                                    <span class="w-8 text-right">71</span>
+                                </div>
+                            </div>
+
+                            <p class="text-gray-400 mb-4 text-sm">
+                                636 reviews from verified users
+                            </p>
+
+                            <button
+                                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
+                                onclick="loadToolReviews('jasper')">
+                                View All Reviews
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Individual Reviews List -->
+            <div class="reviews-container">
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-2xl font-bold text-white">Recent Reviews</h2>
+                    <button
+                        class="write-review-btn bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors duration-200"
+                        data-tool-id="general">
+                        Write a Review
+                    </button>
+                </div>
+
+                <!-- Reviews will be loaded here by JavaScript -->
+                <div id="reviewsList" class="space-y-6">
+                    <!-- Loading placeholder -->
+                    <div class="text-center py-12">
+                        <div class="animate-pulse">
+                            <div class="h-4 bg-gray-300 dark:bg-gray-600 rounded w-3/4 mx-auto mb-4"></div>
+                            <div class="h-4 bg-gray-300 dark:bg-gray-600 rounded w-1/2 mx-auto"></div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mt-4">Loading reviews...</p>
+                    </div>
+                </div>
+
+                <!-- Load More Button -->
+                <div class="text-center mt-12">
+                    <button id="loadMoreReviews"
+                        class="font-semibold py-3 px-8 rounded-lg transition-colors duration-200 text-gray-200 hover:text-white"
+                        style="background: #1d1833; border: 1px solid #2c2742;">
+                        Load More Reviews
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Review Form Modal -->
+    <div id="reviewFormModal"
+        class="review-form-overlay fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="review-form-container rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+            style="background: #161329;">
+            <div class="p-6 border-b border-gray-700">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold text-white">Write a Review</h3>
+                    <button class="form-close-btn text-gray-400 hover:text-gray-200">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <form id="reviewForm" class="p-6 space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">
+                        AI Tool *
+                    </label>
+                    <select name="toolId" required
+                        class="w-full px-3 py-2 border border-gray-600 rounded-lg text-gray-300 focus:ring-2 focus:ring-blue-500"
+                        style="background: #1d1833;">
+                        <option value="">Select an AI tool...</option>
+                        <option value="chatgpt">ChatGPT</option>
+                        <option value="canva">Canva</option>
+                        <option value="jasper">Jasper</option>
+                        <option value="midjourney">Midjourney</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">
+                        Your Rating *
+                    </label>
+                    <div class="rating-input flex items-center space-x-1">
+                        <span class="rating-star text-3xl text-gray-300 cursor-pointer hover:text-yellow-500"
+                            data-rating="1">★</span>
+                        <span class="rating-star text-3xl text-gray-300 cursor-pointer hover:text-yellow-500"
+                            data-rating="2">★</span>
+                        <span class="rating-star text-3xl text-gray-300 cursor-pointer hover:text-yellow-500"
+                            data-rating="3">★</span>
+                        <span class="rating-star text-3xl text-gray-300 cursor-pointer hover:text-yellow-500"
+                            data-rating="4">★</span>
+                        <span class="rating-star text-3xl text-gray-300 cursor-pointer hover:text-yellow-500"
+                            data-rating="5">★</span>
+                    </div>
+                    <input type="hidden" name="rating" required>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">
+                        Review Title *
+                    </label>
+                    <input type="text" name="title" required maxlength="100"
+                        class="w-full px-3 py-2 border border-gray-600 rounded-lg text-gray-300 focus:ring-2 focus:ring-blue-500"
+                        style="background: #1d1833;" placeholder="Summarize your experience...">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">
+                        Your Review *
+                    </label>
+                    <textarea name="review" required rows="4" maxlength="1000"
+                        class="w-full px-3 py-2 border border-gray-600 rounded-lg text-gray-300 focus:ring-2 focus:ring-blue-500"
+                        style="background: #1d1833;"
+                        placeholder="Share your detailed experience with this AI tool..."></textarea>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">
+                            Your Name *
+                        </label>
+                        <input type="text" name="userName" required maxlength="50"
+                            class="w-full px-3 py-2 border border-gray-600 rounded-lg text-gray-300 focus:ring-2 focus:ring-blue-500"
+                            style="background: #1d1833;" placeholder="Your name">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">
+                            Your Role
+                        </label>
+                        <input type="text" name="userRole" maxlength="50"
+                            class="w-full px-3 py-2 border border-gray-600 rounded-lg text-gray-300 focus:ring-2 focus:ring-blue-500"
+                            style="background: #1d1833;" placeholder="e.g., Content Writer, Developer">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">
+                        Use Case
+                    </label>
+                    <input type="text" name="useCase" maxlength="100"
+                        class="w-full px-3 py-2 border border-gray-600 rounded-lg text-gray-300 focus:ring-2 focus:ring-blue-500"
+                        style="background: #1d1833;" placeholder="How did you use this tool?">
+                </div>
+
+                <div class="flex items-center space-x-2">
+                    <input type="checkbox" id="termsAgree" name="termsAgree" required class="rounded">
+                    <label for="termsAgree" class="text-sm text-gray-400">
+                        I agree to the <a href="#" class="text-blue-400 hover:underline">terms and conditions</a> and
+                        confirm this is my honest review.
+                    </label>
+                </div>
+
+                <div class="flex space-x-4 pt-4">
+                    <button type="submit"
+                        class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+                        Submit Review
+                    </button>
+                    <button type="button"
+                        class="form-close-btn flex-1 font-semibold py-3 px-6 rounded-lg transition-colors duration-200 text-gray-200 hover:text-white"
+                        style="background: #1d1833; border: 1px solid #2c2742;">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Call-to-Action Section -->
+    <section style="background: #161329;" class="py-16 px-4 text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                Help Others Find the Best AI Tools
+            </h2>
+            <p class="text-xl mb-8 opacity-90">
+                Your review matters! Share your experience and help the community make better decisions.
+            </p>
+            <button
+                class="write-review-btn bg-white hover:bg-gray-100 font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 hover:scale-105"
+                style="color: #3a1e7a;" data-tool-id="general">
+                Write Your First Review
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="../logo.png" alt="AI Tool Finder Logo" class="h-8 w-8">
+                        <span class="text-xl font-bold">AI Tool Finder</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        Your trusted source for AI tool reviews and recommendations. Discover the best AI tools through
+                        real user experiences.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="../blogs/" class="text-gray-300 hover:text-white transition-colors">Blogs</a></li>
+                        <li><a href="../reviews/" class="text-gray-300 hover:text-white transition-colors">Reviews</a>
+                        </li>
+                        <li><a href="../#about" class="text-gray-300 hover:text-white transition-colors">About</a></li>
+                        <li><a href="../#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Popular Reviews</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors"
+                                onclick="loadToolReviews('chatgpt')">ChatGPT Reviews</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors"
+                                onclick="loadToolReviews('canva')">Canva Reviews</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors"
+                                onclick="loadToolReviews('jasper')">Jasper Reviews</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors"
+                                onclick="loadToolReviews('midjourney')">Midjourney Reviews</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 pt-8 mt-8 text-center">
+                <p class="text-gray-300">
+                    © 2025 AllAITool.tech. All rights reserved. |
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a> |
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../reviews-data.js"></script>
+    <script src="../app.js"></script>
+
+    <!-- Modal functionality -->
+    <script>
+        // Modal functionality
+        function openReviewModal(toolId = 'general') {
+            const modal = document.getElementById('reviewFormModal');
+            const form = document.getElementById('reviewForm');
+
+            // Set the tool ID in the form
+            const toolIdInput = document.querySelector('input[name="toolId"]') || document.createElement('input');
+            toolIdInput.type = 'hidden';
+            toolIdInput.name = 'toolId';
+            toolIdInput.value = toolId;
+            if (!document.querySelector('input[name="toolId"]')) {
+                form.appendChild(toolIdInput);
+            }
+
+            // Show the modal
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+
+            // Initialize rating stars after modal is shown
+            initializeRatingStars();
+        }
+
+        function initializeRatingStars() {
+            // Remove any existing event listeners
+            const allStars = document.querySelectorAll('.rating-star');
+
+            // Add click event to each star
+            allStars.forEach((star, index) => {
+                star.addEventListener('click', function () {
+                    const rating = parseInt(this.getAttribute('data-rating'));
+                    const ratingInput = document.querySelector('input[name="rating"]');
+
+                    console.log('Star clicked, rating:', rating); // Debug log
+
+                    // Set the hidden input value
+                    ratingInput.value = rating;
+
+                    // Update visual state of all stars
+                    allStars.forEach((s, i) => {
+                        if (i < rating) {
+                            s.classList.remove('text-gray-300');
+                            s.classList.add('text-yellow-500');
+                        } else {
+                            s.classList.remove('text-yellow-500');
+                            s.classList.add('text-gray-300');
+                        }
+                    });
+                });
+
+                // Add hover effects
+                star.addEventListener('mouseenter', function () {
+                    const rating = parseInt(this.getAttribute('data-rating'));
+                    allStars.forEach((s, i) => {
+                        if (i < rating) {
+                            s.classList.add('text-yellow-400');
+                        } else {
+                            s.classList.remove('text-yellow-400');
+                        }
+                    });
+                });
+
+                star.addEventListener('mouseleave', function () {
+                    const currentRating = parseInt(document.querySelector('input[name="rating"]').value) || 0;
+                    allStars.forEach((s, i) => {
+                        s.classList.remove('text-yellow-400');
+                        if (i < currentRating) {
+                            s.classList.remove('text-gray-300');
+                            s.classList.add('text-yellow-500');
+                        } else {
+                            s.classList.remove('text-yellow-500');
+                            s.classList.add('text-gray-300');
+                        }
+                    });
+                });
+            });
+        }
+
+        function closeReviewModal() {
+            const modal = document.getElementById('reviewFormModal');
+            const form = document.getElementById('reviewForm');
+
+            // Hide the modal
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+
+            // Reset the form
+            form.reset();
+
+            // Reset rating stars
+            const allStars = document.querySelectorAll('.rating-star');
+            allStars.forEach(star => {
+                star.classList.remove('text-yellow-500', 'text-yellow-400');
+                star.classList.add('text-gray-300');
+            });
+
+            // Restore body scroll
+            document.body.style.overflow = 'auto';
+        }
+
+        // Event listeners for modal
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize reviews system
+            loadAllReviews();
+
+            // Add search functionality
+            document.getElementById('reviewSearchInput').addEventListener('input', function (e) {
+                searchReviews(e.target.value);
+            });
+
+            // Write review buttons
+            document.querySelectorAll('.write-review-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const toolId = this.getAttribute('data-tool-id') || 'general';
+                    openReviewModal(toolId);
+                });
+            });
+
+            // Close buttons
+            document.querySelectorAll('.form-close-btn').forEach(btn => {
+                btn.addEventListener('click', closeReviewModal);
+            });
+
+            // Close modal when clicking outside
+            document.getElementById('reviewFormModal').addEventListener('click', function (e) {
+                if (e.target === this) {
+                    closeReviewModal();
+                }
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeReviewModal();
+                }
+            });
+
+            // Helpful button functionality
+            document.addEventListener('click', function (e) {
+                if (e.target.closest('.helpful-btn')) {
+                    const btn = e.target.closest('.helpful-btn');
+                    const reviewId = btn.getAttribute('data-review-id');
+                    markHelpful(reviewId, btn);
+                }
+            });
+
+            // Rating stars functionality is now handled in initializeRatingStars() when modal opens
+
+            // Form submission
+            document.getElementById('reviewForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Get form data
+                const formData = new FormData(this);
+                const reviewData = {
+                    toolId: formData.get('toolId') || 'general',
+                    toolName: formData.get('toolName'),
+                    userName: formData.get('userName'),
+                    userEmail: formData.get('userEmail'),
+                    rating: parseInt(formData.get('rating')),
+                    title: formData.get('title'),
+                    review: formData.get('review'),
+                    pros: formData.get('pros') ? formData.get('pros').split(',').map(s => s.trim()).filter(s => s) : [],
+                    cons: formData.get('cons') ? formData.get('cons').split(',').map(s => s.trim()).filter(s => s) : [],
+                    useCase: formData.get('useCase'),
+                    dateCreated: new Date().toLocaleDateString(),
+                    helpful: 0,
+                    verified: false
+                };
+
+                // Here you would typically send the data to a server
+                console.log('Review submitted:', reviewData);
+
+                // Show success message
+                alert('Thank you for your review! It will be published after moderation.');
+
+                // Close modal
+                closeReviewModal();
+            });
+        });
+    </script>
+
+    <!-- Initialize Reviews System -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize reviews system
+            window.reviewsSystem = new ReviewsSystem();
+
+            // Load all reviews by default
+            loadAllReviews();
+
+            // Add search functionality
+            document.getElementById('reviewSearchInput').addEventListener('input', function (e) {
+                searchReviews(e.target.value);
+            });
+        });
+
+        function loadToolReviews(toolId) {
+            // Filter reviews by specific tool
+            if (reviewsData[toolId] && reviewsData[toolId].reviews) {
+                const toolReviews = reviewsData[toolId].reviews.map(review => ({
+                    ...review,
+                    toolId: toolId,
+                    toolName: getToolName(toolId)
+                }));
+
+                // Sort by date (newest first)
+                toolReviews.sort((a, b) => new Date(b.dateCreated) - new Date(a.dateCreated));
+
+                // Display reviews
+                displayReviews(toolReviews);
+            } else {
+                displayReviews([]);
+            }
+
+            // Scroll to reviews section
+            document.getElementById('reviewsList').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        function loadAllReviews() {
+            // Load reviews from all tools
+            const allReviews = [];
+
+            Object.keys(reviewsData).forEach(toolId => {
+                const toolReviews = reviewsData[toolId].reviews.map(review => ({
+                    ...review,
+                    toolId: toolId,
+                    toolName: getToolName(toolId)
+                }));
+                allReviews.push(...toolReviews);
+            });
+
+            // Sort by date (newest first)
+            allReviews.sort((a, b) => new Date(b.dateCreated) - new Date(a.dateCreated));
+
+            // Display reviews
+            displayReviews(allReviews.slice(0, 10)); // Show first 10 reviews
+        }
+
+        function getToolName(toolId) {
+            const toolNames = {
+                'chatgpt': 'ChatGPT',
+                'canva': 'Canva',
+                'jasper': 'Jasper',
+                'midjourney': 'Midjourney'
+            };
+            return toolNames[toolId] || toolId;
+        }
+
+        function displayReviews(reviews) {
+            const reviewsList = document.getElementById('reviewsList');
+
+            if (reviews.length === 0) {
+                reviewsList.innerHTML = `
+                    <div class="text-center py-12">
+                        <p class="text-gray-400">No reviews found matching your criteria.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            reviewsList.innerHTML = reviews.map(review => `
+                <div class="review-card rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300" style="background: #161329;">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+                                ${review.userName.charAt(0).toUpperCase()}
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">${review.userName}</h4>
+                                <p class="text-sm text-gray-400">${review.userRole || 'User'}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-blue-400 font-semibold">${review.toolName}</span>
+                            ${review.verified ? '<span class="bg-green-900 text-green-200 text-xs px-2 py-1 rounded-full">✓ Verified</span>' : ''}
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-500">
+                                ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
+                            </div>
+                            <span class="ml-2 text-sm text-gray-400">${review.dateCreated}</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-white mb-2">${review.title}</h3>
+                        <p class="text-gray-300">${review.review}</p>
+                    </div>
+
+                    ${review.pros && review.pros.length > 0 ? `
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-green-400 mb-2">Pros:</h5>
+                            <ul class="list-disc list-inside text-sm text-gray-300 space-y-1">
+                                ${review.pros.map(pro => `<li>${pro}</li>`).join('')}
+                            </ul>
+                        </div>
+                    ` : ''}
+
+                    ${review.cons && review.cons.length > 0 ? `
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-red-400 mb-2">Cons:</h5>
+                            <ul class="list-disc list-inside text-sm text-gray-300 space-y-1">
+                                ${review.cons.map(con => `<li>${con}</li>`).join('')}
+                            </ul>
+                        </div>
+                    ` : ''}
+
+                    <div class="flex items-center justify-between pt-4 border-t border-gray-700">
+                        <div class="flex items-center space-x-4">
+                            <button class="helpful-btn flex items-center space-x-1 text-sm text-gray-400 hover:text-blue-400 transition-colors"
+                                data-review-id="${review.id}">
+                                <span>👍</span>
+                                <span>Helpful (${review.helpful || 0})</span>
+                            </button>
+                            ${review.useCase ? `<span class="text-sm text-gray-400">Use case: ${review.useCase}</span>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function markHelpful(reviewId, button) {
+            // Find the review in the data and increment helpful count
+            let found = false;
+            Object.keys(reviewsData).forEach(toolId => {
+                const review = reviewsData[toolId].reviews.find(r => r.id === reviewId);
+                if (review) {
+                    review.helpful = (review.helpful || 0) + 1;
+                    found = true;
+
+                    // Update the button text
+                    const span = button.querySelector('span:last-child');
+                    if (span) {
+                        span.textContent = `Helpful (${review.helpful})`;
+                    }
+
+                    // Disable the button to prevent multiple clicks
+                    button.style.opacity = '0.6';
+                    button.style.pointerEvents = 'none';
+                }
+            });
+
+            if (!found) {
+                console.warn('Review not found:', reviewId);
+            }
+        }
+
+        function searchReviews(query) {
+            if (!query.trim()) {
+                loadAllReviews();
+                return;
+            }
+
+            const allReviews = [];
+            Object.keys(reviewsData).forEach(toolId => {
+                const toolReviews = reviewsData[toolId].reviews.map(review => ({
+                    ...review,
+                    toolId: toolId,
+                    toolName: getToolName(toolId)
+                }));
+                allReviews.push(...toolReviews);
+            });
+
+            const filteredReviews = allReviews.filter(review =>
+                review.title.toLowerCase().includes(query.toLowerCase()) ||
+                review.review.toLowerCase().includes(query.toLowerCase()) ||
+                review.userName.toLowerCase().includes(query.toLowerCase()) ||
+                review.toolName.toLowerCase().includes(query.toLowerCase()) ||
+                (review.useCase && review.useCase.toLowerCase().includes(query.toLowerCase()))
+            );
+
+            displayReviews(filteredReviews);
+        }
+    </script>
+
+    <!-- Navbar animations script -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburgerSpans = document.querySelectorAll('.hamburger span');
+
+            mobileMenu.classList.toggle('active');
+
+            // Animate hamburger to X
+            if (mobileMenu.classList.contains('active')) {
+                hamburgerSpans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
+                hamburgerSpans[1].style.opacity = '0';
+                hamburgerSpans[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
+            } else {
+                hamburgerSpans[0].style.transform = 'none';
+                hamburgerSpans[1].style.opacity = '1';
+                hamburgerSpans[2].style.transform = 'none';
+            }
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function (event) {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburger = document.querySelector('.hamburger');
+
+            if (!hamburger.contains(event.target) && !mobileMenu.contains(event.target)) {
+                mobileMenu.classList.remove('active');
+                const hamburgerSpans = document.querySelectorAll('.hamburger span');
+                hamburgerSpans[0].style.transform = 'none';
+                hamburgerSpans[1].style.opacity = '1';
+                hamburgerSpans[2].style.transform = 'none';
+            }
+        });
+
+        // Enhanced smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

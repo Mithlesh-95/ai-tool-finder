@@ -3,6 +3,9 @@ Allow: /
 
 # Allow all blog content
 Allow: /blogs/
+Allow: /blogs/best-ai-tools-for-resume-and-job-applications-in-2025/
+Allow: /blogs/best-free-ai-image-generators-2025/
+Allow: /blogs/best-ai-tools-for-content-creation-and-marketing-2025/
 
 # Allow thank-you pages (for form completions)
 Allow: /thank-you-contact.html

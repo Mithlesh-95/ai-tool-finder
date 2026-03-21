@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" class="dark-mode">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Prompt Generator - Create Perfect ChatGPT Prompts</title>
+    <meta name="description"
+        content="Generate high-quality prompts for ChatGPT, Claude, and other AI tools. Free AI Prompt Generator for writing, coding, and marketing.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.png" type="image/png" />
+
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #4b5563;
+        }
+
+        .dark-mode .input-label {
+            color: #d1d5db;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e5e7eb;
+            background-color: #f9fafb;
+            transition: all 0.3s;
+        }
+
+        .dark-mode .input-field {
+            background-color: #374151;
+            border-color: #4b5563;
+            color: white;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .generated-box {
+            background: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .dark-mode .generated-box {
+            background: #1f2937;
+            border-color: #374151;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+
+    <!-- Navbar -->
+    <nav
+        class="bg-white/80 dark:bg-slate-900/90 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer"
+                    onclick="window.location.href='index.html'">
+                    <img src="logo.png" alt="AllAITool Logo" class="h-8 w-8 rounded-lg">
+                    <span
+                        class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">AllAITool</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html"
+                        class="text-gray-600 dark:text-gray-300 hover:text-blue-600 font-medium transition-colors">Home</a>
+                    <a href="index.html#categories"
+                        class="text-gray-600 dark:text-gray-300 hover:text-blue-600 font-medium transition-colors">Categories</a>
+                    <a href="#" class="text-blue-600 font-bold transition-colors">Prompt Generator</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                Free AI <span class="gradient-text">Prompt Generator</span>
+            </h1>
+            <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Stop struggling with basic prompts. Use our advanced generator to create detailed, effective prompts for
+                ChatGPT, Claude, and Gemini.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+
+            <!-- Input Form -->
+            <div
+                class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-100 dark:border-gray-700">
+                <h2 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white flex items-center gap-2">
+                    <span>1. Configuration</span>
+                </h2>
+
+                <div class="input-group">
+                    <label class="input-label">I want the AI to act as a...</label>
+                    <input type="text" id="role"
+                        placeholder="e.g., Professional Copywriter, Python Expert, Fitness Coach" class="input-field">
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">My Goal is to...</label>
+                    <textarea id="task" rows="3"
+                        placeholder="e.g., Describe the benefits of meditation, Debug a React component"
+                        class="input-field"></textarea>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="input-group">
+                        <label class="input-label">Tone of Voice</label>
+                        <select id="tone" class="input-field cursor-pointer">
+                            <option value="Professional">Professional</option>
+                            <option value="Friendly">Friendly</option>
+                            <option value="Persuasive">Persuasive</option>
+                            <option value="Humorous">Humorous</option>
+                            <option value="Academic">Academic</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">Format</label>
+                        <select id="format" class="input-field cursor-pointer">
+                            <option value="Bullet Points">Bullet Points</option>
+                            <option value="Essay">Essay</option>
+                            <option value="Code Block">Code Block</option>
+                            <option value="Step-by-Step Guide">Step-by-Step Guide</option>
+                            <option value="Email">Email</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">Constraints / Specific Details</label>
+                    <input type="text" id="constraints" placeholder="e.g., Under 300 words, Use simple English"
+                        class="input-field">
+                </div>
+
+                <button onclick="generatePrompt()"
+                    class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200">
+                    ✨ Generate Perfect Prompt
+                </button>
+            </div>
+
+            <!-- Output Section -->
+            <div
+                class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-100 dark:border-gray-700">
+                <h2 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white flex items-center gap-2">
+                    <span>2. Your Prompt</span>
+                </h2>
+
+                <div id="outputContainer" class="generated-box h-full min-h-[300px] flex flex-col">
+                    <textarea id="promptOutput"
+                        class="w-full h-full min-h-[250px] bg-transparent border-0 focus:ring-0 text-gray-700 dark:text-gray-300 resize-none font-mono text-sm leading-relaxed"
+                        readonly placeholder="Your generated prompt will appear here..."></textarea>
+
+                    <div class="mt-4 flex justify-end gap-3">
+                        <button onclick="copyToClipboard()"
+                            class="flex items-center gap-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-white rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors font-medium">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3">
+                                </path>
+                            </svg>
+                            Copy
+                        </button>
+                        <button onclick="window.open('https://chat.openai.com', '_blank')"
+                            class="flex items-center gap-2 px-4 py-2 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded-lg hover:bg-green-200 dark:hover:bg-green-800 transition-colors font-medium">
+                            Open ChatGPT
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO Content -->
+        <div class="max-w-4xl mx-auto mt-20 prose dark:prose-invert">
+            <h2>Why use a Prompt Generator?</h2>
+            <p>AI models like ChatGPT depend heavily on the quality of instructions you provide. A "perfect prompt"
+                typically includes a persona, a clear task, specific constraints, and a desired format. Our tool ensures
+                you never miss these critical elements, helping you get better results instantly.</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 mt-12 py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-500">© 2025 AllAITool. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function generatePrompt() {
+            const role = document.getElementById('role').value || "Helpful Assistant";
+            const task = document.getElementById('task').value;
+            const tone = document.getElementById('tone').value;
+            const format = document.getElementById('format').value;
+            const constraints = document.getElementById('constraints').value;
+
+            if (!task) {
+                alert("Please enter a goal or task!");
+                return;
+            }
+
+            const prompt = `Act as a ${role}.\n\nYour task is to: ${task}\n\nPlease maintain a ${tone} tone and format the output as ${format}.\n\nConstraints: ${constraints ? constraints : 'None'}.\n\nTake a deep breath and work on this step by step to ensure high quality.`;
+
+            const output = document.getElementById('promptOutput');
+            output.value = "";
+
+            // Typewriter effect
+            let i = 0;
+            const speed = 10;
+
+            function typeWriter() {
+                if (i < prompt.length) {
+                    output.value += prompt.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, speed);
+                }
+            }
+            typeWriter();
+        }
+
+        function copyToClipboard() {
+            const copyText = document.getElementById("promptOutput");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(copyText.value);
+
+            const btn = document.querySelector('button[onclick="copyToClipboard()"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '✅ Copied!';
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+            }, 2000);
+        }
+    </script>
+</body>
+
+</html>

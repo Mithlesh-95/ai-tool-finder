@@ -2483,6 +2483,84 @@
                 gap: 2rem;
             }
         }
+
+        /* Bento Grid Styles */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .bento-grid {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(2, 300px);
+            }
+
+            .bento-item-large {
+                grid-column: span 2;
+                grid-row: span 2;
+            }
+
+            .bento-item-tall {
+                grid-row: span 2;
+            }
+        }
+
+        .bento-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .bento-card {
+            background: rgba(30, 41, 59, 0.7);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .bento-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #667eea;
+        }
+
+        .bento-tag {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .bento-tag.trending {
+            background: linear-gradient(135deg, #FF6B6B 0%, #EE5253 100%);
+            color: white;
+        }
+
+        .bento-tag.new {
+            background: linear-gradient(135deg, #4834d4 0%, #686de0 100%);
+            color: white;
+        }
+
+        .bento-tag.popular {
+            background: linear-gradient(135deg, #f0932b 0%, #ffbe76 100%);
+            color: white;
+        }
     </style>
 </head>
 <script>(function () { try { const s = localStorage.getItem('theme'); if (s === 'light') { /* Only apply light mode if explicitly set */ } else { document.documentElement.classList.add('dark-mode'); } } catch (e) { document.documentElement.classList.add('dark-mode'); } })();</script>
@@ -2503,6 +2581,8 @@
                 <!-- Desktop Navigation -->
                 <div class="desktop-menu items-center space-x-6">
                     <a href="/" class="nav-link">Home</a>
+                    <a href="prompt-generator.html" class="nav-link text-blue-600 font-bold" style="color: #667eea;">✨
+                        Prompt Gen</a>
                     <a href="/blogs/" class="nav-link">Blogs</a>
                     <a href="/reviews/" class="nav-link">Reviews</a>
                     <a href="#about" class="nav-link">About</a>
@@ -2526,6 +2606,7 @@
             <div class="max-w-6xl mx-auto px-8 py-4">
                 <div class="flex flex-col space-y-2">
                     <a href="/" class="nav-link">Home</a>
+                    <a href="prompt-generator.html" class="nav-link font-bold" style="color: #667eea;">✨ Prompt Gen</a>
                     <a href="/blogs/" class="nav-link">Blogs</a>
                     <a href="/reviews/" class="nav-link">Reviews</a>
                     <a href="#about" class="nav-link">About</a>
@@ -2566,6 +2647,56 @@
                         class="absolute right-2 top-2 bg-gray-800 text-white px-4 md:px-6 py-1 md:py-2 rounded-full hover:bg-gray-700 transition-all duration-300 hover:scale-105">
                         Search
                     </button>
+                </div>
+            </div>
+
+            <!-- AI Solution Finder Wizard -->
+            <div class="max-w-3xl mx-auto mt-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 animate-fadeInUp shadow-2xl"
+                style="animation-delay: 0.5s; background: rgba(255, 255, 255, 0.1);">
+                <div id="wizard-container" class="transition-all duration-300">
+                    <h3
+                        class="text-xl md:text-2xl font-semibold mb-4 text-white flex items-center justify-center gap-2">
+                        <span>🤖</span> Find the perfect tool for you
+                    </h3>
+
+                    <!-- Step 1: Role -->
+                    <div id="step-role" class="wizard-step">
+                        <p class="mb-4 text-white/90 text-lg">I am a...</p>
+                        <div class="flex flex-wrap justify-center gap-3">
+                            <button onclick="selectWizardRole('student')"
+                                class="wizard-btn bg-white/20 hover:bg-white/30 border border-white/30 rounded-xl px-6 py-3 font-medium transition-all hover:scale-105">Student
+                                🎓</button>
+                            <button onclick="selectWizardRole('developer')"
+                                class="wizard-btn bg-white/20 hover:bg-white/30 border border-white/30 rounded-xl px-6 py-3 font-medium transition-all hover:scale-105">Developer
+                                💻</button>
+                            <button onclick="selectWizardRole('content-creator')"
+                                class="wizard-btn bg-white/20 hover:bg-white/30 border border-white/30 rounded-xl px-6 py-3 font-medium transition-all hover:scale-105">Content
+                                Creator ✍️</button>
+                            <button onclick="selectWizardRole('business')"
+                                class="wizard-btn bg-white/20 hover:bg-white/30 border border-white/30 rounded-xl px-6 py-3 font-medium transition-all hover:scale-105">Business
+                                Owner 💼</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Goal (Hidden initially) -->
+                    <div id="step-goal" class="wizard-step hidden">
+                        <p class="mb-4 text-white/90 text-lg">I want to...</p>
+                        <div id="goal-options" class="flex flex-wrap justify-center gap-3">
+                            <!-- Populated by JS -->
+                        </div>
+                        <button onclick="resetWizard()"
+                            class="mt-6 text-sm text-white/60 hover:text-white underline">Start Over</button>
+                    </div>
+
+                    <!-- Step 3: Result (Hidden initially) -->
+                    <div id="step-result" class="wizard-step hidden text-center">
+                        <p class="mb-4 text-white/90 text-lg">Here are your best matches:</p>
+                        <div id="wizard-results" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+                            <!-- Populated by JS -->
+                        </div>
+                        <button onclick="resetWizard()"
+                            class="mt-6 text-sm text-white/60 hover:text-white underline">Start Over</button>
+                    </div>
                 </div>
             </div>
 
@@ -2660,91 +2791,23 @@
         </div>
     </section>
 
-    <!-- Value Proposition & Introduction Section -->
-    <section class="py-16 px-4 bg-white">
-        <div class="max-w-6xl mx-auto">
-            <!-- Main Value Proposition -->
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                    <span class="text-blue-600">Why AllAITool.tech is Your Go-To</span> <span class="text-blue-600">AI
-                        Tools Directory</span>
-                </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                    Skip the endless searching. We've curated <strong>500+ best AI tools</strong> across every category,
-                    tested and reviewed by experts, so you can focus on what matters—getting results.
-                </p>
-            </div>
+    <!-- Trending Bento Grid Section -->
+    <section class="py-16 px-4 bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-6xl mx-auto mb-10">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-3">
+                <span class="text-3xl">🔥</span> Trending This Week
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400">The most popular and fastest-growing AI tools right now.</p>
+        </div>
 
-            <!-- Key Benefits Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                <div class="text-center p-6 bg-blue-100 rounded-2xl border border-blue-200 shadow-sm">
-                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-2xl">🎯</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-blue-800 mb-3">Expert-Curated Selection</h3>
-                    <p class="text-gray-900">Every tool is hand-picked and tested by our team. No spam, no outdated
-                        links—only the <strong>best AI tools</strong> that actually work.</p>
-                </div>
-
-                <div class="text-center p-6 bg-green-100 rounded-2xl border border-green-200 shadow-sm">
-                    <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-2xl">⚡</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-green-800 mb-3">Save Hours of Research</h3>
-                    <p class="text-gray-900">Find the perfect AI tool in under 30 seconds. Our smart categorization and
-                        search make <strong>AI productivity</strong> effortless.</p>
-                </div>
-
-                <div class="text-center p-6 bg-purple-100 rounded-2xl border border-purple-200 shadow-sm">
-                    <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-2xl">🆓</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-purple-800 mb-3">Always Free to Use</h3>
-                    <p class="text-gray-900">Our <strong>free AI tool finder</strong> will always be free. No
-                        subscriptions, no hidden fees—just pure value for everyone.</p>
-                </div>
-            </div>
-
-            <!-- Categories Preview -->
-            <div class="text-center">
-                <p class="text-lg text-gray-600 mb-8">
-                    Explore AI tools for <a href="/blogs/best-ai-tools-for-resume-and-job-applications-in-2025/"
-                        class="text-blue-600 hover:text-blue-700 font-medium">resume building</a>,
-                    <a href="/blogs/best-free-ai-image-generators-2025/"
-                        class="text-purple-600 hover:text-purple-700 font-medium">image generation</a>,
-                    content writing, coding, design, and more. Plus get expert <a href="/blogs/"
-                        class="text-green-600 hover:text-green-700 font-medium">guides & tutorials</a>
-                    to maximize your AI productivity.
-                </p>
-            </div>
+        <div id="bentoGrid" class="bento-grid">
+            <!-- Populated by app.js -->
         </div>
     </section>
 
-    <!-- Top AI Tools Carousel Section -->
-    <section id="top-tools" class="carousel-section bg-white py-12 px-4 border-b border-gray-100 animate-fadeInUp"
-        style="animation-delay: 0.6s;">
-        <div class="max-w-7xl mx-auto">
-            <div class="mb-6 text-center">
-                <h2 class="text-3xl font-bold text-gray-800 tracking-tight animate-scaleIn"
-                    style="animation-delay: 0.8s;">Top AI Tools</h2>
-                <p class="text-gray-500 mt-2 text-sm max-w-xl mx-auto animate-fadeInUp" style="animation-delay: 1s;">
-                    Hand‑picked essentials everyone is exploring right now</p>
-                <div class="flex items-center gap-2 justify-center text-xs text-gray-400 mt-3 animate-fadeInUp"
-                    style="animation-delay: 1.2s;">
-                    <span
-                        class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 animate-pulse"></span>
-                    Auto scrolling • Hover to pause
-                </div>
-            </div>
-            <div class="relative animate-fadeInLeft" style="animation-delay: 1.4s;">
-                <button class="carousel-btn left" aria-label="Scroll left" id="topToolsPrev">&#10094;</button>
-                <div id="topToolsCarousel" class="overflow-hidden relative">
-                    <div id="topToolsTrack" class="flex gap-6 will-change-transform py-2"></div>
-                </div>
-                <button class="carousel-btn right" aria-label="Scroll right" id="topToolsNext">&#10095;</button>
-            </div>
-        </div>
-    </section>
+    <!-- Value Prop Removed -->
+
+    <!-- Top Tools Carousel Removed (Replaced by Bento Grid) -->
 
     <!-- Category Filter Buttons -->
     <section class="mobile-categories-wrapper py-12 px-4 bg-white">
@@ -2826,439 +2889,7 @@
         </div>
     </section>
 
-    <!-- Interactive AI Category Panels Section -->
-    <section
-        class="py-16 px-4 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-        <div class="max-w-6xl mx-auto">
-            <!-- Section Header -->
-            <div class="text-center mb-12 animate-on-scroll">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-100 mb-4">
-                    Explore AI Tools by <span class="text-blue-600 dark:text-blue-400">Category</span>
-                </h2>
-                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                    Discover the perfect AI tools for your needs. Click any category below to learn more about how these
-                    tools can boost your productivity.
-                </p>
-            </div>
-
-            <!-- Category Panels Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-
-                <!-- 1. AI Writing Tools Panel -->
-                <div
-                    class="category-panel bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    <div class="panel-header p-6 cursor-pointer" onclick="toggleCategoryPanel('writing')">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-4">
-                                <div
-                                    class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-xl flex items-center justify-center">
-                                    <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none"
-                                        stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z">
-                                        </path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-bold text-gray-800 dark:text-gray-100">AI Writing Tools</h3>
-                                    <p class="text-sm text-gray-500 dark:text-gray-400">Content creation & grammar
-                                        assistance</p>
-                                </div>
-                            </div>
-                            <div class="chevron-icon transform transition-transform duration-300" id="writing-chevron">
-                                <svg class="w-5 h-5 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-content hidden" id="writing-content">
-                        <div class="px-6 pb-6">
-                            <div class="bg-blue-50 dark:bg-blue-900/30 rounded-xl p-5 mb-4">
-                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
-                                    AI writing tools are revolutionizing content creation for students, professionals,
-                                    and businesses worldwide. These powerful applications use artificial intelligence to
-                                    help you craft compelling essays, professional emails, blog posts, social media
-                                    content, and marketing copy with unprecedented speed and quality. From grammar
-                                    checking and style enhancement to complete content generation, AI writing assistants
-                                    eliminate writer's block and boost productivity.
-                                </p>
-                            </div>
-                            <button onclick="scrollToCategory('content-writing')"
-                                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2">
-                                <span>Explore the best AI writing tools below</span>
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 2. AI Coding Tools Panel -->
-                <div
-                    class="category-panel bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    <div class="panel-header p-6 cursor-pointer" onclick="toggleCategoryPanel('coding')">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-4">
-                                <div
-                                    class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-xl flex items-center justify-center">
-                                    <svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none"
-                                        stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-bold text-gray-800 dark:text-gray-100">AI Coding Tools</h3>
-                                    <p class="text-sm text-gray-500 dark:text-gray-400">Programming assistance & code
-                                        generation</p>
-                                </div>
-                            </div>
-                            <div class="chevron-icon transform transition-transform duration-300" id="coding-chevron">
-                                <svg class="w-5 h-5 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-content hidden" id="coding-content">
-                        <div class="px-6 pb-6">
-                            <div class="bg-green-50 dark:bg-green-900/30 rounded-xl p-5 mb-4">
-                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
-                                    AI coding tools are transforming software development by providing intelligent code
-                                    assistance, debugging support, and automated programming solutions. These advanced
-                                    applications help developers write cleaner code faster, regardless of their
-                                    experience level. Students learning programming benefit from explanatory comments
-                                    and best practice recommendations, while experienced developers save hours on
-                                    routine tasks.
-                                </p>
-                            </div>
-                            <button onclick="scrollToCategory('coding')"
-                                class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2">
-                                <span>Explore the best AI coding tools below</span>
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 3. AI Design Tools Panel -->
-                <div
-                    class="category-panel bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    <div class="panel-header p-6 cursor-pointer" onclick="toggleCategoryPanel('design')">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-4">
-                                <div
-                                    class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-xl flex items-center justify-center">
-                                    <svg class="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none"
-                                        stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z">
-                                        </path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-bold text-gray-800 dark:text-gray-100">AI Design Tools</h3>
-                                    <p class="text-sm text-gray-500 dark:text-gray-400">Graphics, logos & visual content
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="chevron-icon transform transition-transform duration-300" id="design-chevron">
-                                <svg class="w-5 h-5 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-content hidden" id="design-content">
-                        <div class="px-6 pb-6">
-                            <div class="bg-purple-50 dark:bg-purple-900/30 rounded-xl p-5 mb-4">
-                                <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
-                                    AI design tools are democratizing creative design by making professional-quality
-                                    graphics, logos, and visual content accessible to everyone. Students can create
-                                    impressive presentations and infographics, while businesses generate professional
-                                    marketing assets in minutes. These tools deliver polished results quickly and
-                                    affordably.
-                                </p>
-                            </div>
-                            <button onclick="scrollToCategory('design')"
-                                class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2">
-                                <span>Explore the best AI design tools below</span>
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 4. AI Business Tools Panel -->
-                <div
-                    class="category-panel bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    <div class="panel-header p-6 cursor-pointer" onclick="toggleCategoryPanel('business')">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
-                                    <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
-                                        </path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-bold text-gray-800">AI Business Tools</h3>
-                                    <p class="text-sm text-gray-500">Automation & productivity for teams</p>
-                                </div>
-                            </div>
-                            <div class="chevron-icon transform transition-transform duration-300" id="business-chevron">
-                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-content hidden" id="business-content">
-                        <div class="px-6 pb-6">
-                            <div class="bg-orange-50 rounded-xl p-5 mb-4">
-                                <p class="text-gray-700 leading-relaxed text-sm">
-                                    AI business tools help students manage group projects and freelancers start their
-                                    businesses with professional-grade automation and analytics. From project management
-                                    to financial tracking, these affordable AI solutions provide competitive advantages
-                                    without enterprise-level costs. Perfect for small teams and individual
-                                    entrepreneurs.
-                                </p>
-                            </div>
-                            <button onclick="scrollToCategory('business')"
-                                class="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2">
-                                <span>Explore the best AI business tools below</span>
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 5. AI Video Editing Tools Panel -->
-                <div
-                    class="category-panel bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    <div class="panel-header p-6 cursor-pointer" onclick="toggleCategoryPanel('video')">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center">
-                                    <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z">
-                                        </path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-bold text-gray-800">AI Video Editing</h3>
-                                    <p class="text-sm text-gray-500">Professional video creation made easy</p>
-                                </div>
-                            </div>
-                            <div class="chevron-icon transform transition-transform duration-300" id="video-chevron">
-                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-content hidden" id="video-content">
-                        <div class="px-6 pb-6">
-                            <div class="bg-red-50 rounded-xl p-5 mb-4">
-                                <p class="text-gray-700 leading-relaxed text-sm">
-                                    AI video editing tools make professional video production accessible to creators of
-                                    all skill levels. Students creating educational content and content creators benefit
-                                    from cost-effective solutions with automatic transcription, smart trimming, and
-                                    special effects that traditionally required expensive software and extensive
-                                    training.
-                                </p>
-                            </div>
-                            <button onclick="scrollToCategory('video-editing')"
-                                class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2">
-                                <span>Explore the best AI video tools below</span>
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 6. AI Resume Tools Panel -->
-                <div
-                    class="category-panel bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    <div class="panel-header p-6 cursor-pointer" onclick="toggleCategoryPanel('resume')">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center">
-                                    <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
-                                        </path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-bold text-gray-800">AI Resume Tools</h3>
-                                    <p class="text-sm text-gray-500">ATS-optimized resumes & job applications</p>
-                                </div>
-                            </div>
-                            <div class="chevron-icon transform transition-transform duration-300" id="resume-chevron">
-                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-content hidden" id="resume-content">
-                        <div class="px-6 pb-6">
-                            <div class="bg-teal-50 rounded-xl p-5 mb-4">
-                                <p class="text-gray-700 leading-relaxed text-sm">
-                                    AI resume tools help students entering the job market create professional,
-                                    ATS-optimized resumes that stand out to employers. These tools analyze job
-                                    descriptions, suggest relevant keywords, and provide industry-specific templates
-                                    with real-time feedback to significantly improve application success rates across
-                                    various industries.
-                                </p>
-                            </div>
-                            <button onclick="scrollToCategory('resume')"
-                                class="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2">
-                                <span>Explore the best AI resume tools below</span>
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 7. AI YouTube Tools Panel -->
-                <div
-                    class="category-panel bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    <div class="panel-header p-6 cursor-pointer" onclick="toggleCategoryPanel('youtube')">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center">
-                                    <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-bold text-gray-800">AI YouTube Tools</h3>
-                                    <p class="text-sm text-gray-500">Channel growth & content optimization</p>
-                                </div>
-                            </div>
-                            <div class="chevron-icon transform transition-transform duration-300" id="youtube-chevron">
-                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-content hidden" id="youtube-content">
-                        <div class="px-6 pb-6">
-                            <div class="bg-red-50 rounded-xl p-5 mb-4">
-                                <p class="text-gray-700 leading-relaxed text-sm">
-                                    AI YouTube tools help students starting channels and creators optimize their content
-                                    for maximum reach and engagement. These budget-friendly tools provide intelligent
-                                    keyword suggestions, thumbnail creation, and analytics interpretation that would
-                                    otherwise require significant time and expertise to master.
-                                </p>
-                            </div>
-                            <button onclick="scrollToCategory('youtube')"
-                                class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2">
-                                <span>Explore the best AI YouTube tools below</span>
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 8. AI Productivity Tools Panel -->
-                <div
-                    class="category-panel bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    <div class="panel-header p-6 cursor-pointer" onclick="toggleCategoryPanel('productivity')">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center">
-                                    <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
-                                        </path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-bold text-gray-800">AI Productivity Tools</h3>
-                                    <p class="text-sm text-gray-500">Task management & workflow optimization</p>
-                                </div>
-                            </div>
-                            <div class="chevron-icon transform transition-transform duration-300"
-                                id="productivity-chevron">
-                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-content hidden" id="productivity-content">
-                        <div class="px-6 pb-6">
-                            <div class="bg-indigo-50 rounded-xl p-5 mb-4">
-                                <p class="text-gray-700 leading-relaxed text-sm">
-                                    AI productivity tools help students manage coursework and professionals optimize
-                                    their daily workflows for maximum efficiency. These free and affordable tools
-                                    eliminate time-wasting activities with smart scheduling, automated task
-                                    prioritization, and intelligent note-taking that adapts to your work style.
-                                </p>
-                            </div>
-                            <button onclick="scrollToCategory('productivity')"
-                                class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2">
-                                <span>Explore the best AI productivity tools below</span>
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
+    <!-- Interactive Panels Removed (Redundant with Grid) -->
 
     <!-- AI Tool Cards Grid -->
     <section class="py-16 px-4 bg-gray-50">
@@ -3271,170 +2902,7 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="mobile-about py-20 px-4 bg-white">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16 animate-on-scroll">
-                <h2 class="mobile-about-title text-4xl md:text-5xl font-bold gradient-text mb-6 animate-float">About
-                    AllAITool.tech</h2>
-                <p class="mobile-about-subtitle text-xl text-gray-600 max-w-3xl mx-auto">
-                    Built by a student who believes finding the right AI tool shouldn't take hours of searching
-                </p>
-            </div>
-
-            <!-- Personal Story Section -->
-            <div class="max-w-4xl mx-auto mb-16">
-                <div class="section-card p-8 animate-on-scroll">
-                    <div class="text-center mb-8">
-                        <div
-                            class="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-3xl text-white">�‍💻</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Hi, I'm Mithlesh Kumar</h3>
-                        <p class="text-lg text-gray-600">Student & Tech Enthusiast</p>
-                    </div>
-
-                    <div class="prose prose-lg mx-auto text-gray-700">
-                        <p class="text-center mb-6">
-                            <strong>I built this site to make it easier for people to find real, working AI
-                                tools.</strong>
-                        </p>
-
-                        <p class="mb-4">
-                            As a student constantly exploring new technologies, I found myself spending hours
-                            researching AI tools for different projects—writing essays, creating presentations, coding
-                            assignments, and side projects. The problem? Most AI directories were either outdated,
-                            filled with broken links, or just lists without any real insight.
-                        </p>
-
-                        <p class="mb-4">
-                            That's when I decided to build AllAITool.tech. I wanted to create something I wish I had—a
-                            place where you can quickly find AI tools that actually work, with honest descriptions of
-                            what they're good for (and what they're not).
-                        </p>
-
-                        <p class="mb-6">
-                            I'm not a big corporation or marketing team. I'm just someone who spends way too much time
-                            trying new AI tools and thought, "Why not share what I've learned?" Every tool on this site
-                            has been tested by me personally, and I write the descriptions based on my actual experience
-                            using them.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Commitment Section -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-                <div class="section-card p-8 animate-on-scroll">
-                    <div class="feature-icon animate-float">
-                        <span class="text-2xl">🎯</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">My Commitment to Quality</h3>
-                    <p class="text-gray-700 leading-relaxed text-center mb-4">
-                        Every AI tool listed here goes through my personal testing process. I don't just copy
-                        descriptions from company websites—I actually use these tools for real tasks and write honest
-                        reviews about their strengths and limitations.
-                    </p>
-                    <p class="text-gray-700 leading-relaxed text-center">
-                        If a tool doesn't work as advertised, has poor user experience, or seems like a cash grab, it
-                        doesn't make it onto the site. I'd rather have fewer, quality recommendations than a huge list
-                        of mediocre options.
-                    </p>
-                </div>
-
-                <div class="section-card p-8 animate-on-scroll" style="animation-delay: 0.2s;">
-                    <div class="feature-icon animate-float" style="animation-delay: 1s;">
-                        <span class="text-2xl">🔄</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Constantly Updated</h3>
-                    <p class="text-gray-700 leading-relaxed text-center mb-4">
-                        The AI world moves incredibly fast. New tools launch every week, and existing ones get major
-                        updates. I spend time each week discovering new tools, testing updates, and removing ones that
-                        no longer work or have been surpassed.
-                    </p>
-                    <p class="text-gray-700 leading-relaxed text-center">
-                        When I find something genuinely useful, I write detailed <a href="/blogs/"
-                            class="text-blue-600 hover:text-blue-700 font-medium">guides and tutorials</a> to help you
-                        get the most out of it. No fluff, just practical advice from someone who's actually used the
-                        tools.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Future Vision Section -->
-            <div class="max-w-4xl mx-auto mb-16">
-                <div
-                    class="section-card p-8 animate-on-scroll bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-100">
-                    <div class="text-center mb-6">
-                        <div
-                            class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl text-white">🚀</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">What's Coming Next</h3>
-                    </div>
-
-                    <div class="text-gray-700 leading-relaxed space-y-4">
-                        <p class="text-center mb-6">
-                            AllAITool.tech is just getting started. Here's what I'm working on to make it even more
-                            useful:
-                        </p>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="text-center">
-                                <h4 class="font-semibold text-gray-800 mb-2">🔍 AI Tool Comparisons</h4>
-                                <p class="text-sm">Side-by-side comparisons of similar tools with real usage scenarios
-                                </p>
-                            </div>
-                            <div class="text-center">
-                                <h4 class="font-semibold text-gray-800 mb-2">⭐ User Reviews</h4>
-                                <p class="text-sm">Community reviews and ratings from actual users</p>
-                            </div>
-                            <div class="text-center">
-                                <h4 class="font-semibold text-gray-800 mb-2">📊 Usage Analytics</h4>
-                                <p class="text-sm">Data on which tools are most popular and why</p>
-                            </div>
-                            <div class="text-center">
-                                <h4 class="font-semibold text-gray-800 mb-2">🎓 Learning Paths</h4>
-                                <p class="text-sm">Curated sequences of tools for specific workflows</p>
-                            </div>
-                        </div>
-
-                        <p class="text-center text-sm text-gray-600 mt-6">
-                            Have ideas for improving AllAITool.tech? I'd love to hear them! Reach out through the
-                            contact section below.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Simple Stats -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="text-center animate-on-scroll">
-                    <div class="feature-icon animate-float">
-                        <span class="text-2xl">�</span>
-                    </div>
-                    <h4 class="text-xl font-semibold text-gray-800 mb-3">500+ Tools Tested</h4>
-                    <p class="text-gray-700">Personally tested and reviewed for real-world use cases</p>
-                </div>
-
-                <div class="text-center animate-on-scroll" style="animation-delay: 0.2s;">
-                    <div class="feature-icon animate-float" style="animation-delay: 0.5s;">
-                        <span class="text-2xl">✍️</span>
-                    </div>
-                    <h4 class="text-xl font-semibold text-gray-800 mb-3">Weekly Updates</h4>
-                    <p class="text-gray-700">New tools added and outdated ones removed every week</p>
-                </div>
-
-                <div class="text-center animate-on-scroll" style="animation-delay: 0.4s;">
-                    <div class="feature-icon animate-float" style="animation-delay: 1s;">
-                        <span class="text-2xl">🆓</span>
-                    </div>
-                    <h4 class="text-xl font-semibold text-gray-800 mb-3">Always Free</h4>
-                    <p class="text-gray-700">No paywalls, no premium tiers—just honest recommendations</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- About Section Removed -->
 
     <!-- AI Tool Suggestions Section -->
     <section id="suggestions"
@@ -4400,264 +3868,7 @@
         window.scrollToSection = scrollToSection;
     </script>
 
-    <!-- JavaScript for Interactive Category Panels -->
-    <script>
-        // Track which panel is currently animating to prevent conflicts
-        const animatingPanels = new Set();
-        let isInitialized = false;
-
-        // Toggle category panel with smooth animations
-        function toggleCategoryPanel(category) {
-            // Prevent execution if not properly initialized
-            if (!isInitialized) {
-                console.warn('Panels not initialized yet');
-                return;
-            }
-
-            // Prevent multiple toggles on the same panel
-            if (animatingPanels.has(category)) {
-                console.log(`Panel ${category} is already animating`);
-                return;
-            }
-
-            const content = document.getElementById(category + '-content');
-            const chevron = document.getElementById(category + '-chevron');
-
-            if (!content || !chevron) {
-                console.warn(`Panel elements not found for category: ${category}`);
-                return;
-            }
-
-            // On mobile (screen width <= 768px), close other panels first (accordion behavior)
-            const isMobile = window.innerWidth <= 768;
-            if (isMobile && content.classList.contains('hidden')) {
-                closeAllOtherPanels(category);
-            }
-
-            // Mark panel as animating
-            animatingPanels.add(category);
-
-            try {
-                if (content.classList.contains('hidden')) {
-                    // Expand panel
-                    content.classList.remove('hidden');
-                    content.style.maxHeight = '0px';
-                    content.style.overflow = 'hidden';
-                    content.style.transition = 'max-height 0.3s ease-out, opacity 0.3s ease-out';
-                    content.style.opacity = '0';
-
-                    // Force reflow
-                    content.offsetHeight;
-
-                    // Animate to full height
-                    requestAnimationFrame(() => {
-                        content.style.maxHeight = content.scrollHeight + 'px';
-                        content.style.opacity = '1';
-                    });
-
-                    // Rotate chevron
-                    chevron.style.transform = 'rotate(180deg)';
-
-                    // Clean up after animation
-                    setTimeout(() => {
-                        if (!content.classList.contains('hidden')) {
-                            content.style.maxHeight = 'none';
-                            content.style.overflow = 'visible';
-                        }
-                        animatingPanels.delete(category);
-                    }, 350);
-
-                } else {
-                    // Collapse panel
-                    content.style.maxHeight = content.scrollHeight + 'px';
-                    content.style.overflow = 'hidden';
-                    content.style.transition = 'max-height 0.3s ease-in, opacity 0.3s ease-in';
-
-                    // Force reflow
-                    content.offsetHeight;
-
-                    // Animate to collapsed
-                    requestAnimationFrame(() => {
-                        content.style.maxHeight = '0px';
-                        content.style.opacity = '0';
-                    });
-
-                    // Rotate chevron back
-                    chevron.style.transform = 'rotate(0deg)';
-
-                    // Hide after animation
-                    setTimeout(() => {
-                        content.classList.add('hidden');
-                        content.style.removeProperty('max-height');
-                        content.style.removeProperty('overflow');
-                        content.style.removeProperty('transition');
-                        content.style.removeProperty('opacity');
-                        animatingPanels.delete(category);
-                    }, 350);
-                }
-            } catch (error) {
-                console.error(`Error toggling panel ${category}:`, error);
-                animatingPanels.delete(category);
-            }
-        }
-
-        // Close all panels except the specified one
-        function closeAllOtherPanels(exceptCategory) {
-            const allCategories = ['writing', 'coding', 'design', 'business', 'video', 'resume', 'youtube', 'productivity'];
-
-            allCategories.forEach(cat => {
-                if (cat !== exceptCategory && !animatingPanels.has(cat)) {
-                    const content = document.getElementById(cat + '-content');
-                    const chevron = document.getElementById(cat + '-chevron');
-
-                    if (content && chevron && !content.classList.contains('hidden')) {
-                        // Mark as animating
-                        animatingPanels.add(cat);
-
-                        // Collapse panel
-                        content.style.maxHeight = content.scrollHeight + 'px';
-                        content.style.overflow = 'hidden';
-                        content.style.transition = 'max-height 0.3s ease-in, opacity 0.3s ease-in';
-
-                        // Force reflow
-                        content.offsetHeight;
-
-                        // Animate to collapsed
-                        requestAnimationFrame(() => {
-                            content.style.maxHeight = '0px';
-                            content.style.opacity = '0';
-                        });
-
-                        // Rotate chevron back
-                        chevron.style.transform = 'rotate(0deg)';
-
-                        // Hide after animation
-                        setTimeout(() => {
-                            content.classList.add('hidden');
-                            content.style.removeProperty('max-height');
-                            content.style.removeProperty('overflow');
-                            content.style.removeProperty('transition');
-                            content.style.removeProperty('opacity');
-                            animatingPanels.delete(cat);
-                        }, 350);
-                    }
-                }
-            });
-        }
-
-        // Scroll to category section when CTA is clicked
-        function scrollToCategory(categoryData) {
-            // Prevent event bubbling
-            if (window.event) {
-                window.event.stopPropagation();
-                window.event.preventDefault();
-            }
-
-            // Find category button and trigger click to filter tools
-            const categoryButton = document.querySelector(`[data-category="${categoryData}"]`);
-            if (categoryButton) {
-                // Trigger the category filter
-                if (typeof window.setActiveCategory === 'function') {
-                    window.setActiveCategory(categoryData);
-                } else {
-                    categoryButton.click();
-                }
-
-                // Scroll to tools section
-                setTimeout(() => {
-                    const toolsSection = document.getElementById('toolsGrid') || document.querySelector('.mobile-categories-wrapper');
-                    if (toolsSection) {
-                        toolsSection.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                }, 100);
-            }
-        }
-
-        // Initialize panels and add entrance animations
-        function initializeCategoryPanels() {
-            // Clear any existing handlers
-            const headers = document.querySelectorAll('.panel-header');
-            headers.forEach(header => {
-                // Remove onclick attribute to prevent conflicts
-                header.removeAttribute('onclick');
-
-                // Add clean event listener
-                header.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-
-                    // Extract category from the onclick attribute or data attribute
-                    const panelDiv = this.closest('.category-panel');
-                    const contentDiv = panelDiv.querySelector('.panel-content');
-                    if (contentDiv && contentDiv.id) {
-                        const category = contentDiv.id.replace('-content', '');
-                        console.log(`Clicking panel: ${category}`);
-                        toggleCategoryPanel(category);
-                    }
-                }, { passive: false });
-            });
-
-            // Add entrance animations on scroll
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            // Observe all category panels for entrance animation
-            document.querySelectorAll('.category-panel').forEach((panel, index) => {
-                panel.style.opacity = '0';
-                panel.style.transform = 'translateY(20px)';
-                panel.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-                observer.observe(panel);
-            });
-
-            isInitialized = true;
-            console.log('Category panels initialized successfully');
-        }
-
-        // Initialize when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function () {
-            // Wait for all content to load, then initialize
-            setTimeout(() => {
-                initializeCategoryPanels();
-            }, 500);
-        });
-
-        // Re-initialize on window resize to handle mobile/desktop switching
-        let resizeTimeout;
-        window.addEventListener('resize', function () {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => {
-                console.log('Window resized, re-initializing panels');
-                initializeCategoryPanels();
-            }, 250);
-        });
-
-        // Make functions globally available
-        window.toggleCategoryPanel = toggleCategoryPanel;
-        window.scrollToCategory = scrollToCategory;
-        window.closeAllOtherPanels = closeAllOtherPanels;
-
-        // Debug function to check panel states
-        window.debugPanels = function () {
-            console.log('Animating panels:', Array.from(animatingPanels));
-            console.log('Is initialized:', isInitialized);
-            console.log('Window width:', window.innerWidth);
-            document.querySelectorAll('.category-panel').forEach(panel => {
-                const content = panel.querySelector('.panel-content');
-                const id = content ? content.id : 'unknown';
-                const isHidden = content ? content.classList.contains('hidden') : 'unknown';
-                console.log(`Panel ${id}: ${isHidden ? 'hidden' : 'visible'}`);
-            });
-        };
-    </script>
+    <!-- Dead Scripts Removed -->
 
     <!-- User Feedback Form Handling -->
     <script>
@@ -4756,6 +3967,34 @@
     <!-- Reviews System Scripts -->
     <script src="reviews-data.js"></script>
     <script src="reviews-system.js"></script>
+
+    <!-- Comparison Floating Bar -->
+    <div id="compareBar"
+        class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-6 py-3 rounded-full shadow-2xl z-50 flex items-center gap-4 hidden transition-all duration-300 border border-gray-700">
+        <span class="font-medium" id="compareCount">Comparing 0/2 tools</span>
+        <button onclick="openCompareModal()"
+            class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold px-4 py-2 rounded-lg transition-colors">
+            Compare Now ⚔️
+        </button>
+        <button onclick="clearCompare()" class="text-gray-400 hover:text-white text-xl leading-none">&times;</button>
+    </div>
+
+    <!-- Comparison Modal -->
+    <div id="compareModal"
+        class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div
+            class="bg-white dark:bg-gray-800 rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl border border-gray-200 dark:border-gray-700 animate-fadeInUp">
+            <div
+                class="p-6 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center sticky top-0 bg-white dark:bg-gray-800 z-10">
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white">⚔️ AI Tool Battle</h3>
+                <button onclick="closeCompareModal()"
+                    class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white text-2xl">&times;</button>
+            </div>
+            <div id="compareContent" class="p-6 grid grid-cols-2 gap-0 divide-x divide-gray-200 dark:divide-gray-700">
+                <!-- Populated by app.js -->
+            </div>
+        </div>
+    </div>
 
     <script type="module" src="app.js"></script>
 </body>

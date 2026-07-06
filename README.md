@@ -3,7 +3,6 @@
 Discover the best AI tools for your needs in seconds.  
 AllAITool.tech is a free, curated AI tools directory designed to empower creators, developers, students, and professionals.
 
-🌐 Visit: [https://allaitool.tech](https://allaitool.tech)
 
 ---
 
